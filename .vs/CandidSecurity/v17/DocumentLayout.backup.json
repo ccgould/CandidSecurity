@@ -3,48 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\pages\\mainpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\pages\\mainpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\candidqvl.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\candidqvl.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\pagemodels\\taskdetailpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\pagemodels\\taskdetailpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\pages\\taskdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\pages\\taskdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\pages\\camerapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\pages\\camerapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\pages\\camerapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\pages\\camerapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqvl\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{227871D9-A690-40BB-AB28-231467566317}|CandidQVL\\CandidQVL.csproj|solutionrelative:candidqvl\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,138 +30,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CandidQVL",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\CandidQVL.csproj",
-              "RelativeDocumentMoniker": "CandidQVL\\CandidQVL.csproj",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\CandidQVL.csproj",
-              "RelativeToolTip": "CandidQVL\\CandidQVL.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-15T23:01:58.901Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CameraPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\CameraPage.xaml.cs",
-              "RelativeDocumentMoniker": "CandidQVL\\Pages\\CameraPage.xaml.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\CameraPage.xaml.cs",
-              "RelativeToolTip": "CandidQVL\\Pages\\CameraPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T17:22:38.909Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "CandidQVL\\MauiProgram.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\MauiProgram.cs",
-              "RelativeToolTip": "CandidQVL\\MauiProgram.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAswCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T17:10:12.893Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AppShell.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\AppShell.xaml.cs",
-              "RelativeDocumentMoniker": "CandidQVL\\AppShell.xaml.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\AppShell.xaml.cs",
-              "RelativeToolTip": "CandidQVL\\AppShell.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T17:10:02.027Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\App.xaml.cs",
-              "RelativeDocumentMoniker": "CandidQVL\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\App.xaml.cs",
-              "RelativeToolTip": "CandidQVL\\App.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T17:09:52.325Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CameraPage.xaml",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\CameraPage.xaml",
-              "RelativeDocumentMoniker": "CandidQVL\\Pages\\CameraPage.xaml",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\CameraPage.xaml",
-              "RelativeToolTip": "CandidQVL\\Pages\\CameraPage.xaml",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAABwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-14T16:35:38.389Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TaskDetailPageModel.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\PageModels\\TaskDetailPageModel.cs",
-              "RelativeDocumentMoniker": "CandidQVL\\PageModels\\TaskDetailPageModel.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\PageModels\\TaskDetailPageModel.cs",
-              "RelativeToolTip": "CandidQVL\\PageModels\\TaskDetailPageModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T16:32:17.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TaskDetailPage.xaml",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\TaskDetailPage.xaml",
-              "RelativeDocumentMoniker": "CandidQVL\\Pages\\TaskDetailPage.xaml",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\TaskDetailPage.xaml",
-              "RelativeToolTip": "CandidQVL\\Pages\\TaskDetailPage.xaml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-14T16:23:01.91Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MainPageModel.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\PageModels\\MainPageModel.cs",
-              "RelativeDocumentMoniker": "CandidQVL\\PageModels\\MainPageModel.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\PageModels\\MainPageModel.cs",
-              "RelativeToolTip": "CandidQVL\\PageModels\\MainPageModel.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAAcwM0AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T16:05:32.465Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\MainPage.xaml",
-              "RelativeDocumentMoniker": "CandidQVL\\Pages\\MainPage.xaml",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\MainPage.xaml",
-              "RelativeToolTip": "CandidQVL\\Pages\\MainPage.xaml",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-14T16:04:35.288Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "CandidQVL\\Pages\\MainPage.xaml.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQVL\\Pages\\MainPage.xaml.cs",
-              "RelativeToolTip": "CandidQVL\\Pages\\MainPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T01:53:04.604Z",
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\MainPage.xaml",
+              "RelativeDocumentMoniker": "CandidQV\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\MainPage.xaml",
+              "RelativeToolTip": "CandidQV\\MainPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-16T00:33:55.041Z",
               "EditorCaption": ""
             }
           ]

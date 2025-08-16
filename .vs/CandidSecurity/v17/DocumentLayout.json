@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +27,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\MainPage.xaml",
+              "RelativeDocumentMoniker": "CandidQV\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\MainPage.xaml",
+              "RelativeToolTip": "CandidQV\\MainPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-16T00:33:55.041Z",
+              "EditorCaption": ""
             }
           ]
         }
