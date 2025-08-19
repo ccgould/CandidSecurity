@@ -1,23 +1,12 @@
-﻿namespace CandidQV;
+﻿using CandidQV.Repositories;
+
+namespace CandidQV;
 
 public partial class MainPage : ContentPage
 {
-    int count = 0;
-
-    public MainPage()
+    public MainPage(VoucherRepository repository)
     {
         InitializeComponent();
-    }
-
-    private void OnCounterClicked(object? sender, EventArgs e)
-    {
-        count++;
-
-        if (count == 1)
-            CounterBtn.Text = $"Clicked {count} time";
-        else
-            CounterBtn.Text = $"Clicked {count} times";
-
-        SemanticScreenReader.Announce(CounterBtn.Text);
+        Task.Run( async () => listView.ItemsSource = await repository.GetVouchers());
     }
 }

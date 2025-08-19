@@ -4,11 +4,31 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CandidQV"
+    xmlns:views="clr-namespace:CandidQV.Views"
     Title="CandidQV">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
 
+    <TabBar>
+        <Tab Title="Main"
+            Icon="cat.png">
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate views:VoucherCreationPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="Airlines"
+            Icon="dog.png">
+            <ShellContent
+            Title="Airlines"
+            ContentTemplate="{DataTemplate views:AirlinesPage}"
+            Route="Airlines" />
+        </Tab>
+        <Tab Title="Employees"
+            Icon="dog.png">
+            <ShellContent
+            Title="Employees"
+            ContentTemplate="{DataTemplate views:EmployeesPage}"
+            Route="Employees" />
+        </Tab>
+    </TabBar>
 </Shell>

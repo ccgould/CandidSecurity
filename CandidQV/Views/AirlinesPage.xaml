@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CandidQV.Views.AirlinesPage">
+
+    <RefreshView x:Name="refreshView" Refreshing="refreshView_Refreshing" IsRefreshing="{Binding IsRefreshing}">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto">
+            <Entry x:Name="firstNameEntryField" Placeholder="Airline Name" Grid.Row="0"/>
+            <Entry x:Name="iataEntryField" Placeholder="IATA Code" Grid.Row="1"/>
+            <Border Grid.Row="2" Grid.Column="0">
+                <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto,*">
+                    <ListView x:Name="flightNumberList" HeightRequest="200" Grid.RowSpan="2">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <VerticalStackLayout Padding="5">
+                                        <Grid ColumnDefinitions="Auto,*,Auto">
+                                            <Label Grid.Column="0" Text="{Binding Number}" FontSize="17" FontAttributes="Bold"/>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Text="Add" Grid.Column="1" WidthRequest="100" Margin="10,0" Clicked="Button_Clicked"/>
+                </Grid>
+            </Border>
+            <BoxView HeightRequest="1" Grid.Row="3" Margin="10"/>
+            <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped" Grid.Row="4" Margin="5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout Padding="5">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                    <Label Grid.Column="0" Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
+                                    <Label Grid.Column="2" Text="{Binding IataCode}" FontSize="17" FontAttributes="Bold"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="saveBtn" Text="Save" Clicked="saveBtn_Clicked" Margin="0,10" Grid.Row="5"/>
+        </Grid>
+
+    </RefreshView>
+</ContentPage>

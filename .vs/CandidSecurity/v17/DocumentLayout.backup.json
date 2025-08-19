@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\views\\vouchercreationpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\views\\vouchercreationpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\views\\vouchercreationpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\views\\vouchercreationpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\appshell.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\appshell.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\views\\employeespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\views\\employeespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\views\\airlinespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\views\\airlinespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\repositories\\flightnumberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\repositories\\flightnumberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\views\\airlinespage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\views\\airlinespage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidqv\\models\\items\\flightnumber.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\models\\items\\flightnumber.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,9 +49,37 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 278,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VoucherCreationPage.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\VoucherCreationPage.xaml",
+              "RelativeDocumentMoniker": "CandidQV\\Views\\VoucherCreationPage.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\VoucherCreationPage.xaml \u2B24",
+              "RelativeToolTip": "CandidQV\\Views\\VoucherCreationPage.xaml \u2B24",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAmwBcAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-18T12:31:11.114Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VoucherCreationPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\VoucherCreationPage.xaml.cs",
+              "RelativeDocumentMoniker": "CandidQV\\Views\\VoucherCreationPage.xaml.cs",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\VoucherCreationPage.xaml.cs \u2B24",
+              "RelativeToolTip": "CandidQV\\Views\\VoucherCreationPage.xaml.cs \u2B24",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:33:03.754Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -30,15 +94,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\MainPage.xaml",
-              "RelativeDocumentMoniker": "CandidQV\\MainPage.xaml",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\MainPage.xaml",
-              "RelativeToolTip": "CandidQV\\MainPage.xaml",
+              "DocumentIndex": 2,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "CandidQV\\AppShell.xaml.cs",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\AppShell.xaml.cs",
+              "RelativeToolTip": "CandidQV\\AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T20:28:51.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\AppShell.xaml",
+              "RelativeDocumentMoniker": "CandidQV\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\AppShell.xaml",
+              "RelativeToolTip": "CandidQV\\AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-18T12:36:28.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\App.xaml",
+              "RelativeDocumentMoniker": "CandidQV\\App.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\App.xaml",
+              "RelativeToolTip": "CandidQV\\App.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-16T00:33:55.041Z",
+              "WhenOpened": "2025-08-18T12:36:22.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmployeesPage.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\EmployeesPage.xaml",
+              "RelativeDocumentMoniker": "CandidQV\\Views\\EmployeesPage.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\EmployeesPage.xaml",
+              "RelativeToolTip": "CandidQV\\Views\\EmployeesPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-18T12:31:29.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FlightNumber.cs",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Models\\Items\\FlightNumber.cs",
+              "RelativeDocumentMoniker": "CandidQV\\Models\\Items\\FlightNumber.cs",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Models\\Items\\FlightNumber.cs",
+              "RelativeToolTip": "CandidQV\\Models\\Items\\FlightNumber.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T17:57:44.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AirlinesPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\AirlinesPage.xaml.cs",
+              "RelativeDocumentMoniker": "CandidQV\\Views\\AirlinesPage.xaml.cs",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\AirlinesPage.xaml.cs",
+              "RelativeToolTip": "CandidQV\\Views\\AirlinesPage.xaml.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAgwGIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T17:44:03.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AirlinesPage.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\AirlinesPage.xaml",
+              "RelativeDocumentMoniker": "CandidQV\\Views\\AirlinesPage.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Views\\AirlinesPage.xaml",
+              "RelativeToolTip": "CandidQV\\Views\\AirlinesPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-17T17:43:59.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FlightNumberRepository.cs",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Repositories\\FlightNumberRepository.cs",
+              "RelativeDocumentMoniker": "CandidQV\\Repositories\\FlightNumberRepository.cs",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\Repositories\\FlightNumberRepository.cs",
+              "RelativeToolTip": "CandidQV\\Repositories\\FlightNumberRepository.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAWwCMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T17:43:48.054Z",
               "EditorCaption": ""
             }
           ]

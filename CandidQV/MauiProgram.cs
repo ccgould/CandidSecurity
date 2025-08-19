@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CandidQV.Repositories;
+using CandidQV.Views;
+using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace CandidQV;
 public static class MauiProgram
@@ -8,6 +11,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkitCamera()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -17,6 +21,15 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+        builder.Services.AddSingleton<EmployeeRepository>();
+        builder.Services.AddSingleton<FlightNumberRepository>();
+        builder.Services.AddSingleton<VoucherRepository>();
+        builder.Services.AddSingleton<AirlineRepository>();
+
+        builder.Services.AddSingleton<EmployeesPage>();
+        builder.Services.AddSingleton<AirlinesPage>();
+        builder.Services.AddSingleton<VouchersPage>();
+
 
         return builder.Build();
     }

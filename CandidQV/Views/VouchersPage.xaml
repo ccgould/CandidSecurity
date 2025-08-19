@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CandidQV.Views.VouchersPage">
+
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400">
+            <Entry x:Name="passengerNameEntryField" Placeholder="Passenger Name"/>
+            <Picker x:Name="employeePicker" SelectedIndex="0"/>
+            <Picker x:Name="airlinePicker" SelectedIndex="0"/>
+            <Picker x:Name="flightNumberPicker" SelectedIndex="0"/>
+            <RadioButton x:Name="usRadBtn" Content="US Terminal" IsChecked="True"/>
+            <RadioButton x:Name="domesticRadBtn" Content="Domestic Terminal"/>
+            <TimePicker x:Name="StartTimePicker"/>
+            <TimePicker x:Name="EndTimePicker"/>
+            <Button x:Name="saveBtn" Text="Save" Clicked="saveBtn_Clicked"/>
+        </VerticalStackLayout>
+        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Grid ColumnDefinitions="Auto,Auto,*" ColumnSpacing="5">
+                                <Label Grid.Column="0" Text="{Binding PassengerName}" FontSize="17" FontAttributes="Bold"/>
+                                <Label Grid.Column="1" Text="{Binding AirlineId}" FontSize="17" FontAttributes="Bold"/>
+                                <Label Grid.Column="2" Text="{Binding FlightNumber}" FontSize="17" FontAttributes="Bold"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                <Label Grid.Column="0" Text="{Binding StartTime}" FontSize="17" FontAttributes="Bold"/>
+                                <Label Grid.Column="2" Text="{Binding EndTime}" FontSize="17" FontAttributes="Bold"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+
+</ContentPage>

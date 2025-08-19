@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("CandidQV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+dd3bd06f7f80fea7b80dbf15256c7b25a8667ed6")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.43.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+ffbfd621572e873413ffec0b0a8bacf65b2abf9f")]
 [assembly: System.Reflection.AssemblyProductAttribute("CandidQV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CandidQV")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.2.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.43.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Android35.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Android21.0")]
 
