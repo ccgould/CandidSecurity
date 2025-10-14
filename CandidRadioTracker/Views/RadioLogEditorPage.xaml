@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CandidRadioTracker.Views.RadioLogEditorPage"
+             Title="RadioLogEditorPage">
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <!-- Scan Button Section -->
+        <Button Text="Scan Barcode"
+                Command="{Binding ScanBarcodeCommand}"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="8"
+                HeightRequest="50" />
+
+        <!-- Manual Barcode Entry -->
+        <Entry Placeholder="Enter barcode manually"
+               Text="{Binding Barcode}"
+               Keyboard="Text"
+               FontSize="16"
+               BackgroundColor="#f0f0f0"
+               Margin="0,10,0,0" />
+
+        <!-- Time Pickers Section -->
+        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" ColumnSpacing="10">
+
+            <Label Text="In Time:" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" />
+            <TimePicker Time="{Binding InTime}" Grid.Row="0" Grid.Column="1" />
+
+            <Label Text="Out Time:" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
+            <TimePicker Time="{Binding OutTime}" Grid.Row="1" Grid.Column="1" />
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

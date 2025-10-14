@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CandidQVmMulti.View.Pages.MainPage"
+             xmlns:controls="clr-namespace:CandidQVmMulti.Controls"
+             BackgroundColor="#F8FAFC">
+
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="Android,iOS">
+            <ScrollView>
+                <StackLayout Spacing="24">
+                    <!-- Header -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Voucher Management System"
+                       FontAttributes="Bold"
+                       FontSize="22"
+                       Grid.Column="0"/>
+                        <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="16">
+                            <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
+                            <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" BackgroundColor="#6B7280" HorizontalOptions="FillAndExpand" Margin="0,8,0,8"/>
+
+                    <!-- Dashboard -->
+                    <StackLayout>
+                        <Label Text="Dashboard" FontAttributes="Bold" FontSize="32"/>
+                        <Label Text="Overview of wheelchair voucher operations" FontSize="18" TextColor="#6B7280"/>
+                    </StackLayout>
+
+                    <!-- Stats Cards -->
+                    <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="SpaceBetween">
+                        <!-- Total Vouchers -->
+                        <Border WidthRequest="160" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                            <StackLayout>
+                                <Label Text="Total Vouchers" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding VouchersCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0"/>
+                                <Label Text="Total vouchers created" FontSize="14" TextColor="#6B7280"/>
+                            </StackLayout>
+                        </Border>
+
+                        <!-- Active Employees -->
+                        <Border WidthRequest="160" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                            <StackLayout>
+                                <Label Text="Active Employees" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding EmployeeCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0"/>
+                                <Label Text="Ready to assist passengers" FontSize="14" TextColor="#6B7280"/>
+                            </StackLayout>
+                        </Border>
+
+                        <!-- Airlines -->
+                        <Border WidthRequest="160" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                            <StackLayout>
+                                <Label Text="Airlines" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding AirlineCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0"/>
+                                <Label Text="Partner airlines configured" FontSize="14" TextColor="#6B7280"/>
+                            </StackLayout>
+                        </Border>
+
+                        <!-- Today's Assistance -->
+                        <Border WidthRequest="160" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                            <StackLayout>
+                                <Label Text="Today's Assistance" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding TodaysAssistanceCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0"/>
+                                <Label Text="Passengers assisted today" FontSize="14" TextColor="#6B7280"/>
+                            </StackLayout>
+                        </Border>
+                    </FlexLayout>
+
+                    <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="SpaceBetween">
+                        <!-- Quick Actions -->
+                        <controls:QuickActionCard Title="Create New Voucher"
+                          Subtitle="Record a new wheelchair assistance request"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="VoucherPage"
+                          WidthRequest="160" />
+
+                        <controls:QuickActionCard Title="Manage Employees"
+                          Subtitle="Add or update employee information"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="EmployeesPage"
+                          WidthRequest="160" />
+
+                        <controls:QuickActionCard Title="Configure Airlines"
+                          Subtitle="Set up airlines and flight numbers"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="AirlinesPage"
+                          WidthRequest="160" />
+
+                        <controls:QuickActionCard Title="Export Vouchers"
+                          Subtitle="Download voucher data as CSV"
+                          Command="{Binding ExportCommand}"
+                          WidthRequest="160" />
+                    </FlexLayout>
+                </StackLayout>
+            </ScrollView>
+        </On>
+        <On Platform="WinUI">
+            <Grid>
+                <!-- Main Content -->
+                <StackLayout Grid.Column="1" Padding="40,32,40,32" Spacing="24">
+                    <!-- Header -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Voucher Management System"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       FontSize="22"
+                       Grid.Column="0"/>
+                        <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="16">
+                            <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
+                            <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <!-- Separator Line -->
+                    <BoxView HeightRequest="1" BackgroundColor="#6B7280" HorizontalOptions="FillAndExpand" Margin="0,8,0,8"/>
+
+                    <!-- Dashboard Title -->
+                    <StackLayout>
+                        <Label Text="Dashboard" FontAttributes="Bold" FontSize="32" TextColor="Black"/>
+                        <Label Text="Overview of wheelchair voucher operations" FontSize="18" TextColor="#6B7280"/>
+                    </StackLayout>
+
+                    <!-- Stats Cards -->
+                    <Grid ColumnSpacing="24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" 
+                        Padding="20" StrokeShape="RoundRectangle 12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Total Vouchers" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                    <Label Text="{Binding VouchersCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0" TextColor="Black"/>
+                                    <Label Text="Total vouchers created" FontSize="14" TextColor="#6B7280"/>
+                                </StackLayout>
+                                <Image Grid.Column="1" Source="voucher.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Start" HorizontalOptions="End"/>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" 
+                        Padding="20" StrokeShape="RoundRectangle 12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Active Employees" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                    <Label Text="{Binding EmployeeCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0" TextColor="Black"/>
+                                    <Label Text="Ready to assist passengers" FontSize="14" TextColor="#6B7280"/>
+                                </StackLayout>
+                                <Image Grid.Column="1" Source="employees.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Start" HorizontalOptions="End"/>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" 
+                        Padding="20" StrokeShape="RoundRectangle 12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Airlines" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                    <Label Text="{Binding AirlineCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0" TextColor="Black"/>
+                                    <Label Text="Partner airlines configured" FontSize="14" TextColor="#6B7280"/>
+                                </StackLayout>
+                                <Image Grid.Column="1" Source="plane.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Start" HorizontalOptions="End"/>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" 
+                        Padding="20" StrokeShape="RoundRectangle 12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Today's Assistance" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                    <Label Text="{Binding TodaysAssistanceCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0" TextColor="Black"/>
+                                    <Label Text="Passengers assisted today" FontSize="14" TextColor="#6B7280"/>
+                                </StackLayout>
+                                <Image Grid.Column="1" Source="clock.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Start" HorizontalOptions="End"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <!-- Quick Actions -->
+                    <Border Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" 
+                    Padding="24" StrokeShape="RoundRectangle 12">
+                        <StackLayout>
+                            <Label Text="Quick Actions" FontAttributes="Bold" FontSize="20" TextColor="Black"/>
+                            <Label Text="Get started with managing wheelchair vouchers" FontSize="16" TextColor="#6B7280" Margin="0,0,0,16"/>
+                            <Grid ColumnSpacing="24">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Background="#F8FAFC" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="VoucherPage" />
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
+                                        <Label Text="Create New Voucher" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                        <Label Text="Record a new wheelchair assistance request" FontSize="14" TextColor="#6B7280"/>
+                                    </StackLayout>
+                                </Border>
+
+                                <Border Grid.Column="1" Background="#F8FAFC" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="EmployeesPage" />
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
+                                        <Label Text="Manage Employees" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                        <Label Text="Add or update employee information" FontSize="14" TextColor="#6B7280"/>
+                                    </StackLayout>
+                                </Border>
+
+                                <Border Grid.Column="2" Background="#F8FAFC" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="AirlinesPage" />
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
+                                        <Label Text="Configure Airlines" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                        <Label Text="Set up airlines and flight numbers" FontSize="14" TextColor="#6B7280"/>
+                                    </StackLayout>
+                                </Border>
+
+                            </Grid>
+                        </StackLayout>
+                    </Border>
+                </StackLayout>
+            </Grid>
+        </On>
+    </OnPlatform>
+</ContentPage>

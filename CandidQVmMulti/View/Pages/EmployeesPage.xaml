@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusionInputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:syncfusionButtons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:converters="clr-namespace:CandidQVmMulti.View.Converters"
+             x:Class="CandidQVmMulti.View.Pages.EmployeesPage"
+             BackgroundColor="#F8FAFC">
+
+    <ContentPage.Resources>
+        <converters:TickToDateConverter x:Key="tickToDateConveter"/>
+    </ContentPage.Resources>
+
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="Android">
+            <Grid>
+                <ScrollView>
+                    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="24">
+
+                        <!-- Header -->
+                        <Grid Row="0" ColumnDefinitions="*,Auto">
+                            <Label Text="Voucher Management System"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   FontSize="{OnIdiom Phone=18, Tablet=20, Desktop=22}" />
+                            <HorizontalStackLayout Grid.Column="1" Spacing="16">
+                                <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
+                                <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+
+                        <!-- Page Title -->
+                        <Grid Row="1" RowDefinitions="Auto,Auto">
+                            <Label Text="Employee Management"
+                   FontAttributes="Bold"
+                   FontSize="{OnIdiom Phone=24, Tablet=32, Desktop=36}"
+                   TextColor="Black"
+                   Grid.Row="0"/>
+                            <Label Text="Manage wheelchair assistance staff"
+                   FontSize="{OnIdiom Phone=14, Tablet=16, Desktop=18}"
+                   TextColor="#6B7280"
+                   Grid.Row="1"/>
+                        </Grid>
+
+                        <!-- Search Employees Card -->
+                        <Border Grid.Row="2" Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+                                <Label Text="Search Employees"
+                       FontAttributes="Bold"
+                       FontSize="{OnIdiom Phone=18, Tablet=20, Desktop=20}"
+                       TextColor="Black"
+                       Grid.Row="0"/>
+                                <SearchBar Placeholder="Search employees by name, email, or position..."
+                           TextColor="Black"
+                           PlaceholderColor="#6B7280"
+                           BackgroundColor="White"
+                           Text="{Binding SearchText, Mode=TwoWay}"
+                           Grid.Row="1"/>
+                                <syncfusionButtons:SfButton
+                    Text="Add Employee"
+                    ShowIcon="True"
+                    ImageSource="plus_white.png"
+                    Background="#232323"
+                    TextColor="White"
+                    Padding="16,0"
+                    CornerRadius="8"
+                    HeightRequest="48"
+                    Command="{Binding AddEmployeeCommand}"
+                    Grid.Row="2"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Employees List Card -->
+                        <Border Grid.Row="3" Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <Grid RowDefinitions="Auto,Auto,*" RowSpacing="8">
+                                <Label Text="{Binding EmployeesCount, StringFormat='Employees ({0})'}"
+                       FontAttributes="Bold"
+                       FontSize="{OnIdiom Phone=18, Tablet=20, Desktop=20}"
+                       TextColor="Black"
+                       Grid.Row="0"/>
+                                
+                                <Label Text="List of wheelchair assistance staff"
+                       FontSize="{OnIdiom Phone=14, Tablet=16, Desktop=16}"
+                       TextColor="#6B7280"
+                       Grid.Row="1"/>
+
+                                <!-- Scrollable DataGrid -->
+                                <syncfusion:SfDataGrid
+                    Grid.Row="2"
+                    x:Name="EmployeesDataGrid"
+                    ItemsSource="{Binding Employees}"
+                    AutoGenerateColumnsMode="None"
+                    GridLinesVisibility="Horizontal"
+                    HeaderGridLinesVisibility="Horizontal"
+                    RowHeight="{OnIdiom Phone=46, Tablet=48, Desktop=48}"
+                    SelectionMode="None"
+                    HorizontalScrollBarVisibility="Always">
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <syncfusion:DataGridTextColumn HeaderText="Name" MappingName="Name"/>
+                                        <syncfusion:DataGridTextColumn HeaderText="Position" MappingName="Position"/>
+                                        <syncfusion:DataGridTextColumn HeaderText="Added"
+                                                                       ColumnWidthMode="FitByCell"
+                                                        MappingName="AddedDate"
+                                                        DisplayBinding="{Binding Path=AddedDate, Converter={StaticResource tickToDateConveter}}"/>
+                                        <syncfusion:DataGridTemplateColumn HeaderText="Actions">
+                                            <syncfusion:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                                        <syncfusionButtons:SfButton
+                                            ImageSource="edit.png"
+                                            ShowIcon="True"
+                                            Background="#F3F4F6"
+                                            TextColor="Black"
+                                            HeightRequest="40"
+                                            WidthRequest="40"
+                                            Padding="4"
+                                            CornerRadius="6"
+                                            Command="{Binding Path=BindingContext.EditEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid}}"
+                                            CommandParameter="{Binding .}" />
+                                                        <syncfusionButtons:SfButton
+                                            ImageSource="trash.png"
+                                            ShowIcon="True"
+                                            Background="#F3F4F6"
+                                            TextColor="Red"
+                                            HeightRequest="40"
+                                            WidthRequest="40"
+                                            Padding="4"
+                                            CornerRadius="6"
+                                            Command="{Binding Path=BindingContext.DeleteEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid}}"
+                                            CommandParameter="{Binding .}" />
+                                                    </HorizontalStackLayout>
+                                                </DataTemplate>
+                                            </syncfusion:DataGridTemplateColumn.CellTemplate>
+                                        </syncfusion:DataGridTemplateColumn>
+                                    </syncfusion:SfDataGrid.Columns>
+                                </syncfusion:SfDataGrid>
+                            </Grid>
+                        </Border>
+
+                        <!-- Spacer -->
+                        <BoxView Grid.Row="4" HeightRequest="24" />
+
+                    </Grid>
+
+                </ScrollView>
+            </Grid>
+        </On>
+        <On Platform="WinUI">
+            <Grid>
+                <ScrollView>
+                    <VerticalStackLayout Padding="40,32,40,32" Spacing="24">
+                        <!-- Header -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Voucher Management System"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       FontSize="22"
+                       Grid.Column="0"/>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="16">
+                                <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
+                                <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
+                            </StackLayout>
+                        </Grid>
+
+                        <!-- Page Title -->
+                        <StackLayout>
+                            <Label Text="Employee Management" FontAttributes="Bold" FontSize="36" TextColor="Black"/>
+                            <Label Text="Manage wheelchair assistance staff" FontSize="18" TextColor="#6B7280"/>
+                        </StackLayout>
+
+                        <!-- Search Employees Card -->
+                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <Grid ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="Search Employees" FontAttributes="Bold" FontSize="20" TextColor="Black"/>
+                                <SearchBar
+                            Placeholder="Search employees by name, email, or position..."
+                            TextColor="Black"
+                            PlaceholderColor="#6B7280"
+                            BackgroundColor="White"
+                            Text="{Binding SearchText, Mode=TwoWay}"
+                            Grid.Row="1"/>
+                                <syncfusionButtons:SfButton
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="Add Employee"
+                        ShowIcon="True"
+                        ImageSource="plus_white.png"
+                        Background="#232323"
+                        TextColor="White"
+                        Padding="16,0"
+                        CornerRadius="8"
+                        Command="{Binding AddEmployeeCommand}" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Employees List Card -->
+                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <StackLayout Spacing="8">
+                                <Label Text="{Binding EmployeesCount, StringFormat='Employees ({0})'}" FontAttributes="Bold" FontSize="20" TextColor="Black"/>
+                                <Label Text="List of wheelchair assistance staff" FontSize="16" TextColor="#6B7280"/>
+                                <syncfusion:SfDataGrid
+                        AutoGenerateColumnsMode="None"
+                        x:Name="EmployeesDataGrid2"
+                        ItemsSource="{Binding Employees}"
+                        GridLinesVisibility="Horizontal"
+                        HeaderGridLinesVisibility="Horizontal"
+                        ColumnWidthMode="Fill"
+                        RowHeight="48"
+                        SelectionMode="None"
+                        Margin="0,8,0,0">
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <syncfusion:DataGridTextColumn HeaderText="Name" MappingName="Name"/>
+                                        <syncfusion:DataGridTextColumn HeaderText="Position" MappingName="Position"/>
+                                        <syncfusion:DataGridTextColumn HeaderText="Added" MappingName="AddedDate" DisplayBinding="{Binding Path=AddedDate,Converter={StaticResource tickToDateConveter}}"/>
+                                        <syncfusion:DataGridTemplateColumn HeaderText="Actions" ColumnWidthMode="LastColumnFill">
+                                            <syncfusion:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                                        <syncfusionButtons:SfButton
+                                                ImageSource="edit.png"
+                                                ShowIcon="True"
+                                                ImageAlignment="Default"
+                                                Background="#F3F4F6"
+                                                TextColor="Black"
+                                                HeightRequest="32"
+                                                WidthRequest="32"
+                                                Padding="2"
+                                                CornerRadius="6"
+                                                Command="{Binding Path=BindingContext.EditEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid2}}"
+                                                CommandParameter="{Binding .}" />
+                                                        <syncfusionButtons:SfButton
+                                                ImageSource="trash.png"
+                                                ShowIcon="True"
+                                                ImageAlignment="Default"
+                                                Background="#F3F4F6"
+                                                TextColor="Red"
+                                                HeightRequest="32"
+                                                WidthRequest="32"
+                                                Padding="2"
+                                                CornerRadius="6"
+                                                Command="{Binding Path=BindingContext.DeleteEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid2}}"
+                                                CommandParameter="{Binding .}" />
+                                                    </HorizontalStackLayout>
+                                                </DataTemplate>
+                                            </syncfusion:DataGridTemplateColumn.CellTemplate>
+                                        </syncfusion:DataGridTemplateColumn>
+                                    </syncfusion:SfDataGrid.Columns>
+                                </syncfusion:SfDataGrid>
+                            </StackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Busy Overlay -->
+                <Grid IsVisible="{Binding IsBusy}"
+          BackgroundColor="#80FFFFFF"
+          ZIndex="99">
+
+                    <StackLayout HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Spacing="20">
+
+                        <!-- Logo -->
+                        <Image Source="your_logo.png"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   Aspect="AspectFit" />
+
+                        <!-- Spinner -->
+                        <ActivityIndicator IsRunning="True"
+                               IsVisible="True"
+                               Color="Gray"
+                               WidthRequest="50"
+                               HeightRequest="50" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </On>
+    </OnPlatform>
+</ContentPage>

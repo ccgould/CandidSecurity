@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CandidQVmMulti"
+    xmlns:pages="clr-namespace:CandidQVmMulti.View.Pages"
+    x:Class="CandidQVmMulti.AndriodAppShell"
+    BackgroundColor="#F8FAFC"
+    FlyoutBackgroundColor="White"
+    FlyoutWidth="60">
+
+    <TabBar>
+        <Tab Title="Dashboard" Icon="dashboard.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
+    </Tab>
+        <Tab Title="Vouchers" Icon="voucher.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:VouchersPage}" />
+    </Tab>
+    <!--<FlyoutItem Title="Add Voucher" Icon="plus.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:AddVoucherPage}" />
+    </FlyoutItem>-->
+        <Tab Title="Employees" Icon="employees.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:EmployeesPage}" />
+    </Tab>
+        <Tab Title="Airlines" Icon="plane.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:AirlinesPage}" />
+    </Tab>
+    </TabBar>
+</Shell>

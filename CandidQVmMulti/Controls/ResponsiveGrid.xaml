@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="CandidQVmMulti.Controls.ResponsiveGrid"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Grid x:Name="RootGrid"
+          Padding="{OnIdiom Phone=16, Tablet=32}"
+          ColumnSpacing="24"
+          RowSpacing="24">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ContentView x:Name="HeaderContent" Grid.Column="0" Grid.Row="0" />
+        <ContentView x:Name="MainContent" Grid.Column="0" Grid.Row="1" />
+        <ContentView x:Name="FooterContent" Grid.Column="0" Grid.Row="2" />
+        <ContentView x:Name="SidebarContent" Grid.Column="1" Grid.Row="1"
+                     IsVisible="{OnIdiom Phone=False, Tablet=True}" />
+    </Grid>
+</ContentView>

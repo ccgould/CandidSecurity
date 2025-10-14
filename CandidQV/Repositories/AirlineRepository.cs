@@ -1,8 +1,10 @@
 ﻿using CandidQV.Models.Items;
+using CommunityToolkit.Mvvm.ComponentModel;
 using SQLite;
+using System.Collections.ObjectModel;
 
 namespace CandidQV.Repositories;
-public class AirlineRepository
+public partial class AirlineRepository : ObservableObject
 {
     private const string DB_NAME = "candidDB.db3";
     private readonly SQLiteAsyncConnection _connection;
@@ -13,8 +15,8 @@ public class AirlineRepository
         _connection.CreateTableAsync<Airline>();
     }
 
-    public async Task<List<Airline>> GetAirlines()
-    {
+    public async Task<List<Airline>> GetAllAsync()
+    {   
         return await _connection.Table<Airline>().ToListAsync();
     }
 
@@ -23,20 +25,37 @@ public class AirlineRepository
         return await _connection.Table<Airline>().Where(x => x.Id == id).FirstOrDefaultAsync();
     }
 
-    public async Task<int> Create(Airline Airline)
+    public async Task<int> CreateAsync(Airline airline)
     {
-        await _connection.InsertAsync(Airline);
+        await _connection.InsertAsync(airline);
         long lastInsertedId = await _connection.ExecuteScalarAsync<long>("SELECT last_insert_rowid()");
         return Convert.ToInt32(lastInsertedId);
     }
 
-    public async Task Update(Airline Airline)
+    public async Task UpdateAsync(Airline Airline)
     {
         await _connection.UpdateAsync(Airline);
     }
 
-    public async Task Delete(Airline Airline)
+    public async Task Delete(Airline airline)
     {
-        await _connection.DeleteAsync(Airline);
+        await _connection.DeleteAsync(airline);
+    }
+
+    internal async Task<bool> DoesRecordExistAsync(string result)
+    {
+        var existingItem = await _connection.Table<Airline>()
+                                .Where(i => i.Name.ToLower() == result.ToLower())
+                                .FirstOrDefaultAsync();
+
+        return existingItem != null;
+    }
+    internal async Task<bool> DoesIataRecordExistAsync(string result)
+    {
+        var existingItem = await _connection.Table<Airline>()
+                                .Where(i => i.IataCode.ToLower() == result.ToLower())
+                                .FirstOrDefaultAsync();
+
+        return existingItem != null;
     }
 }

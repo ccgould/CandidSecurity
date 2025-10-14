@@ -1,73 +1,58 @@
 ﻿using CandidQV.Models.Items;
-using CandidQV.Repositories;
+using CandidQV.ViewModels;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 
 namespace CandidQV.Views;
 
 public partial class EmployeesPage : ContentPage
 {
-    private readonly EmployeeRepository _repository;
-    private int _editEployeeId;
+    public EmployeePageViewModel ViewModel => BindingContext as EmployeePageViewModel;
 
-    public EmployeesPage(EmployeeRepository repository)
+    public EmployeesPage(EmployeePageViewModel vm)
     {
         InitializeComponent();
-        _repository = repository;
-        Task.Run(async () => listView.ItemsSource =  await repository.GetEmployees());
+        BindingContext = vm;
     }
 
-    private async void saveBtn_Clicked(object sender, EventArgs e)
+    protected override async void OnAppearing()
     {
-        if(_editEployeeId == 0)
-        {
-            //Add Employee
-
-            await _repository.Create(new Employee
-            {
-                FirstName = firstNameEntryField.Text,
-                LastName = lastNameEntryField.Text,
-                MiddleInitial = middleInitialEntryField.Text,
-            });
-        }
-        else
-        {
-            //Update Employee
-
-            await _repository.Update(new Employee
-            {
-                Id = _editEployeeId,
-                FirstName = firstNameEntryField.Text,
-                LastName = lastNameEntryField.Text,
-                MiddleInitial = middleInitialEntryField.Text,
-            });
-
-            _editEployeeId = 0;
-        }
-
-        firstNameEntryField.Text = string.Empty;
-        middleInitialEntryField.Text = string.Empty;
-        lastNameEntryField.Text = string.Empty;
-        listView.ItemsSource = await _repository.GetEmployees();
+        base.OnAppearing();
+        await ViewModel.InitAsync();
     }
 
-    private async void listView_ItemTapped(object sender, ItemTappedEventArgs e)
+    private async void OnDeleteRequested(object sender, EventArgs e)
     {
-        var employee = (Employee)e.Item;
-        var action = await DisplayActionSheet("Options", "Cancel", null, "Edit", "Delete");
-
-        switch (action) 
+        if (sender is SwipeItem swipeItem && swipeItem.CommandParameter is Employee employee)
         {
-            case "Edit":
-                _editEployeeId = employee.Id;
-                firstNameEntryField.Text = employee.FirstName;
-                lastNameEntryField.Text = employee.LastName;
-                middleInitialEntryField.Text = employee.MiddleInitial;
-                break;
-            case "Delete":
-                await _repository.Delete(employee);
-                listView.ItemsSource = await _repository.GetEmployees();
-                break;
+            bool confirm = await DisplayAlert("Confirm Delete",
+                                              $"Delete {employee.FullName}?",
+                                              "Yes", "Cancel");
+            if (!confirm) return;
 
+            await ViewModel.DeleteEmployeeAsync(employee);
+
+            var snackBarOptions = new SnackbarOptions
+            {
+                BackgroundColor = Colors.DarkRed,
+                TextColor = Colors.White,
+                ActionButtonTextColor = Colors.Yellow,
+                CornerRadius = 8,
+                Font = Microsoft.Maui.Font.Default
+            };
+
+            await Snackbar.Make("Employee deleted", async () =>
+            {
+                await ViewModel.UndoDeleteAsync();
+            }, "Undo", TimeSpan.FromSeconds(5), snackBarOptions).Show();
         }
+    }
 
+    private void OnEditRequested(object sender, EventArgs e)
+    {
+        if (sender is SwipeItem swipeItem && swipeItem.CommandParameter is Employee employee)
+        {
+            ViewModel.OnEmployeeSelected(employee);
+        }
     }
 }

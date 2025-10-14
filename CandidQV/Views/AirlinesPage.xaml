@@ -1,47 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CandidQV.Views.AirlinesPage">
+             x:Class="CandidQV.Views.AirlinesPage"
+             xmlns:models="clr-namespace:CandidQV.Models.Items"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Accordion;assembly=Syncfusion.Maui.Expander"
+             xmlns:viewmodels="clr-namespace:CandidQV.ViewModels"
+             x:Name="AircraftPage">
 
-    <RefreshView x:Name="refreshView" Refreshing="refreshView_Refreshing" IsRefreshing="{Binding IsRefreshing}">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto">
-            <Entry x:Name="firstNameEntryField" Placeholder="Airline Name" Grid.Row="0"/>
-            <Entry x:Name="iataEntryField" Placeholder="IATA Code" Grid.Row="1"/>
+        <!--<Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto">
+            <Entry x:Name="firstNameEntryField" Placeholder="Airline Name" Grid.Row="0" Text="{Binding Airline.Name}"/>
+            <Entry x:Name="iataEntryField" Placeholder="IATA Code" Grid.Row="1" Text="{Binding Airline.IataCode}"/>
             <Border Grid.Row="2" Grid.Column="0">
                 <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto,*">
-                    <ListView x:Name="flightNumberList" HeightRequest="200" Grid.RowSpan="2">
+                <ListView x:Name="flightNumberList" HeightRequest="200" Grid.RowSpan="2" ItemsSource="{Binding FlightNumbers}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Execute">                                                
+                                            <SwipeItem Text="Delete"
+                                            BackgroundColor="Red"
+                                            CommandParameter="{Binding .}"
+                                            Invoked="OnDeleteRequested"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
                                     <VerticalStackLayout Padding="5">
                                         <Grid ColumnDefinitions="Auto,*,Auto">
                                             <Label Grid.Column="0" Text="{Binding Number}" FontSize="17" FontAttributes="Bold"/>
                                         </Grid>
                                     </VerticalStackLayout>
-                                </ViewCell>
+                                </SwipeView>
+                            </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>
-                    <Button Text="Add" Grid.Column="1" WidthRequest="100" Margin="10,0" Clicked="Button_Clicked"/>
+                </ListView>
+                <Button Text="Add" Grid.Column="1" WidthRequest="100" Margin="10,0" Command="{Binding AddFlightNumberCommand}"/>
                 </Grid>
             </Border>
             <BoxView HeightRequest="1" Grid.Row="3" Margin="10"/>
-            <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped" Grid.Row="4" Margin="5">
+            <ScrollView  Grid.Row="4" Margin="5">
+                <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemsSource="{Binding Airlines}">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="{x:Type models:Airline}">
                         <ViewCell>
-                            <VerticalStackLayout Padding="5">
-                                <Grid ColumnDefinitions="Auto,*,Auto">
-                                    <Label Grid.Column="0" Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
-                                    <Label Grid.Column="2" Text="{Binding IataCode}" FontSize="17" FontAttributes="Bold"/>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Edit"
+                                            BackgroundColor="Orange"
+                                            CommandParameter="{Binding .}"
+                                            Invoked="OnEditRequested"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Delete"
+                                            BackgroundColor="Red"
+                                            CommandParameter="{Binding .}"
+                                            Invoked="OnDeleteRequested"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="50">
+                                    <Label Grid.Column="0" Text="{Binding Name}" FontSize="17" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                                    <Label Grid.Column="2" Text="{Binding IataCode}" FontSize="17" FontAttributes="Bold" VerticalOptions="Center"/>
                                 </Grid>
-                            </VerticalStackLayout>
+                            </SwipeView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="saveBtn" Text="Save" Clicked="saveBtn_Clicked" Margin="0,10" Grid.Row="5"/>
-        </Grid>
+            </ScrollView>
+            <Button x:Name="saveBtn" Text="Save" Margin="0,10" Grid.Row="5" Command="{Binding SaveCommand}"/>
+        </Grid>-->
 
-    </RefreshView>
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <VerticalStackLayout Padding="20">
+                <syncfusion:SfAccordion x:Name="AirlineAccordion" BindableLayout.ItemsSource="{Binding Airlines}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <syncfusion:AccordionItem x:DataType="{x:Type models:Airline}">
+                                <syncfusion:AccordionItem.Header>
+                                    <Grid HeightRequest="50" ColumnDefinitions="*,Auto,Auto">
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Padding="10"/>
+                                        <Button Text="+" Grid.Column="1" HeightRequest="30" BackgroundColor="Transparent" TextColor="Black" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:AirlinesPageViewModel}}, Path=AddFlightNumberCommand}" CommandParameter="{Binding .}" />
+                                        <Button Text="&#xf1f8;" FontFamily="FASolid" Grid.Column="2" HeightRequest="30" BackgroundColor="Transparent" TextColor="Black" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:AirlinesPageViewModel}}, Path=DeleteAirlineCommand}" CommandParameter="{Binding .}" />
+                                        <!-- Add icons, badges, etc. -->
+                                    </Grid>
+                                </syncfusion:AccordionItem.Header>
+                                <syncfusion:AccordionItem.Content>
+                                    <CollectionView ItemsSource="{Binding FlightNumbers}">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Padding="10" ColumnDefinitions="*,Auto" RowDefinitions="Auto">
+                                                    <Label Text="{Binding Number}"
+                                                   FontSize="16"
+                                                   VerticalOptions="Center" />
+
+                                                    <Button Text="&#xf1f8;"
+                                                FontFamily="FASolid"
+                                                FontSize="15"
+                                                BackgroundColor="Transparent"
+                                                TextColor="Red"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:AirlinesPageViewModel}}, Path=DeleteFlightNumberCommand}"
+                                                CommandParameter="{Binding .}" 
+                                                Grid.Column="1"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+
+                                </syncfusion:AccordionItem.Content>
+                            </syncfusion:AccordionItem>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </syncfusion:SfAccordion>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Text="Add" Command="{Binding AddCommand}" Grid.Row="1" Margin="10,0"/>
+    </Grid>
 </ContentPage>

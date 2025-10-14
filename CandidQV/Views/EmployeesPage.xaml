@@ -1,34 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:CandidQV.Models.Items"
              x:Class="CandidQV.Views.EmployeesPage">
 
     <FlexLayout Direction="Column">
         <VerticalStackLayout Padding="10" FlexLayout.Basis="400">
-            <Entry x:Name="firstNameEntryField" Placeholder="First Name"/>
-            <Entry x:Name="middleInitialEntryField" Placeholder="Middle Initial"/>
-            <Entry x:Name="lastNameEntryField" Placeholder="Last Name"/>
-            <Button x:Name="saveBtn" Text="Save" Clicked="saveBtn_Clicked"/>
+            <Entry x:Name="firstNameEntryField" Placeholder="First Name" Text="{Binding Employee.FirstName}"/>
+            <Entry x:Name="middleInitialEntryField" Placeholder="Middle Initial" Text="{Binding Employee.MiddleInitial}"/>
+            <Entry x:Name="lastNameEntryField" Placeholder="Last Name" Text="{Binding Employee.LastName}"/>
+            <Button x:Name="saveBtn" Text="Save" Command="{Binding SaveCommand}"/>
         </VerticalStackLayout>
-        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <VerticalStackLayout Padding="5">
-                            <Grid ColumnDefinitions="Auto,Auto,*" ColumnSpacing="5">
-                                <Label Grid.Column="0" Text="{Binding FirstName}" FontSize="17" FontAttributes="Bold"/>
-                                <Label Grid.Column="1" Text="{Binding MiddleInitial}" FontSize="17" FontAttributes="Bold"/>
-                                <Label Grid.Column="2" Text="{Binding LastName}" FontSize="17" FontAttributes="Bold"/>
-                            </Grid>
-                            <Grid ColumnDefinitions="Auto,*,Auto">
-                                <Label Grid.Column="0" Text="{Binding FirstName}" FontSize="17" FontAttributes="Bold"/>
-                                <Label Grid.Column="2" Text="{Binding FirstName}" FontSize="17" FontAttributes="Bold"/>
-                            </Grid>
-                        </VerticalStackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ScrollView Margin="5" FlexLayout.Grow="1">
+            <ListView x:Name="listView"  HasUnevenRows="True" ItemsSource="{Binding Employees}" x:DataType="{x:Type model:Employee}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Edit"
+                                            BackgroundColor="Orange"
+                                            CommandParameter="{Binding .}"
+                                            Invoked="OnEditRequested"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Delete"
+                                            BackgroundColor="Red"
+                                            CommandParameter="{Binding .}"
+                                            Invoked="OnDeleteRequested"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <VerticalStackLayout Padding="5" x:DataType="{x:Type model:Employee}">
+                                    <Grid ColumnDefinitions="Auto,Auto,*" ColumnSpacing="5">
+                                        <Label Grid.Column="0" Text="{Binding FirstName}" FontSize="17" FontAttributes="Bold"/>
+                                        <Label Grid.Column="1" Text="{Binding MiddleInitial}" FontSize="17" FontAttributes="Bold"/>
+                                        <Label Grid.Column="2" Text="{Binding LastName}" FontSize="17" FontAttributes="Bold"/>
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
     </FlexLayout>
 
 </ContentPage>

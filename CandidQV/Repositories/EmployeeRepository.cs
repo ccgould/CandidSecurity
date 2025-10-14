@@ -13,27 +13,27 @@ public class EmployeeRepository
         _connection.CreateTableAsync<Employee>();
     }
 
-    public async Task<List<Employee>> GetEmployees()
+    public async Task<List<Employee>> GetAllAsync()
     {
         return await _connection.Table<Employee>().ToListAsync();
     }
 
-    public async Task<Employee> GetById(int id)
+    public async Task<Employee> GetByIdAsync(int id)
     {
         return await _connection.Table<Employee>().Where(x => x.Id == id).FirstOrDefaultAsync();
     }
 
-    public async Task Create(Employee employee)
+    public async Task CreateAsync(Employee employee)
     {
         await _connection.InsertAsync(employee);
     }
 
-    public async Task Update(Employee employee)
+    public async Task UpdateAsync(Employee employee)
     {
         await _connection.UpdateAsync(employee);
     }
 
-    public async Task Delete(Employee employee)
+    public async Task DeleteAsync(Employee employee)
     {
         await _connection.DeleteAsync(employee);
     }

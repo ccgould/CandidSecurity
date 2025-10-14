@@ -1,47 +1,99 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CandidQV.ViewModels"
+             x:DataType="viewmodels:VoucherCreationPageViewModel"
              x:Class="CandidQV.Views.VoucherCreationPage"
-             Title="Add Voucher">
+             Shell.NavBarIsVisible="False"
+             Title="Add Voucher"
+             x:Name="Root">
+    
     <Grid RowDefinitions="*,Auto">
         <FlexLayout Direction="Column">
             <VerticalStackLayout Padding="10" FlexLayout.Basis="400">
-                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                    <Label Text="Terminal" VerticalOptions="Center" Grid.RowSpan="2"/>
-                    <RadioButton Grid.Column="1" Grid.Row="0"  Content="US Terminal" x:Name="usDepartureRad" IsChecked="True"/>
-                    <RadioButton Grid.Column="1" Grid.Row="1" Content="Domestic Terminal" IsChecked="False"/>
+                
+                <Grid BackgroundColor="{StaticResource Primary}"
+            Padding="0"
+            Margin="0"
+                      HeightRequest="50"
+                      MaximumWidthRequest="300">
+
+                    <!-- Tap gesture to trigger command -->
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                    </Grid.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="50,*" >
+
+                        <Grid BackgroundColor="{StaticResource PrimaryDark}" >
+                            <Label 
+                            Text="&#xf02a;"
+                            FontFamily="FASolid"
+                            FontSize="20"
+                            VerticalOptions="Center"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            />
+                        </Grid>
+
+                        <!-- Button Text -->
+                        <Label Text="Scan"
+                   FontSize="16"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   Margin="10,0,0,0"
+                   Grid.Column="1" />   
+                    </Grid>
+                </Grid>
+                
+                
+                <Grid ColumnDefinitions="*,*">
+                    <Label Text="Terminal" VerticalOptions="Center"/>
+                    <Picker ItemsSource="{Binding TerminalOptions}"
+                    SelectedItem="{Binding SelectedTerminal}"
+                    Title="Choose Terminal"
+                    Grid.Column="1"/>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
                     <Label Text="Airline" VerticalOptions="Center"/>
-                    <Picker Grid.Column="1"  x:Name="airlinePicker"  Title="Select Airline" />
+                    <Picker Grid.Column="1"  x:Name="airlinePicker" ItemsSource="{Binding Airlines}"  Title="Select Airline" ItemDisplayBinding="{Binding Name, Mode=TwoWay}" SelectedItem="{Binding SelectedAirline}" SelectedIndexChanged="airlinePicker_SelectedIndexChanged"/>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
                     <Label Text="Flight Number" VerticalOptions="Center"/>
-                    <Picker Grid.Column="1"  x:Name="airlineFlightNumberPicker"  Title="Select A Flight Number" />
+                    <Picker Grid.Column="1"  x:Name="airlineFlightNumberPicker" ItemsSource="{Binding FlightNumbers}"  Title="Select A Flight Number" ItemDisplayBinding="{Binding Number}" SelectedItem="{Binding SelectedFlightNumber}"/>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
                     <Label Text="Passenger Name" VerticalOptions="Center"/>
-                    <Entry Grid.Column="1" x:Name="passengerNameEntryField" Placeholder="Passenger Name"/>
+                    <Entry Grid.Column="1" x:Name="passengerNameEntryField" Placeholder="Passenger Name" Text="{Binding CurrentVoucher.PassengerName, Mode=TwoWay}"/>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
                     <Label Text="Officer Name" VerticalOptions="Center"/>
-                    <Picker Grid.Column="1"  x:Name="officerNamePicker"  Title="Select An Officer" />
+                    <Picker Grid.Column="1"  x:Name="officerNamePicker"  Title="Select An Officer" ItemsSource="{Binding Employees}" ItemDisplayBinding="{Binding FullName, Mode=TwoWay}" SelectedItem="{Binding SelectedEmployee}"/>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
                     <Label Text="Start Time" VerticalOptions="Center"/>
-                    <TimePicker Grid.Column="1"  x:Name="startTimePicker" />
+                    <TimePicker Grid.Column="1"  x:Name="startTimePicker" Time="{Binding StartTime, Mode=TwoWay}"/>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
                     <Label Text="End Time" VerticalOptions="Center"/>
-                    <TimePicker Grid.Column="1"  x:Name="endTimePicker" />
+                    <TimePicker Grid.Column="1"  x:Name="endTimePicker" Time="{Binding EndTime,Mode=TwoWay}"/>
                 </Grid>
                 <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*">
                     <Label Text="Photo" VerticalOptions="Center"/>
-                    <Button Text="Take Photo" Grid.Row="0" Grid.Column="1" x:Name="takePhotoBtn" Clicked="takePhotoBtn_Clicked"/>
-                    <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Source="splash.png" Aspect="AspectFit" Margin="10"/>
+                    <Button Text="Take Photo" Grid.Row="0" Grid.Column="1" x:Name="takePhotoBtn"/>
+                    <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="imageView" Aspect="AspectFit" Margin="10"/>
                 </Grid>
+
+                <ActivityIndicator IsRunning="{Binding IsLoadingFlights}" 
+                       IsVisible="{Binding IsLoadingFlights}" 
+                       Color="Blue" />
+
             </VerticalStackLayout>
         </FlexLayout>
-        <Button Grid.Row="1" Margin="10" x:Name="saveBtn" Text="Save" Clicked="saveBtn_Clicked"/>
+        <VerticalStackLayout Grid.Row="1" Margin="10" Spacing="10">
+            <Button x:Name="saveBtn" Text="Save" Command="{Binding SaveCommand}"/>
+            <Button x:Name="cancelBtn" Text="Cancel" Background="Firebrick" Command="{Binding CancelCommand}"/>
+        </VerticalStackLayout>
+
     </Grid>
 </ContentPage>

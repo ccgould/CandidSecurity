@@ -2,6 +2,7 @@
 
 
 namespace CandidQV.Models.Items;
+[Table("flight_numbers_tbl")]
 public class FlightNumber
 {
     public FlightNumber()
@@ -28,4 +29,6 @@ public class FlightNumber
     public int AirlineId { get; set; }
     [Column("flight_number")]
     public string Number { get; set; }
+    [Column("terminal")]
+    public TerminalType Terminal { get; set; }
 }

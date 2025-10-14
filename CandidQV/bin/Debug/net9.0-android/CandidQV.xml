@@ -4,11 +4,463 @@
         <name>CandidQV</name>
     </assembly>
     <members>
+        <member name="M:CandidQV.Interfaces.IAlertService.ShowConfirmation(System.String,System.String,System.Action{System.Boolean},System.String,System.String)">
+            <param name="callback">Action to perform afterwards.</param>
+        </member>
+        <member name="M:CandidQV.Services.AlertService.ShowAlert(System.String,System.String,System.String)">
+            <summary>
+            "Fire and forget". Method returns BEFORE showing alert.
+            </summary>
+        </member>
+        <member name="M:CandidQV.Services.AlertService.ShowConfirmation(System.String,System.String,System.Action{System.Boolean},System.String,System.String)">
+            <summary>
+            "Fire and forget". Method returns BEFORE showing alert.
+            </summary>
+            <param name="callback">Action to perform afterwards.</param>
+        </member>
+        <member name="M:CandidQV.Services.AlertService.ShowPrompt(System.String,System.String,System.Action{System.String},System.String,System.String,System.String,System.Int32,Microsoft.Maui.Keyboard,System.String)">
+            <summary>
+            "Fire and forget". Method returns BEFORE showing alert.
+            </summary>
+            <param name="callback">Action to perform afterwards.</param>
+        </member>
+        <member name="T:CandidQV.ViewModels.AirlinesPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.AirlineRepository">
+            <inheritdoc cref="F:CandidQV.ViewModels.AirlinesPageViewModel.airlineRepository"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.FlightNumberRepository">
+            <inheritdoc cref="F:CandidQV.ViewModels.AirlinesPageViewModel.flightNumberRepository"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.Airline">
+            <inheritdoc cref="F:CandidQV.ViewModels.AirlinesPageViewModel.airline"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.FlightNumbers">
+            <inheritdoc cref="F:CandidQV.ViewModels.AirlinesPageViewModel.flightNumbers"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.Airlines">
+            <inheritdoc cref="F:CandidQV.ViewModels.AirlinesPageViewModel.airlines"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.AccordionItems">
+            <inheritdoc cref="F:CandidQV.ViewModels.AirlinesPageViewModel.accordionItems"/>
+        </member>
+        <member name="F:CandidQV.ViewModels.AirlinesPageViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.AirlinesPageViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.AirlinesPageViewModel.Save"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.AirlinesPageViewModel.addFlightNumberCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.AirlinesPageViewModel.AddFlightNumberCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.AddFlightNumberCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:CandidQV.ViewModels.AirlinesPageViewModel.AddFlightNumber(CandidQV.Models.Items.Airline)"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.AirlinesPageViewModel.deleteAirlineCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.AirlinesPageViewModel.DeleteAirlineCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.DeleteAirlineCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:CandidQV.ViewModels.AirlinesPageViewModel.DeleteAirline(CandidQV.Models.Items.Airline)"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.AirlinesPageViewModel.deleteFlightNumberCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.AirlinesPageViewModel.DeleteFlightNumberCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.DeleteFlightNumberCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:CandidQV.ViewModels.AirlinesPageViewModel.DeleteFlightNumber(CandidQV.Models.Items.FlightNumber)"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.AirlinesPageViewModel.addCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.AirlinesPageViewModel.AddCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.AirlinesPageViewModel.AddCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.AirlinesPageViewModel.Add"/>.</summary>
+        </member>
+        <member name="T:CandidQV.ViewModels.EmployeePageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:CandidQV.ViewModels.EmployeePageViewModel.Employees">
+            <inheritdoc cref="F:CandidQV.ViewModels.EmployeePageViewModel.employees"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.EmployeePageViewModel.Employee">
+            <inheritdoc cref="F:CandidQV.ViewModels.EmployeePageViewModel.employee"/>
+        </member>
+        <member name="F:CandidQV.ViewModels.EmployeePageViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.EmployeePageViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.EmployeePageViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.EmployeePageViewModel.Save"/>.</summary>
+        </member>
+        <member name="T:CandidQV.ViewModels.MainPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:CandidQV.ViewModels.MainPageViewModel.SelectedVouchers">
+            <inheritdoc cref="F:CandidQV.ViewModels.MainPageViewModel.selectedVouchers"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.MainPageViewModel.FilteredVouchers">
+            <inheritdoc cref="F:CandidQV.ViewModels.MainPageViewModel.filteredVouchers"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.MainPageViewModel.IsRefreshing">
+            <inheritdoc cref="F:CandidQV.ViewModels.MainPageViewModel.isRefreshing"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.MainPageViewModel.SearchBarText">
+            <inheritdoc cref="F:CandidQV.ViewModels.MainPageViewModel.searchBarText"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.MainPageViewModel.SelectedDate">
+            <inheritdoc cref="F:CandidQV.ViewModels.MainPageViewModel.selectedDate"/>
+        </member>
+        <member name="M:CandidQV.ViewModels.MainPageViewModel.OnSearchBarTextChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:CandidQV.ViewModels.MainPageViewModel.SearchBarText"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:CandidQV.ViewModels.MainPageViewModel.SearchBarText"/> is changed.</remarks>
+        </member>
+        <member name="M:CandidQV.ViewModels.MainPageViewModel.OnSelectedDateChanged(System.DateTime)">
+            <summary>Executes the logic for when <see cref="P:CandidQV.ViewModels.MainPageViewModel.SelectedDate"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:CandidQV.ViewModels.MainPageViewModel.SelectedDate"/> is changed.</remarks>
+        </member>
+        <member name="F:CandidQV.ViewModels.MainPageViewModel.addCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.MainPageViewModel.AddCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.MainPageViewModel.AddCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.MainPageViewModel.Add"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.MainPageViewModel.exportCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.MainPageViewModel.ExportCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.MainPageViewModel.ExportCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.MainPageViewModel.Export"/>.</summary>
+        </member>
+        <member name="T:CandidQV.ViewModels.VoucherCreationPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.Airlines">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.airlines"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.Employees">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.employees"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.FlightNumbers">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.flightNumbers"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.StartTime">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.startTime"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.EndTime">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.endTime"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.SelectedFlightNumber">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.selectedFlightNumber"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.IsLoadingFlights">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.isLoadingFlights"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.SelectedTerminal">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.selectedTerminal"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.SelectedAirline">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.selectedAirline"/>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.CurrentVoucher">
+            <inheritdoc cref="F:CandidQV.ViewModels.VoucherCreationPageViewModel.currentVoucher"/>
+        </member>
+        <member name="M:CandidQV.ViewModels.VoucherCreationPageViewModel.OnSelectedFlightNumberChanged(CandidQV.Models.Items.FlightNumber)">
+            <summary>Executes the logic for when <see cref="P:CandidQV.ViewModels.VoucherCreationPageViewModel.SelectedFlightNumber"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:CandidQV.ViewModels.VoucherCreationPageViewModel.SelectedFlightNumber"/> is changed.</remarks>
+        </member>
+        <member name="F:CandidQV.ViewModels.VoucherCreationPageViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.VoucherCreationPageViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.VoucherCreationPageViewModel.Save"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.VoucherCreationPageViewModel.takePhotoCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.VoucherCreationPageViewModel.TakePhotoCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.TakePhotoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.VoucherCreationPageViewModel.TakePhoto"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.VoucherCreationPageViewModel.cancelCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.VoucherCreationPageViewModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.VoucherCreationPageViewModel.Cancel"/>.</summary>
+        </member>
+        <member name="F:CandidQV.ViewModels.VoucherCreationPageViewModel.scanCommand">
+            <summary>The backing field for <see cref="P:CandidQV.ViewModels.VoucherCreationPageViewModel.ScanCommand"/>.</summary>
+        </member>
+        <member name="P:CandidQV.ViewModels.VoucherCreationPageViewModel.ScanCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:CandidQV.ViewModels.VoucherCreationPageViewModel.Scan"/>.</summary>
+        </member>
         <member name="T:CandidQV.Resource">
             <summary>
             Android Resource Designer class.
             Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_DatePicker.TextColorTo(Microsoft.Maui.Controls.DatePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Editor.TextColorTo(Microsoft.Maui.Controls.Editor,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Entry.TextColorTo(Microsoft.Maui.Controls.Entry,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_InputView.TextColorTo(Microsoft.Maui.Controls.InputView,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Label.TextColorTo(Microsoft.Maui.Controls.Label,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Picker.TextColorTo(Microsoft.Maui.Controls.Picker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_RadioButton.TextColorTo(Microsoft.Maui.Controls.RadioButton,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_SearchBar.TextColorTo(Microsoft.Maui.Controls.SearchBar,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_TimePicker.TextColorTo(Microsoft.Maui.Controls.TimePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AirlineRepository">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AirlineRepository" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FlightNumberRepository">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FlightNumberRepository" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Airline">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Airline" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FlightNumbers">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FlightNumbers" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Airlines">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Airlines" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AccordionItems">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AccordionItems" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Employees">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Employees" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Employee">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Employee" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedVouchers">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedVouchers" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FilteredVouchers">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FilteredVouchers" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SearchBarText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SearchBarText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StartTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StartTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EndTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EndTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedFlightNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedFlightNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLoadingFlights">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLoadingFlights" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTerminal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTerminal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedAirline">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedAirline" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentVoucher">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentVoucher" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AirlineRepository">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AirlineRepository" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FlightNumberRepository">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FlightNumberRepository" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Airline">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Airline" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FlightNumbers">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FlightNumbers" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Airlines">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Airlines" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AccordionItems">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AccordionItems" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Employees">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Employees" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Employee">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Employee" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedVouchers">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedVouchers" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FilteredVouchers">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FilteredVouchers" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SearchBarText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SearchBarText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StartTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StartTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EndTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EndTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedFlightNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedFlightNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLoadingFlights">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLoadingFlights" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTerminal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTerminal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedAirline">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedAirline" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentVoucher">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentVoucher" generated properties.</summary>
         </member>
     </members>
 </doc>

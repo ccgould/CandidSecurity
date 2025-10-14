@@ -11,7 +11,10 @@ public partial class VouchersPage : ContentPage
     private readonly EmployeeRepository _employeeRepository;
     private int _editVoucherId;
 
-    public VouchersPage(VoucherRepository repository,FlightNumberRepository flightNumberRepository,AirlineRepository airlineRepository,EmployeeRepository employeeRepository)
+    public VouchersPage(VoucherRepository repository,
+        FlightNumberRepository flightNumberRepository,
+        AirlineRepository airlineRepository,
+        EmployeeRepository employeeRepository)
     {
         InitializeComponent();
         _repository = repository;
@@ -19,10 +22,10 @@ public partial class VouchersPage : ContentPage
         _airlineRepository = airlineRepository;
         _employeeRepository = employeeRepository;
 
-        employeePicker.ItemsSource = employeeRepository.GetEmployees().Result;
-        flightNumberPicker.ItemsSource = flightNumberRepository.GetFlightNumber().Result;
-        airlinePicker.ItemsSource = airlineRepository.GetAirlines().Result;
-        Task.Run(async () => listView.ItemsSource =  await repository.GetVouchers());
+        employeePicker.ItemsSource = employeeRepository.GetAllAsync().Result;
+        //flightNumberPicker.ItemsSource = flightNumberRepository.GetFlightNumber().Result;
+        airlinePicker.ItemsSource = airlineRepository.GetAllAsync().Result;
+        Task.Run(async () => listView.ItemsSource =  await repository.GetVouchersAsync());
     }
 
     private async void saveBtn_Clicked(object sender, EventArgs e)
@@ -31,23 +34,22 @@ public partial class VouchersPage : ContentPage
         {
             //Add Voucher
 
-            await _repository.Create(new Voucher
+            await _repository.CreateAsync(new Voucher
             {
                 PassengerName = passengerNameEntryField.Text,
                 FlightNumberId = ((FlightNumber)flightNumberPicker.SelectedItem).Id,
                 AirlineId = ((Airline)airlinePicker.SelectedItem).Id,
                 EmployeeID = ((Employee)employeePicker.SelectedItem).Id,
                 IsUsDeparture = (bool)usRadBtn.Value,
-                StartTime = TimeOnly.FromTimeSpan(StartTimePicker.Time),
-                EndTime = TimeOnly.FromTimeSpan(EndTimePicker.Time),
+                StartTimeString = StartTimePicker.Time.ToString(),
+                EndTimeString = EndTimePicker.Time.ToString(),
             });
-
         }
         else
         {
             //Update Voucher
 
-            await _repository.Update(new Voucher
+            await _repository.UpdateAsync(new Voucher
             {
                 Id = _editVoucherId,
                 PassengerName = passengerNameEntryField.Text,
@@ -55,8 +57,8 @@ public partial class VouchersPage : ContentPage
                 AirlineId = ((Airline)airlinePicker.SelectedItem).Id,
                 EmployeeID = ((Employee)employeePicker.SelectedItem).Id,
                 IsUsDeparture = (bool)usRadBtn.Value,
-                StartTime = TimeOnly.FromTimeSpan(StartTimePicker.Time),
-                EndTime = TimeOnly.FromTimeSpan(EndTimePicker.Time),
+                StartTimeString = StartTimePicker.Time.ToString(),
+                EndTimeString = EndTimePicker.Time.ToString(),
             });
 
             _editVoucherId = 0;
@@ -68,7 +70,7 @@ public partial class VouchersPage : ContentPage
         usRadBtn.Value = true;
         StartTimePicker.Time = DateTime.Now.TimeOfDay;
         EndTimePicker.Time = DateTime.Now.TimeOfDay;
-        listView.ItemsSource = await _repository.GetVouchers();
+        listView.ItemsSource = await _repository.GetVouchersAsync();
     }
 
     private async void listView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -81,19 +83,17 @@ public partial class VouchersPage : ContentPage
             case "Edit":
                 _editVoucherId = Voucher.Id;
                 passengerNameEntryField.Text = Voucher.PassengerName;
-                flightNumberPicker.SelectedItem = _flightNumberRepository.GetById(Voucher.FlightNumberId);
+                flightNumberPicker.SelectedItem = _flightNumberRepository.GetByIdAsync(Voucher.FlightNumberId);
                 airlinePicker.SelectedItem = _airlineRepository.GetById(Voucher.AirlineId);
                 employeePicker.SelectedItem = _airlineRepository.GetById(Voucher.EmployeeID);
                 usRadBtn.Value = Voucher.IsUsDeparture;
-                StartTimePicker.Time = Voucher.StartTime.ToTimeSpan();
-                EndTimePicker.Time = Voucher.EndTime.ToTimeSpan();
+                StartTimePicker.Time = TimeSpan.Parse(Voucher.StartTimeString);
+                EndTimePicker.Time = TimeSpan.Parse(Voucher.EndTimeString);
                 break;
             case "Delete":
-                await _repository.Delete(Voucher);
-                listView.ItemsSource = await _repository.GetVouchers();
+                await _repository.DeleteAsync(Voucher);
+                listView.ItemsSource = await _repository.GetVouchersAsync();
                 break;
-
         }
-
     }
 }

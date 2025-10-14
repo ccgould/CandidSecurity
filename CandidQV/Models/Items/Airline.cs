@@ -1,9 +1,13 @@
-﻿using SQLite;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SQLite;
+using System.Collections.ObjectModel;
 
 namespace CandidQV.Models.Items;
-[Table("Airlines")]
-public class Airline
+[Table("airlines_tbl")]
+public partial class Airline : ObservableObject
 {
+    private ObservableCollection<FlightNumber> flightNumbers = new();
+
     [PrimaryKey]
     [AutoIncrement]
     [Column("id")]
@@ -14,5 +18,16 @@ public class Airline
 
     [Column("iata_code")]
     public string IataCode { get; set; }
+
+    [Ignore]
+    public ObservableCollection<FlightNumber> FlightNumbers
+    {
+        get => flightNumbers;
+        set
+        {
+            flightNumbers = value;
+            OnPropertyChanged();
+        }
+    }
 }
 

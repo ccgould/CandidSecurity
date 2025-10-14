@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="CandidQVmMulti.View.Popups.FlightTerminalPopup"
+    HeightRequest="300"
+    WidthRequest="300"
+    BackgroundColor="White"
+    Padding="20">
+
+    <VerticalStackLayout Spacing="15">
+        <Label Text="Enter Flight Number" FontAttributes="Bold" TextColor="Black"/>
+        <Entry x:Name="FlightNumberEntry" Placeholder="e.g. 123" TextColor="Black"/>
+
+        <Label Text="Select Terminal" FontAttributes="Bold"  TextColor="Black"/>
+        <Picker x:Name="TerminalPicker" TitleColor="Black" TextColor="Black" SelectedIndex="0">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Domestic Terminal</x:String>
+                    <x:String>US Terminal</x:String>
+                    <x:String>Both</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Text="Submit" Clicked="OnSubmitClicked" />
+    </VerticalStackLayout>
+</toolkit:Popup>

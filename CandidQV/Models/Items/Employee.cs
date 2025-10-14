@@ -2,6 +2,7 @@
 using SQLite;
 
 namespace CandidQV.Models.Items;
+[Table("employees_tbl")]
 public partial class Employee : ObservableObject
 {
     [PrimaryKey]

@@ -1,26 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CandidQV.MainPage">
+             xmlns:converter ="clr-namespace:CandidQV.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:model="clr-namespace:CandidQV.Models.Items"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="CandidQV.MainPage"
+             x:Name="Main">
 
-    <FlexLayout Direction="Column">
-        <VerticalStackLayout Padding="10" FlexLayout.Basis="600">
-            <Grid ColumnDefinitions="*, Auto">
-                <ListView x:Name="listView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <VerticalStackLayout Padding="5">
-                                    <Grid ColumnDefinitions="Auto,*,Auto">
-                                        <Label Grid.Column="0" Text="{Binding Number}" FontSize="17" FontAttributes="Bold"/>
-                                    </Grid>
+    <ContentPage.Resources>
+        <converter:DateOnlyToStringConverter x:Key="DateConverter" />
+        <converter:EmployeeIdToStringConverter x:Key="EmployeeIdToString" />
+        <converter:AirlineIdConverter x:Key="AirlineIdToImage" />
+        <converter:SentStatusConverter x:Key="SentStatusToColor" />
+        <converter:SentStatusTextConverter x:Key="SentStatusBoolToString" />
+    </ContentPage.Resources>
+
+    <RefreshView x:Name="refreshView" Margin="10" IsRefreshing="{Binding IsRefreshing}">
+        <Grid RowDefinitions="100,*">
+
+        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*">
+                <SearchBar Placeholder="Search Voucher" Grid.ColumnSpan="2" x:Name="searchBar" Text="{Binding SearchBarText, Mode=TwoWay}" />
+
+                <DatePicker Grid.Column="0" Grid.Row="1" x:Name="dateTimePicker" Date="{Binding SelectedDate, Mode=TwoWay}" MaximumDate="{x:Static sys:DateTime.Now}" />
+
+
+                <HorizontalStackLayout Grid.Row="1" Grid.Column="1" >
+                <Button x:Name="addBtn"  Text="Add" Margin="5" WidthRequest="100" Command="{Binding AddCommand}"/>
+                <Button x:Name="exportBtn" Text="Export" Margin="5" WidthRequest="100" Command="{Binding ExportCommand}" BackgroundColor="Orange"/>
+            </HorizontalStackLayout>
+        </Grid>
+
+        <CollectionView                
+                Grid.Row="1"
+                x:Name="listView"
+                SelectionMode="Multiple"
+                SelectedItems="{Binding SelectedVouchers}"
+                ItemsSource="{Binding FilteredVouchers}">
+                
+            <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type model:Voucher}">
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Execute">
+                                    <SwipeItem Text="Edit"
+                                            BackgroundColor="Orange"
+                                            CommandParameter="{Binding .}"
+                                            Invoked="OnEditRequested"/>
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Execute">
+                                    <SwipeItem Text="Delete"
+                                            BackgroundColor="Red"
+                                            CommandParameter="{Binding .}"
+                                            Invoked="OnDeleteRequested"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Grid x:Name="itemGrid" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" Margin="10" Padding="10">
+                                <!--Airline Icon in Circle-->
+                                <Border Grid.RowSpan="2" Grid.Column="0"
+                            WidthRequest="50" HeightRequest="50"
+                            StrokeShape="Ellipse"
+                            Background="#DDE3EA"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="0,0,10,0">
+                                    <Image Source="{Binding AirlineIataCode, Converter={StaticResource AirlineIdToImage}}" Aspect="AspectFill"/>
+                                </Border>
+
+                                <!--Airline and Flight Number-->
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="2">
+                                    <Label Text="{Binding PassengerName}" FontAttributes="Bold" FontSize="16" />
+                                    <Label Text="{Binding EmployeeID, Converter={StaticResource EmployeeIdToString}}" FontSize="14" TextColor="Gray" />
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="{Binding AirlineIataCode}" FontSize="14" TextColor="Gray" />
+                                        <Label Text="{Binding FlightNumberString}" FontSize="14" TextColor="Gray" />
+                                    </HorizontalStackLayout>
                                 </VerticalStackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <Button Text="Add" Grid.Column="1" WidthRequest="100" Margin="10,0"/>
-            </Grid>
-        </VerticalStackLayout>
-    </FlexLayout>
+
+
+                                <!--Status Badge-->
+                                <Border Grid.Row="0" Grid.Column="2"
+                            Background="{Binding IsSent,Converter={StaticResource SentStatusToColor}}"
+                            StrokeShape="RoundRectangle 4"
+                            Padding="6"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center">
+                                    <Label Text="{Binding IsSent, Converter={StaticResource SentStatusBoolToString}}" TextColor="White" FontSize="12" />
+                                </Border>
+
+                                <!--Route and Time-->
+                                <HorizontalStackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Spacing="20">
+                                    <VerticalStackLayout>
+                                        <Label Text="Start Time" FontSize="12" TextColor="Gray" />
+                                        <Label Text="{Binding StartTime}" FontSize="14" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout>
+                                        <Label Text="End Time" FontSize="12" TextColor="Gray" />
+                                        <Label Text="{Binding EndTime}" FontSize="14" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout>
+                                        <Label Text="Date" FontSize="12" TextColor="Gray" />
+                                        <Label Text="{Binding DateString}" FontSize="14" />
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+    </RefreshView>
 </ContentPage>

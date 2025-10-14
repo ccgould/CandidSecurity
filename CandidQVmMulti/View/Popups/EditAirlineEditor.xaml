@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="CandidQVmMulti.View.Popups.EditAirlineEditor"
+             HeightRequest="300"
+             WidthRequest="{OnPlatform WinUI=600}"
+             BackgroundColor="White"
+             Padding="20"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Grid RowDefinitions="*,*,*,*">
+        <VerticalStackLayout>
+            <Label 
+            Text="Edit Airline"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+            FontAttributes="Bold"/>
+            <Label
+            TextColor="#a6a6a6"
+            Text="Update airline information."
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+            />
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1">
+            <Label 
+            Text="Airline Name *"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+            FontAttributes="Bold"/>
+            <Entry Placeholder="Enter airline name" x:Name="NameField"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="2">
+            <Label 
+            Text="Airline Code *"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+            FontAttributes="Bold"/>
+            <Entry Placeholder="Enter airline code (eg. AA,DL,)" x:Name="IataField"/>
+        </VerticalStackLayout>
+        <HorizontalStackLayout Grid.Row="3" Spacing="5" HorizontalOptions="End" VerticalOptions="End">
+            <Button Text="Cancel" 
+                    BackgroundColor="White" 
+                    HeightRequest="50" 
+                    WidthRequest="100" 
+                    BorderColor="Black" 
+                    BorderWidth="1" 
+                    x:Name="cancelBtn"
+                    Clicked="cancelBtn_Clicked"/>
+            <Button Text="Update Airline" 
+                    BackgroundColor="#47474a" 
+                    TextColor="White" 
+                    HeightRequest="50"
+                    Clicked="OnSubmitClicked"/>
+        </HorizontalStackLayout>
+    </Grid>
+</toolkit:Popup>

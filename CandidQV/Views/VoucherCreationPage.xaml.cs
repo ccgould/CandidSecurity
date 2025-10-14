@@ -1,40 +1,34 @@
 using CandidQV.Models.Items;
-using CandidQV.Repositories;
+using CandidQV.ViewModels;
 
 namespace CandidQV.Views;
 
 public partial class VoucherCreationPage : ContentPage
 {
-    private readonly VoucherRepository voucherRepository;
-    private readonly EmployeeRepository employeeRepository;
-    private readonly AirlineRepository airlineRepository;
+    public VoucherCreationPageViewModel ViewModel => BindingContext as VoucherCreationPageViewModel;
 
-    public VoucherCreationPage(VoucherRepository voucherRepository, EmployeeRepository employeeRepository,AirlineRepository airlineRepository)
+
+    public VoucherCreationPage(VoucherCreationPageViewModel vm)
 	{
 		InitializeComponent();
-        this.voucherRepository = voucherRepository;
-        this.employeeRepository = employeeRepository;
-        this.airlineRepository = airlineRepository;
-        startTimePicker.Time = DateTime.Now.TimeOfDay;
-        endTimePicker.Time = DateTime.Now.TimeOfDay;
+        BindingContext = vm;
     }
 
-    private async void saveBtn_Clicked(object sender, EventArgs e)
+    protected async override void OnAppearing()
     {
-        await voucherRepository.Create(new Models.Items.Voucher
+        try
         {
-            PassengerName = passengerNameEntryField.Text,
-            IsUsDeparture = usDepartureRad.Checked,
-            EmployeeID = ((Employee)officerNamePicker.SelectedItem).Id,
-            AirlineId = ((Airline)airlinePicker.SelectedItem).Id,
-            StartTime = startTimePicker.Time,
-            EndTime = endTimePicker.Time,
-            Date = DateOnly.FromDateTime(DateTime.Now)
-        });
+            base.OnAppearing();
+            await ViewModel.Init();
+        }
+        catch (Exception ex)
+        {
+            App.AlertSvc.ShowAlert("Error", ex.Message);
+        }
     }
 
-    private void takePhotoBtn_Clicked(object sender, EventArgs e)
+    private async void airlinePicker_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+      await  ViewModel.SelectedAirlineChanged((Airline)airlinePicker.SelectedItem);
     }
 }

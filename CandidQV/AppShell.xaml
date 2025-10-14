@@ -7,28 +7,23 @@
     xmlns:views="clr-namespace:CandidQV.Views"
     Title="CandidQV">
 
-
-    <TabBar>
-        <Tab Title="Main"
-            Icon="cat.png">
-            <ShellContent
+    <ShellContent
                 Title="Home"
-                ContentTemplate="{DataTemplate views:VoucherCreationPage}"
+                ContentTemplate="{DataTemplate local:MainPage}"
                 Route="MainPage" />
-        </Tab>
-        <Tab Title="Airlines"
+
+    <FlyoutItem Title="Airlines"
             Icon="dog.png">
             <ShellContent
             Title="Airlines"
             ContentTemplate="{DataTemplate views:AirlinesPage}"
             Route="Airlines" />
-        </Tab>
-        <Tab Title="Employees"
+        </FlyoutItem>
+    <FlyoutItem Title="Employees"
             Icon="dog.png">
-            <ShellContent
+        <ShellContent
             Title="Employees"
             ContentTemplate="{DataTemplate views:EmployeesPage}"
             Route="Employees" />
-        </Tab>
-    </TabBar>
+    </FlyoutItem>
 </Shell>

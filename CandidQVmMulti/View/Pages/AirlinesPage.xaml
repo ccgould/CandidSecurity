@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:syncfusionInputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:syncfusionButtons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:syncfusionAccordion="clr-namespace:Syncfusion.Maui.Accordion;assembly=Syncfusion.Maui.Expander"
+             xmlns:syncfusionDataGrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:vm="clr-namespace:CandidQVmMulti.ViewModels"
+             xmlns:viewmodels="clr-namespace:CandidQVmMulti.ViewModels"
+             xmlns:models="clr-namespace:CandidQVmMulti.Models"
+             xmlns:converters="clr-namespace:CandidQVmMulti.View.Converters"
+             x:Class="CandidQVmMulti.View.Pages.AirlinesPage"
+             BackgroundColor="#F8FAFC"
+             x:Name="AirlinesPagee">
+
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="Android">
+            <Grid>
+                <Grid.Resources>
+                    <converters:TickToDateConverter x:Key="tickToDateConveter"/>
+                </Grid.Resources>
+                <ScrollView>
+                    <VerticalStackLayout Padding="{OnIdiom Phone='20,16,20,16', Tablet='40,32,40,32'}" Spacing="24">
+
+                        <!-- Header -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Voucher Management System"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           FontSize="{OnPlatform iOS=20, Android=20, WinUI=22}"
+                           Grid.Column="0"/>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="16">
+                                <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
+                                <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
+                            </StackLayout>
+                        </Grid>
+
+                        <!-- Page Title -->
+                        <StackLayout>
+                            <Label Text="Airline Management"
+                           FontAttributes="Bold"
+                           FontSize="{OnPlatform iOS=28, Android=28, WinUI=36}"
+                           TextColor="Black"/>
+                            <Label Text="Manage airlines and their flight numbers"
+                           FontSize="{OnPlatform iOS=16, Android=16, WinUI=18}"
+                           TextColor="#6B7280"/>
+                        </StackLayout>
+
+                        <!-- Search Airlines Card -->
+                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <Grid ColumnSpacing="16">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="Search Airlines"
+                               FontAttributes="Bold"
+                               FontSize="{OnPlatform iOS=18, Android=18, WinUI=20}"
+                               TextColor="Black"
+                               Grid.Row="0"/>
+                                <VerticalStackLayout Grid.Row="1">
+                                    <SearchBar Placeholder="Search airlines by name or code..."
+                                   TextColor="Black"
+                                   PlaceholderColor="#6B7280"
+                                   BackgroundColor="White"
+                                   Text="{Binding SearchText, Mode=TwoWay}"
+                                   SearchCommand="{Binding PerformSearchCommand}"
+                                   Grid.Row="1"/>
+                                    <syncfusionButtons:SfButton Grid.Column="1"
+                                                    Grid.Row="1"
+                                                    Text="Add Airline"
+                                                    ShowIcon="True"
+                                                    ImageSource="plus_white.png"
+                                                    Background="#232323"
+                                                    TextColor="White"
+                                                    Padding="16,8"
+                                                    Margin="0,8"
+                                                    MinimumHeightRequest="44"
+                                                    CornerRadius="8"
+                                                    Command="{Binding AddAirlineCommand}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                        <!-- Airlines List Card -->
+                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <StackLayout Spacing="8">
+                                <Label Text="{Binding Airlines.Count, StringFormat='Airlines ({0})'}"
+                               FontAttributes="Bold"
+                               FontSize="{OnPlatform iOS=18, Android=18, WinUI=20}"
+                               TextColor="Black"/>
+                                <Label Text="List of airlines and their flight numbers"
+                               FontSize="{OnPlatform iOS=14, Android=14, WinUI=16}"
+                               TextColor="#6B7280"/>
+
+                                <syncfusionAccordion:SfAccordion BindableLayout.ItemsSource="{Binding FilteredAirlines}" x:Name="accordion2">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <syncfusionAccordion:AccordionItem>
+                                                <syncfusionAccordion:AccordionItem.Header>
+                                                    <Grid HeightRequest="80" ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto" Padding="5">
+                                                        <Image Source="plane.png"
+                                                       Grid.Column="0"
+                                                       Grid.RowSpan="2"
+                                                       HeightRequest="20"
+                                                       WidthRequest="20"
+                                                       Margin="20"/>
+                                                        <Label Text="{Binding Name}"
+                                                       CharacterSpacing="0.25"
+                                                       FontAttributes="Bold"
+                                                       FontSize="{OnPlatform iOS=18, Android=14, WinUI=20}"
+                                                       Grid.Column="1"
+                                                       Grid.Row="0"
+                                                               HorizontalTextAlignment="Start"
+                                                               VerticalTextAlignment="Center"
+                                                       TextColor="Black"/>
+                                                        <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Grid.Column="2">
+                                                            <Button ImageSource="plus.png"
+                                                                                Background="#F3F4F6"
+                                                                                MaximumHeightRequest="28"
+                                                                                MinimumWidthRequest="28"
+                                                                                TextColor="Black"
+                                                                                Padding="2"                                                                                
+                                                                                CornerRadius="6"
+                                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=AddFlightCommand}"
+                                                                                CommandParameter="{Binding .}" />
+                                                            <Button ImageSource="edit.png"
+                                                                                Background="#F3F4F6"
+                                                                                TextColor="Black"
+                                                                                MaximumHeightRequest="28"
+                                                                                MinimumWidthRequest="28"
+                                                                                Padding="2"
+                                                                                CornerRadius="6"
+                                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=EditAirlineCommand}"
+                                                                                CommandParameter="{Binding .}" />
+                                                            <Button ImageSource="trash.png"
+                                                                                Background="#F3F4F6"
+                                                                                TextColor="Black"
+                                                                                MaximumHeightRequest="28"
+                                                                                MinimumWidthRequest="28"
+                                                                                Padding="2"
+                                                                                CornerRadius="6"
+                                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=DeleteAirlineCommand}"
+                                                                                CommandParameter="{Binding .}" />
+                                                        </HorizontalStackLayout>
+                                                    </Grid>
+                                                </syncfusionAccordion:AccordionItem.Header>
+                                                <syncfusionAccordion:AccordionItem.Content>
+                                                    <ListView ItemsSource="{Binding FlightNumbers}"
+                                                      HasUnevenRows="True">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate x:DataType="models:FlightNumber">
+                                                                <ViewCell>
+                                                                    <Grid Padding="10" RowSpacing="6">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto"/>
+                                                                            <RowDefinition Height="Auto"/>
+                                                                        </Grid.RowDefinitions>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Label Text="{Binding Number}"
+                                                                       FontAttributes="Bold"
+                                                                       FontSize="16"
+                                                                       Grid.Row="0" Grid.Column="0"
+                                                                       TextColor="Black"/>
+                                                                        <Label Text="{Binding AddedDate, Converter={StaticResource tickToDateConveter}}"
+                                                                       FontSize="14"
+                                                                       TextColor="Gray"
+                                                                       Grid.Row="1" Grid.Column="0"/>
+                                                                        <Button ImageSource="trash.png"
+                                                                        BackgroundColor="#F3F4F6"
+                                                                        TextColor="Black"
+                                                                                MaximumHeightRequest="28"
+                                                                                MinimumWidthRequest="28"
+                                                                        Padding="2"
+                                                                        CornerRadius="6"
+                                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=DeleteFlightCommand}"
+                                                                        CommandParameter="{Binding .}"
+                                                                        Grid.RowSpan="2"
+                                                                        Grid.Column="1"
+                                                                        VerticalOptions="Center"/>
+                                                                    </Grid>
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </syncfusionAccordion:AccordionItem.Content>
+                                            </syncfusionAccordion:AccordionItem>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </syncfusionAccordion:SfAccordion>
+                            </StackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </ScrollView>
+                <!-- Busy Overlay -->
+                <Grid IsVisible="{Binding IsBusy}"
+      BackgroundColor="#80FFFFFF"
+      ZIndex="99">
+
+                    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Spacing="20">
+
+                        <!-- Logo -->
+                        <Image Source="your_logo.png"
+               WidthRequest="100"
+               HeightRequest="100"
+               Aspect="AspectFit" />
+
+                        <!-- Spinner -->
+                        <ActivityIndicator IsRunning="True"
+                           IsVisible="True"
+                           Color="Gray"
+                           WidthRequest="50"
+                           HeightRequest="50" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </On>
+        <On Platform="WinUI">
+            <Grid>
+                <Grid.Resources>
+                    <converters:TickToDateConverter x:Key="tickToDateConveter"/>
+                </Grid.Resources>
+                <ScrollView>
+                    <VerticalStackLayout Padding="40,32,40,32" Spacing="24">
+                        <!-- Header -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Voucher Management System"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       FontSize="22"
+                       Grid.Column="0"/>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="16">
+                                <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
+                                <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
+                            </StackLayout>
+                        </Grid>
+
+                        <!-- Page Title -->
+                        <StackLayout>
+                            <Label Text="Airline Management" FontAttributes="Bold" FontSize="36" TextColor="Black"/>
+                            <Label Text="Manage airlines and their flight numbers" FontSize="18" TextColor="#6B7280"/>
+                        </StackLayout>
+
+                        <!-- Search Airlines Card -->
+                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <Grid ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="Search Airlines" FontAttributes="Bold" FontSize="20" TextColor="Black" Grid.Row="0"/>
+                                <SearchBar
+                        Placeholder="Search airlines by name or code..."
+                        TextColor="Black"
+                        PlaceholderColor="#6B7280"
+                        BackgroundColor="White"
+                        Text="{Binding SearchText, Mode=TwoWay}"
+                        SearchCommand="{Binding PerformSearchCommand}"
+                        Grid.Row="1"/>
+                                <syncfusionButtons:SfButton
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="Add Airline"
+                        ShowIcon="True"
+                        ImageSource="plus_white.png"
+                        Background="#232323"
+                        TextColor="White"
+                        Padding="16,0"
+                        CornerRadius="8"
+                        Command="{Binding AddAirlineCommand}" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Airlines List Card -->
+                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
+                            <StackLayout Spacing="8">
+                                <Label Text="{Binding Airlines.Count, StringFormat='Airlines ({0})'}" FontAttributes="Bold" FontSize="20" TextColor="Black"/>
+                                <Label Text="List of airlines and their flight numbers" FontSize="16" TextColor="#6B7280"/>
+
+                                <syncfusionAccordion:SfAccordion BindableLayout.ItemsSource="{Binding FilteredAirlines}" x:Name="accordion">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <syncfusionAccordion:AccordionItem>
+                                                <syncfusionAccordion:AccordionItem.Header>
+                                                    <Grid  HeightRequest="80" ColumnDefinitions="Auto,*,Auto" RowDefinitions="*,*" Padding="5">
+                                                        <Image Source="plane.png" 
+                                                           Grid.Column="0" 
+                                                           Grid.RowSpan="2" 
+                                                           HeightRequest="20" 
+                                                           WidthRequest="20"
+                                                           Margin="20"/>
+
+                                                        <Label Text="{Binding Name}" 
+                                                           CharacterSpacing="0.25" 
+                                                           FontAttributes="Bold"
+                                                           FontSize="20" 
+                                                           Grid.Column="1" 
+                                                           Grid.Row="0"
+                                                           TextColor="Black"/>
+
+                                                        <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
+                                                            <Border StrokeShape="RoundRectangle 15" WidthRequest="50">
+                                                                <Label Text="{Binding Iata}" Padding="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                                            </Border>
+                                                            <Label Text="{Binding FlightNumbers.Count, StringFormat='({0}) Flight Numbers'}" FontSize="13" TextColor="Black"  VerticalTextAlignment="Center"/>
+                                                        </HorizontalStackLayout>
+
+                                                        <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Grid.Column="2">
+                                                            <syncfusionButtons:SfButton
+                                                                Text="Add Flight"
+                                                                Background="White"
+                                                                TextColor="Black"
+                                                                Padding="16,0"
+                                                                ShowIcon="True"
+                                                                ImageSource="plus.png"
+                                                                CornerRadius="8"
+                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=AddFlightCommand}"
+                                                                CommandParameter="{Binding .}"/>
+                                                            <syncfusionButtons:SfButton
+                                                                ImageSource="edit.png"
+                                                                ShowIcon="True"
+                                                                ImageAlignment="Default"
+                                                                Background="#F3F4F6"
+                                                                TextColor="Black"
+                                                                HeightRequest="28"
+                                                                WidthRequest="28"
+                                                                Padding="2"
+                                                                CornerRadius="6"
+                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=EditAirlineCommand}"
+                                                                CommandParameter="{Binding .}" />
+                                                            <syncfusionButtons:SfButton
+                                                                ImageSource="trash.png"
+                                                                ImageAlignment="Default"
+                                                                ShowIcon="True"
+                                                                Background="#F3F4F6"
+                                                                TextColor="Black"
+                                                                HeightRequest="28"
+                                                                WidthRequest="28"
+                                                                Padding="2"
+                                                                CornerRadius="6"
+                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=DeleteAirlineCommand}"
+                                                                CommandParameter="{Binding .}" />
+                                                        </HorizontalStackLayout>
+                                                    </Grid>
+                                                </syncfusionAccordion:AccordionItem.Header>
+                                                <syncfusionAccordion:AccordionItem.Content>
+                                                    <ListView ItemsSource="{Binding FlightNumbers}">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate x:DataType="models:FlightNumber">
+                                                                <ViewCell>
+                                                                    <Grid Padding="10" RowSpacing="6">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto"/>
+                                                                            <RowDefinition Height="Auto"/>
+                                                                        </Grid.RowDefinitions>
+
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                        </Grid.ColumnDefinitions>
+
+                                                                        <!-- Flight Number -->
+                                                                        <Label 
+                                                                    Text="{Binding Number}" 
+                                                                    FontAttributes="Bold" 
+                                                                    FontSize="16" 
+                                                                    Grid.Row="0" Grid.Column="0"
+                                                                    TextColor="Black"/>
+
+                                                                        <!-- Date Added -->
+                                                                        <Label 
+                                                                    Text="{Binding AddedDate, Converter={StaticResource tickToDateConveter}}" 
+                                                                    FontSize="14" 
+                                                                    TextColor="Gray" 
+                                                                    Grid.Row="1" Grid.Column="0" />
+
+                                                                        <!-- Delete Button -->
+                                                                        <Button
+                                                                    ImageSource="trash.png"
+                                                                    BackgroundColor="#F3F4F6"
+                                                                    TextColor="Black"
+                                                                    HeightRequest="28"
+                                                                    WidthRequest="28"
+                                                                    Padding="2"
+                                                                    CornerRadius="6"
+                                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=DeleteFlightCommand}"
+                                                                    CommandParameter="{Binding .}"
+                                                                    Grid.RowSpan="2"
+                                                                    Grid.Column="1"
+                                                                    VerticalOptions="Center" />
+                                                                    </Grid>
+
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </syncfusionAccordion:AccordionItem.Content>
+                                            </syncfusionAccordion:AccordionItem>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </syncfusionAccordion:SfAccordion>
+
+
+                            </StackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </ScrollView>
+                <!-- Busy Overlay -->
+                <Grid IsVisible="{Binding IsBusy}"
+      BackgroundColor="#80FFFFFF"
+      ZIndex="99">
+
+                    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Spacing="20">
+
+                        <!-- Logo -->
+                        <Image Source="your_logo.png"
+               WidthRequest="100"
+               HeightRequest="100"
+               Aspect="AspectFit" />
+
+                        <!-- Spinner -->
+                        <ActivityIndicator IsRunning="True"
+                           IsVisible="True"
+                           Color="Gray"
+                           WidthRequest="50"
+                           HeightRequest="50" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+
+        </On>
+    </OnPlatform>
+</ContentPage>

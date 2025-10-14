@@ -13,22 +13,22 @@ public class FlightNumberRepository
         _connection.CreateTableAsync<FlightNumber>();
     }
 
-    public async Task<List<FlightNumber>> GetFlightNumber()
+    public async Task<List<FlightNumber>> GetAllAsync()
     {
         return await _connection.Table<FlightNumber>().ToListAsync();
     }
 
-    public async Task<FlightNumber> GetById(int id)
+    public async Task<FlightNumber> GetByIdAsync(int id)
     {
         return await _connection.Table<FlightNumber>().Where(x => x.Id == id).FirstOrDefaultAsync();
     }
 
-    public async Task<List<FlightNumber>> GetByAirlineId(int id)
+    public async Task<List<FlightNumber>> GetByAirlineIdAsync(int id)
     {
         return await _connection.Table<FlightNumber>().Where(x => x.AirlineId == id).ToListAsync();
     }
 
-    public async Task Create(FlightNumber Airline)
+    public async Task CreateAsync(FlightNumber Airline)
     {
         await _connection.InsertAsync(Airline);
     }

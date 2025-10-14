@@ -28,7 +28,7 @@ public class Repository
         await _connection.InsertAsync(employee);
     }
 
-    public async Task Update(Employee employee)
+    public async Task UpdateAsync(Employee employee)
     {
         await _connection.UpdateAsync(employee);
     }

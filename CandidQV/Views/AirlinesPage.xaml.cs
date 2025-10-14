@@ -1,123 +1,95 @@
 ﻿using CandidQV.Models.Items;
-using CandidQV.Repositories;
-using System.Collections.ObjectModel;
+using CandidQV.ViewModels;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using Syncfusion.Maui.Accordion;
 
 namespace CandidQV.Views;
 
 public partial class AirlinesPage : ContentPage
 {
-    private readonly AirlineRepository _repository;
-    private readonly FlightNumberRepository _flightNumberRepository;
-    public ObservableCollection<FlightNumber> FlightNumbers = new();
-    private int _editAirlineId;
-    public bool IsRefreshing { get; set; }
 
-    public AirlinesPage(AirlineRepository repository,FlightNumberRepository flightNumberRepository)
+    public AirlinesPageViewModel ViewModel => BindingContext as AirlinesPageViewModel;
+
+
+    public AirlinesPage(AirlinesPageViewModel vm)
     {
         InitializeComponent();
-        _repository = repository;
-        _flightNumberRepository = flightNumberRepository;
-        Task.Run(async () => listView.ItemsSource =  await repository.GetAirlines());
+        BindingContext = vm;
+        AirlineAccordion.Expanded += AirlineAccordion_Expanded;
     }
 
-    private async void saveBtn_Clicked(object sender, EventArgs e)
+    private void AirlineAccordion_Expanded(object? sender, ExpandedAndCollapsedEventArgs e)
     {
-        if(_editAirlineId == 0)
-        {
-            //Add Airline
-
-            var id = await _repository.Create(new Airline
-            {
-                Name = firstNameEntryField.Text,
-                IataCode = iataEntryField.Text,
-            });
-
-            foreach (var flightNumber in FlightNumbers)
-            {
-                if(!await _flightNumberRepository.DoesRecordExistAsync(flightNumber.Number,id))
-                {
-                    await _flightNumberRepository.Create(new FlightNumber(flightNumber.Number,id));
-                    //flightNumberList.ItemsSource = await _flightNumberRepository.GetByAirlineId(id);
-                }
-            }
-        }
-        else
-        {
-            //Update Airline
-
-            await _repository.Update(new Airline
-            {
-                Id = _editAirlineId,
-                Name = firstNameEntryField.Text,
-                IataCode = iataEntryField.Text,
-            });
-
-
-            foreach (var flightNumber in FlightNumbers)
-            {
-                if (!await _flightNumberRepository.DoesRecordExistAsync(flightNumber.Number, _editAirlineId))
-                {
-                    await _flightNumberRepository.Create(new FlightNumber(flightNumber.Number, _editAirlineId));
-                    //flightNumberList.ItemsSource = await _flightNumberRepository.GetByAirlineId(id);
-                }
-            }
-            _editAirlineId = 0;
-        }
-
-        firstNameEntryField.Text = string.Empty;
-        iataEntryField.Text = string.Empty;
-        FlightNumbers.Clear();
-        listView.ItemsSource =  await _repository.GetAirlines();
+        ViewModel.CurrentExpanded = e.Index;
     }
 
-    private async void listView_ItemTapped(object sender, ItemTappedEventArgs e)
+    protected override async void OnAppearing()
     {
-        IsRefreshing = true;
-        FlightNumbers.Clear();
-
-        var Airline = (Airline)e.Item;
-
-        var action = await DisplayActionSheet("Options", "Cancel", null, "Edit", "Delete");
-
-        switch (action) 
-        {
-            case "Edit":
-                _editAirlineId = Airline.Id;
-                firstNameEntryField.Text = Airline.Name;
-                iataEntryField.Text = Airline.IataCode;
-                var items = await _flightNumberRepository.GetByAirlineId(_editAirlineId);
-                FlightNumbers = new ObservableCollection<FlightNumber>(items);
-                flightNumberList.ItemsSource = FlightNumbers;
-                
-
-                break;
-            case "Delete":
-                await _repository.Delete(Airline);
-                listView.ItemsSource = await _repository.GetAirlines();
-                break;
-        }
-        IsRefreshing = false;
+        base.OnAppearing();
+        await ViewModel.InitAsync();
     }
 
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-        if(_editAirlineId == 0)
-        {
-            await DisplayAlert("Error", "You can only add while editing an airline","ok");
-            return;
-        }
+    //private async void OnDeleteRequested(object sender, EventArgs e)
+    //{
+    //    if (sender is SwipeItem swipeItem && swipeItem.CommandParameter is Airline airline)
+    //    {
+    //        bool confirm = await DisplayAlert("Confirm Delete",
+    //                                          $"Delete {airline.IataCode}?",
+    //                                          "Yes", "Cancel");
+    //        if (!confirm) return;
 
-        string result = await DisplayPromptAsync("Flight number", "Please add a flight number","OK","Cancel","Enter Flight Number",6,Keyboard.Numeric);
-        
-        if(!FlightNumbers.Any(x => x.Number == result))
-        {
-            FlightNumbers.Add(new FlightNumber(result));
-            flightNumberList.ItemsSource = FlightNumbers;
-        }
-    }
+    //        await ViewModel.DeleteAirlineAsync(airline);
 
-    private async void refreshView_Refreshing(object sender, EventArgs e)
+    //        var snackbarOptions = new SnackbarOptions
+    //        {
+    //            BackgroundColor = Colors.DarkRed,
+    //            TextColor = Colors.White,
+    //            ActionButtonTextColor = Colors.Yellow,
+    //            CornerRadius = 8,
+    //            Font = Microsoft.Maui.Font.Default
+    //        };
+
+
+
+    //        await Snackbar.Make("Aircraft deleted", async () =>
+    //        {
+    //            await ViewModel.UndoDeleteAsync();
+    //        }, "Undo", TimeSpan.FromSeconds(5), snackbarOptions).Show();
+    //    }
+
+    //    if (sender is SwipeItem swipeItem2 && swipeItem2.CommandParameter is FlightNumber flightNumber)
+    //    {
+    //        bool confirm = await DisplayAlert("Confirm Delete",
+    //                                          $"Delete {flightNumber.Number}?",
+    //                                          "Yes", "Cancel");
+    //        if (!confirm) return;
+
+    //        await ViewModel.DeleteFlightNumberAsync(flightNumber);
+
+    //        var snackbarOptions = new SnackbarOptions
+    //        {
+    //            BackgroundColor = Colors.DarkRed,
+    //            TextColor = Colors.White,
+    //            ActionButtonTextColor = Colors.Yellow,
+    //            CornerRadius = 8,
+    //            Font = Microsoft.Maui.Font.Default
+    //        };
+
+
+
+    //        await Snackbar.Make("Flight Number deleted", async () =>
+    //        {
+    //            await ViewModel.UndoFlightNumberDeleteAsync();
+    //        }, "Undo", TimeSpan.FromSeconds(5), snackbarOptions).Show();
+    //    }
+    //}
+
+    private async void OnEditRequested(object sender, EventArgs e)
     {
-        listView.ItemsSource = await _repository.GetAirlines();
+        if (sender is SwipeItem swipeItem && swipeItem.CommandParameter is Airline airline)
+        {
+            await ViewModel.OnAircraftSelected(airline);
+        }
     }
 }
