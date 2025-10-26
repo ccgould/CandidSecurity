@@ -19,10 +19,10 @@
     <!--<FlyoutItem Title="Add Voucher" Icon="plus.png">
         <ShellContent ContentTemplate="{DataTemplate pages:AddVoucherPage}" />
     </FlyoutItem>-->
-        <Tab Title="Employees" Icon="employees.png">
+    <!--<Tab Title="Employees" Icon="employees.png">
         <ShellContent ContentTemplate="{DataTemplate pages:EmployeesPage}" />
-    </Tab>
-        <Tab Title="Airlines" Icon="plane.png">
+    </Tab>-->
+    <Tab Title="Airlines" Icon="plane.png">
         <ShellContent ContentTemplate="{DataTemplate pages:AirlinesPage}" />
     </Tab>
     </TabBar>

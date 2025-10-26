@@ -1,10 +1,13 @@
 using CandidQVmMulti.Models;
 using CandidQVmMulti.Services;
 using CandidQVmMulti.View.Pages;
+using CandidQVmMulti.View.Popups;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Spire.Xls;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices.ComTypes;
 
@@ -26,20 +29,32 @@ public partial class VouchersPageViewModel : ObservableObject
 
     [ObservableProperty] private bool isBusy;
     private bool _isLoading;
-    private readonly MySqlVoucherService service;
+    private readonly MySqlAirlinesService mySqlAirlinesService;
+    private readonly MySqlVoucherService mySqlVoucherService;
+    private readonly MySqlEmployeeService mySqlEmployeeService;
+    private readonly MySqlFlightNumberService mySqlFlightNumberService;
+    private readonly ExportServices exportServices;
 
     public int VouchersCount => Vouchers?.Count ?? 0;
 
-    public VouchersPageViewModel(MySqlVoucherService service)
+    public VouchersPageViewModel(
+        MySqlAirlinesService airlinesService,
+        MySqlVoucherService mySqlVoucherService, 
+        MySqlEmployeeService mySqlEmployeeService, 
+        MySqlFlightNumberService mySqlFlightNumberService,
+        ExportServices exportServices)
     {
-        this.service = service;
         vouchers = new();
 
         var result = GetMonthStartAndEnd(DateTime.Now);
 
         startDate = result.startOfMonth;
         endDate = result.endOfMonth;
-
+        this.mySqlAirlinesService = airlinesService;
+        this.mySqlVoucherService = mySqlVoucherService;
+        this.mySqlEmployeeService = mySqlEmployeeService;
+        this.mySqlFlightNumberService = mySqlFlightNumberService;
+        this.exportServices = exportServices;
     }
 
     public static (DateTime startOfMonth, DateTime endOfMonth) GetMonthStartAndEnd(DateTime date)
@@ -61,7 +76,7 @@ public partial class VouchersPageViewModel : ObservableObject
         {
             IsBusy = true; // triggers spinner
 
-            var collection = await service.GetAllVouchersAsync();
+            var collection = await mySqlVoucherService.GetAllVouchersAsync();
             var filtered = ApplyFilters(collection);
             Vouchers = new ObservableCollection<Voucher>(filtered);
 
@@ -106,24 +121,33 @@ public partial class VouchersPageViewModel : ObservableObject
             Vouchers.Remove(voucher);
         }
 
-        await service.DeleteVoucherAsync(voucher.Id);
+        await mySqlVoucherService.DeleteVoucherAsync(voucher.Id);
      }
 
     [RelayCommand]
     private async Task Add()
     {
-        var navigationParameters = new ShellNavigationQueryParameters
+        if (DeviceInfo.Platform == DevicePlatform.Android)
+        {
+            await OpenCreateVoucherPopup();
+        }
+        else
+        {
+            var navigationParameters = new ShellNavigationQueryParameters
         {
             { "Vouchers", new Voucher()}
         };
 
-        await Shell.Current.GoToAsync(nameof(AddVoucherPage),navigationParameters);
+            await Shell.Current.GoToAsync(nameof(AddVoucherPage), navigationParameters);
+        }
     }
 
     [RelayCommand]
     private async Task Export()
     {
-        var csv = string.Join(Environment.NewLine, Vouchers.Select(v => $"{v.Id},{v.PassengerName},{v.Date:yyyy-MM-dd}"));
+        var collection = await mySqlVoucherService.GetAllVouchersAsync();
+        var filtered = ApplyFilters(collection);
+        exportServices.ExportVouchersGroupedByAirline(filtered.ToList(), "Vouchers.xlsx");
         // Save to file or share via Share.Default.RequestAsync
         await Toast.Make("Exported vouchers to CSV", ToastDuration.Short).Show();
 
@@ -168,4 +192,11 @@ public partial class VouchersPageViewModel : ObservableObject
         RefreshData();
     }
 
+    [RelayCommand]
+    private async Task OpenCreateVoucherPopup()
+    {
+        // Make sure you have access to the current page
+        var popup = new CreateVoucherPopup(new CreateVoucherPopupViewModel(mySqlAirlinesService,mySqlVoucherService,mySqlEmployeeService,mySqlFlightNumberService));
+        await Shell.Current.CurrentPage.ShowPopupAsync(popup);
+    }
 }

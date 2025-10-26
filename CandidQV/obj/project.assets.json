@@ -491,7 +491,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -3252,7 +3252,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -6013,7 +6013,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -8774,7 +8774,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -11045,7 +11045,7 @@
         }
       }
     },
-    "net9.0-maccatalyst18.5": {
+    "net9.0-maccatalyst26.0": {
       "CommunityToolkit.Maui/12.2.0": {
         "type": "package",
         "dependencies": {
@@ -11506,7 +11506,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -11775,7 +11775,7 @@
         }
       }
     },
-    "net9.0-maccatalyst18.5/android-arm64": {
+    "net9.0-maccatalyst26.0/android-arm64": {
       "CommunityToolkit.Maui/12.2.0": {
         "type": "package",
         "dependencies": {
@@ -12236,7 +12236,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -12414,7 +12414,7 @@
         }
       }
     },
-    "net9.0-maccatalyst18.5/android-x64": {
+    "net9.0-maccatalyst26.0/android-x64": {
       "CommunityToolkit.Maui/12.2.0": {
         "type": "package",
         "dependencies": {
@@ -12875,7 +12875,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -13053,7 +13053,7 @@
         }
       }
     },
-    "net9.0-maccatalyst18.5/maccatalyst-x64": {
+    "net9.0-maccatalyst26.0/maccatalyst-x64": {
       "CommunityToolkit.Maui/12.2.0": {
         "type": "package",
         "dependencies": {
@@ -13514,7 +13514,7 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.8": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -14918,10 +14918,10 @@
         "microsoft.maui.resizetizer.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.8": {
-      "sha512": "rd1CbIsMtVPtZNTIVD6Xydue//klYOOQIDpRgu3BHtv17AlpRs74/6QFbcYgMm/jL+naVU2T3OFLxVSLV5lQLQ==",
+    "Microsoft.NET.ILLink.Tasks/9.0.10": {
+      "sha512": "sseaSJcBxKEpkc59hnB00b3NmJdGvJLfj74HK+nucHxERxbZSUREuWKjC9ywc+HdzJvJyiP2eiyEOROaGSfcPw==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.8",
+      "path": "microsoft.net.illink.tasks/9.0.10",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -14935,7 +14935,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.8.nupkg.sha512",
+        "microsoft.net.illink.tasks.9.0.10.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -17454,20 +17454,20 @@
       "IATA.BarCodedBoardingPass >= 2016.6.7",
       "Microsoft.Extensions.Logging.Debug >= 9.0.8",
       "Microsoft.Maui.Controls >= 9.0.100",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.8",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.10",
       "SQLitePCLRaw.bundle_green >= 2.1.11",
       "Syncfusion.Maui.Expander >= 31.1.19",
       "ZXing.Net.Maui.Controls >= 0.5.0",
       "sqlite-net-pcl >= 1.9.172"
     ],
-    "net9.0-maccatalyst18.5": [
+    "net9.0-maccatalyst26.0": [
       "CommunityToolkit.Maui >= 12.2.0",
       "CommunityToolkit.Maui.Camera >= 3.0.2",
       "CommunityToolkit.Mvvm >= 8.4.0",
       "IATA.BarCodedBoardingPass >= 2016.6.7",
       "Microsoft.Extensions.Logging.Debug >= 9.0.8",
       "Microsoft.Maui.Controls >= 9.0.100",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.8",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.10",
       "SQLitePCLRaw.bundle_green >= 2.1.11",
       "Syncfusion.Maui.Expander >= 31.1.19",
       "ZXing.Net.Maui.Controls >= 0.5.0",
@@ -17517,7 +17517,7 @@
             }
           }
         },
-        "net9.0-maccatalyst18.5": {
+        "net9.0-maccatalyst26.0": {
           "targetAlias": "net9.0-maccatalyst",
           "projectReferences": {
             "C:\\Users\\SPV_s\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj": {
@@ -17565,7 +17565,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.8, )",
+            "version": "[9.0.10, )",
             "autoReferenced": true
           },
           "SQLitePCLRaw.bundle_green": {
@@ -17604,9 +17604,9 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       },
-      "net9.0-maccatalyst18.5": {
+      "net9.0-maccatalyst26.0": {
         "targetAlias": "net9.0-maccatalyst",
         "dependencies": {
           "CommunityToolkit.Maui": {
@@ -17632,7 +17632,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.8, )",
+            "version": "[9.0.10, )",
             "autoReferenced": true
           },
           "SQLitePCLRaw.bundle_green": {
@@ -17672,7 +17672,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

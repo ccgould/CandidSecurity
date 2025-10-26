@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:syncfusionInputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:syncfusionButtons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             x:Class="CandidQVmMulti.View.Popups.CreateVoucherPopup"
+             BackgroundColor="#F8FAFC"
+             Opened="Popup_Opened">
+
+    <Frame Padding="24" CornerRadius="16" BackgroundColor="White" HasShadow="True">
+        <ScrollView>
+            <VerticalStackLayout Spacing="18">
+                <!-- Header -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0">
+                        <Label Text="Create Wheelchair Voucher" FontAttributes="Bold" FontSize="22" TextColor="Black"/>
+                        <Label Text="Fill in the voucher details below." FontSize="16" TextColor="#6B7280"/>
+                    </StackLayout>
+                    <Button Grid.Column="1" Text="✕" BackgroundColor="Transparent" TextColor="Black" FontSize="20" Command="{Binding CloseCommand}" />
+                </Grid>
+
+                <!-- Date -->
+                <StackLayout Spacing="4">
+                    <Label Text="Date" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <DatePicker Grid.Column="0" Date="{Binding Date}" BackgroundColor="#F8FAFC" TextColor="Black"/>
+                        <Image Grid.Column="1" Source="calendar_icon.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
+                    </Grid>
+                </StackLayout>
+
+                <!-- Start/End Time -->
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Spacing="4">
+                        <Label Text="Start Time" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TimePicker Grid.Column="0" Time="{Binding StartTime}" BackgroundColor="#F8FAFC" TextColor="Black"/>
+                            <Image Grid.Column="1" Source="clock.png" HeightRequest="18" WidthRequest="18" VerticalOptions="Center"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Spacing="4">
+                        <Label Text="End Time" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TimePicker Grid.Column="0" Time="{Binding EndTime}" BackgroundColor="#F8FAFC" TextColor="Black"/>
+                            <Image Grid.Column="1" Source="clock.png" HeightRequest="18" WidthRequest="18" VerticalOptions="Center"/>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+
+                <!-- Passenger Name -->
+                <StackLayout Spacing="4">
+                    <Label Text="Passenger Name" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                    <Entry Text="{Binding PassengerName}" Placeholder="John Doe" BackgroundColor="#F8FAFC" TextColor="Black"/>
+                </StackLayout>
+
+                <!-- Guard -->
+                <StackLayout Spacing="4">
+                    <Label Text="Guard" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                    <syncfusionInputs:SfComboBox DisplayMemberPath="Name" TextMemberPath="Name" ItemsSource="{Binding Guards}" SelectedItem="{Binding SelectedGuard}" Placeholder="Select a guard" BackgroundColor="#F8FAFC" TextColor="Black"/>
+                </StackLayout>
+
+                <!-- Airline -->
+                <StackLayout Spacing="4">
+                    <Label Text="Airline" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                    <syncfusionInputs:SfComboBox DisplayMemberPath="Name" TextMemberPath="Name" ItemsSource="{Binding Airlines}"  SelectionChanged="SfComboBox_SelectionChanged" SelectedItem="{Binding SelectedAirline}" Placeholder="Select an airline" BackgroundColor="#F8FAFC" TextColor="Black"/>
+                </StackLayout>
+
+                <!-- Flight Number -->
+                <StackLayout Spacing="4">
+                    <Label Text="Flight Number" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                    <syncfusionInputs:SfComboBox DisplayMemberPath="Number" ItemsSource="{Binding FlightNumbers}" SelectedItem="{Binding SelectedFlightNumber}" Placeholder="Select airline first" BackgroundColor="#F8FAFC" TextColor="Black"/>
+                </StackLayout>
+
+                <!-- Create Button -->
+                <HorizontalStackLayout HorizontalOptions="End">
+                    <syncfusionButtons:SfButton
+                    Text="Create Voucher"
+                    Background="#111111"
+                    TextColor="White"
+                    Padding="16,0"
+                    CornerRadius="8"
+                    Clicked="closedBtn_Clicked" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Frame>
+</toolkit:Popup>

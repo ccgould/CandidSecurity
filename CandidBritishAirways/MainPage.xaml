@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CandidBritishAirways.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Flight Info -->
+            <Label Text="Flight Info" FontAttributes="Bold" FontSize="18"/>
+            <Entry Placeholder="Flight Number" Text="{Binding Report.FlightNumber}" Keyboard="Numeric"/>
+            <Entry Placeholder="Aircraft Registration" Text="{Binding Report.AircraftRegistration}" Keyboard="Numeric"/>
+            <Entry Placeholder="Destination" Text="{Binding Report.Destination}" Keyboard="Numeric"/>
+            <DatePicker Date="{Binding Report.Date}" />
+
+            <!-- Timing -->
+            <Label Text="Timing" FontAttributes="Bold" FontSize="18"/>
+            <DatePicker Date="{Binding Report.ScheduledTimeArrival}" />
+            <DatePicker Date="{Binding Report.ActualTimeArrival}" />
+            <DatePicker Date="{Binding Report.ScheduledTimeDeparture}" />
+            <DatePicker Date="{Binding Report.ActualTimeDeparture}" />
+            <DatePicker Date="{Binding Report.Airborne}" />
+
+            <!-- Positions -->
+            <Label Text="Positions" FontAttributes="Bold" FontSize="18"/>
+            <Entry Placeholder="Parking Gate" Text="{Binding Report.ParkingGate}" Keyboard="Numeric"/>
+            <Entry Placeholder="Front Door Access" Text="{Binding Report.FrontDoorAccessPosition}" Keyboard="Numeric"/>
+            <Entry Placeholder="Ramp Access" Text="{Binding Report.RampAccessPosition}" Keyboard="Numeric"/>
+            <Entry Placeholder="Catering Position" Text="{Binding Report.CateringPosition}" Keyboard="Numeric"/>
+
+            <!-- Services -->
+            <Label Text="Services" FontAttributes="Bold" FontSize="18"/>
+            <Entry Placeholder="Inbound Wheelchairs" Text="{Binding Report.InboundWheelchairs}" Keyboard="Numeric"/>
+            <Entry Placeholder="Outbound Wheelchairs" Text="{Binding Report.OutboundWheelchairs}" Keyboard="Numeric"/>
+            <Entry Placeholder="Lift Chairs" Text="{Binding Report.LiftChairs}" Keyboard="Numeric"/>
+            <Entry Placeholder="Cleaners" Text="{Binding Report.Cleaners}" Keyboard="Numeric"/>
+            <Entry Placeholder="Fuelers" Text="{Binding Report.Fuelers}" Keyboard="Numeric"/>
+
+            <!-- Pod & Seals -->
+            <Label Text="Pod And Seals" FontAttributes="Bold" FontSize="18"/>
+            <Entry Placeholder="Pod Number" Text="{Binding Report.PodNumber}" />
+            <DatePicker Date="{Binding Report.PodOffload}" />
+            <DatePicker Date="{Binding Report.PodOnload}" />
+            <Entry Placeholder="Left Front Seal" Text="{Binding Report.LeftFrontSeal}" />
+            <Entry Placeholder="Right Front Seal" Text="{Binding Report.RightFrontSeal}" />
+            <Entry Placeholder="Battery Seal" Text="{Binding Report.BatterySeal}" />
+            <Entry Placeholder="Dry Ice" Text="{Binding Report.DryIce}" />
+
+            <!-- Access Points -->
+            <Label Text="Access Points" FontAttributes="Bold" FontSize="18"/>
+            <Entry Placeholder="L FWD" Text="{Binding Report.LFwd}" />
+            <Entry Placeholder="R FWD Door" Text="{Binding Report.RFwdDoor}" />
+            <Entry Placeholder="Front Baggage Hold Door" Text="{Binding Report.FrontBaggageHoldDoor}" />
+            <Entry Placeholder="Electric Equipment Access" Text="{Binding Report.ElectricEquipmentAccess}" />
+
+            <!-- Cancellation -->
+            <Label Text="Cancellation" FontAttributes="Bold" FontSize="18"/>
+            <Switch IsToggled="{Binding Report.FlightCanceled}" />
+            <DatePicker Date="{Binding Report.CancelledTime}" />
+            <Entry Placeholder="Cancelled Parking Gate" Text="{Binding Report.CancelledParkingGate}" Keyboard="Numeric"/>
+
+            <!-- Misc -->
+            <Label Text="Misc" FontAttributes="Bold" FontSize="18"/>
+            <Editor Placeholder="Comments" Text="{Binding Report.Comments}" AutoSize="TextChanges"/>
+            <Entry Placeholder="Report By" Text="{Binding Report.ReportBy}" Keyboard="Numeric"/>
+
+            <!-- Submit Button -->
+            <Button Text="Submit Report"
+                    Command="{Binding SubmitReportCommand}"
+                    BackgroundColor="DarkBlue"
+                    TextColor="White"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>

@@ -51,6 +51,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<MySqlVoucherService>();
         builder.Services.AddSingleton<MySqlFlightNumberService>();
         builder.Services.AddSingleton<IAlertService, AlertService>();
+        builder.Services.AddTransient<CreateVoucherPopupViewModel>();
+        builder.Services.AddSingleton<ExportServices>();
 
 #if DEBUG
         builder.Logging.AddDebug();

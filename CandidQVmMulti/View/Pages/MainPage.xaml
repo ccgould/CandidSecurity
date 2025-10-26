@@ -7,7 +7,7 @@
 
     <OnPlatform x:TypeArguments="View">
         <On Platform="Android,iOS">
-            <ScrollView>
+            <ScrollView Padding="20">
                 <StackLayout Spacing="24">
                     <!-- Header -->
                     <Grid>
@@ -72,31 +72,27 @@
                         </Border>
                     </FlexLayout>
 
-                    <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="SpaceBetween">
+                    <VerticalStackLayout Spacing="10">
                         <!-- Quick Actions -->
                         <controls:QuickActionCard Title="Create New Voucher"
                           Subtitle="Record a new wheelchair assistance request"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="VoucherPage"
-                          WidthRequest="160" />
+                          CommandParameter="VoucherPage" HeightRequest="100"/>
 
                         <controls:QuickActionCard Title="Manage Employees"
                           Subtitle="Add or update employee information"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="EmployeesPage"
-                          WidthRequest="160" />
+                          CommandParameter="EmployeesPage" HeightRequest="100"/>
 
                         <controls:QuickActionCard Title="Configure Airlines"
                           Subtitle="Set up airlines and flight numbers"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="AirlinesPage"
-                          WidthRequest="160" />
+                          CommandParameter="AirlinesPage" HeightRequest="100"/>
 
                         <controls:QuickActionCard Title="Export Vouchers"
                           Subtitle="Download voucher data as CSV"
-                          Command="{Binding ExportCommand}"
-                          WidthRequest="160" />
-                    </FlexLayout>
+                          Command="{Binding ExportCommand}" HeightRequest="100"/>
+                    </VerticalStackLayout>
                 </StackLayout>
             </ScrollView>
         </On>
