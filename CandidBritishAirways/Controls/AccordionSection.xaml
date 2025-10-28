@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:CandidBritishAirways.Converters"
+             x:Class="CandidBritishAirways.Controls.AccordionSection"
+             x:Name="RootR">
+    
+    <Frame BackgroundColor="White" CornerRadius="12" Padding="12" HasShadow="True">
+        <VerticalStackLayout>
+             <!--Header--> 
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{Binding Title, Source={x:Reference RootR}}"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A8A"
+                       Grid.Column="0" />
+
+                <Image Source="{Binding IsExpanded, Source={x:Reference RootR}, Converter={StaticResource BoolToChevronConverter}}"
+                       HeightRequest="24"
+                       WidthRequest="24"
+                       Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleCommand, Source={x:Reference RootR}}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+             <!--Content--> 
+            <!--<ContentView IsVisible="{Binding IsExpanded, Source={x:Reference RootR}}">
+                <ContentPresenter Content="{Binding Content, Source={x:Reference RootR}}" />
+            </ContentView>-->
+        </VerticalStackLayout>
+    </Frame>
+</ContentView>

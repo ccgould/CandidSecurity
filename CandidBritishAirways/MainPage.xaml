@@ -1,76 +1,588 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CandidBritishAirways.MainPage">
+             xmlns:vm="clr-namespace:CandidBritishAirways.ViewModel"
+             xmlns:controls="clr-namespace:CandidBritishAirways.Controls"
+             x:Class="CandidBritishAirways.MainPage"
+             Title="BA Flight Report"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F8FAFC">
 
+    <!--<ContentPage.Resources>
+        <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+    </ContentPage.Resources-->
+    
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout Padding="16" Spacing="16">
 
-            <!-- Flight Info -->
-            <Label Text="Flight Info" FontAttributes="Bold" FontSize="18"/>
-            <Entry Placeholder="Flight Number" Text="{Binding Report.FlightNumber}" Keyboard="Numeric"/>
-            <Entry Placeholder="Aircraft Registration" Text="{Binding Report.AircraftRegistration}" Keyboard="Numeric"/>
-            <Entry Placeholder="Destination" Text="{Binding Report.Destination}" Keyboard="Numeric"/>
-            <DatePicker Date="{Binding Report.Date}" />
+            <!-- Header -->
+            <Frame BackgroundColor="#1E3A8A" CornerRadius="12" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="British Airways" 
+                           TextColor="White" 
+                           FontSize="24" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Ground Operations Report" 
+                           TextColor="White" 
+                           FontSize="14"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
 
-            <!-- Timing -->
-            <Label Text="Timing" FontAttributes="Bold" FontSize="18"/>
-            <DatePicker Date="{Binding Report.ScheduledTimeArrival}" />
-            <DatePicker Date="{Binding Report.ActualTimeArrival}" />
-            <DatePicker Date="{Binding Report.ScheduledTimeDeparture}" />
-            <DatePicker Date="{Binding Report.ActualTimeDeparture}" />
-            <DatePicker Date="{Binding Report.Airborne}" />
+            <VerticalStackLayout>
+                <Label Text="Flight Report" 
+                           FontSize="28" 
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                <Label Text="Complete all required fields for ground operations reporting"                            
+                           FontSize="14" 
+                           FontAttributes="Bold"
+                           TextColor="Gray"/>
+            </VerticalStackLayout>
 
-            <!-- Positions -->
-            <Label Text="Positions" FontAttributes="Bold" FontSize="18"/>
-            <Entry Placeholder="Parking Gate" Text="{Binding Report.ParkingGate}" Keyboard="Numeric"/>
-            <Entry Placeholder="Front Door Access" Text="{Binding Report.FrontDoorAccessPosition}" Keyboard="Numeric"/>
-            <Entry Placeholder="Ramp Access" Text="{Binding Report.RampAccessPosition}" Keyboard="Numeric"/>
-            <Entry Placeholder="Catering Position" Text="{Binding Report.CateringPosition}" Keyboard="Numeric"/>
 
-            <!-- Services -->
-            <Label Text="Services" FontAttributes="Bold" FontSize="18"/>
-            <Entry Placeholder="Inbound Wheelchairs" Text="{Binding Report.InboundWheelchairs}" Keyboard="Numeric"/>
-            <Entry Placeholder="Outbound Wheelchairs" Text="{Binding Report.OutboundWheelchairs}" Keyboard="Numeric"/>
-            <Entry Placeholder="Lift Chairs" Text="{Binding Report.LiftChairs}" Keyboard="Numeric"/>
-            <Entry Placeholder="Cleaners" Text="{Binding Report.Cleaners}" Keyboard="Numeric"/>
-            <Entry Placeholder="Fuelers" Text="{Binding Report.Fuelers}" Keyboard="Numeric"/>
+            <!--<controls:AccordionSection Title="Flight Information">
+                <controls:AccordionSection.Content>
+                    <Grid>
+                        <Label Text="HI" TextColor="Black"/>
+                    </Grid>
+                </controls:AccordionSection.Content>
+            </controls:AccordionSection>-->
 
-            <!-- Pod & Seals -->
-            <Label Text="Pod And Seals" FontAttributes="Bold" FontSize="18"/>
-            <Entry Placeholder="Pod Number" Text="{Binding Report.PodNumber}" />
-            <DatePicker Date="{Binding Report.PodOffload}" />
-            <DatePicker Date="{Binding Report.PodOnload}" />
-            <Entry Placeholder="Left Front Seal" Text="{Binding Report.LeftFrontSeal}" />
-            <Entry Placeholder="Right Front Seal" Text="{Binding Report.RightFrontSeal}" />
-            <Entry Placeholder="Battery Seal" Text="{Binding Report.BatterySeal}" />
-            <Entry Placeholder="Dry Ice" Text="{Binding Report.DryIce}" />
+             <!--Flight Information Section--> 
+            
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="✈️ Flight Information" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
 
-            <!-- Access Points -->
-            <Label Text="Access Points" FontAttributes="Bold" FontSize="18"/>
-            <Entry Placeholder="L FWD" Text="{Binding Report.LFwd}" />
-            <Entry Placeholder="R FWD Door" Text="{Binding Report.RFwdDoor}" />
-            <Entry Placeholder="Front Baggage Hold Door" Text="{Binding Report.FrontBaggageHoldDoor}" />
-            <Entry Placeholder="Electric Equipment Access" Text="{Binding Report.ElectricEquipmentAccess}" />
+                    <Label Text="Flight Number" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.FlightNumber}" 
+           Placeholder="e.g., BA123"
+           BackgroundColor="#F1F5F9"/>
 
-            <!-- Cancellation -->
-            <Label Text="Cancellation" FontAttributes="Bold" FontSize="18"/>
-            <Switch IsToggled="{Binding Report.FlightCanceled}" />
-            <DatePicker Date="{Binding Report.CancelledTime}" />
-            <Entry Placeholder="Cancelled Parking Gate" Text="{Binding Report.CancelledParkingGate}" Keyboard="Numeric"/>
+                    <Label Text="Destination" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.Destination}" 
+           Placeholder="e.g., LHR"
+           BackgroundColor="#F1F5F9"/>
 
-            <!-- Misc -->
-            <Label Text="Misc" FontAttributes="Bold" FontSize="18"/>
-            <Editor Placeholder="Comments" Text="{Binding Report.Comments}" AutoSize="TextChanges"/>
-            <Entry Placeholder="Report By" Text="{Binding Report.ReportBy}" Keyboard="Numeric"/>
+                    <Label Text="Aircraft Registration" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.AircraftRegistration}" 
+           Placeholder="e.g., G-ABCD"
+           BackgroundColor="#F1F5F9"/>
 
-            <!-- Submit Button -->
-            <Button Text="Submit Report"
-                    Command="{Binding SubmitReportCommand}"
-                    BackgroundColor="DarkBlue"
-                    TextColor="White"/>
+                    <Label Text="Flight Date" FontSize="12" TextColor="#64748B"/>
+                    <DatePicker Date="{Binding Report.FlightDate}" BackgroundColor="#F1F5F9"/>
+
+
+                    <Label Text="Parking Gate" FontSize="12" TextColor="#64748B"/>
+                    <Picker SelectedItem="{Binding Report.ParkingGate}" BackgroundColor="#F1F5F9"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Timing Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="🕐 Timing" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Period Start" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.StartPeriod}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Period End" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.EndPeriod}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Scheduled Arrival" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.ScheduledTimeArrival}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Actual Arrival" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.ActualTimeArrival}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Time At Gate" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.ArrivalAtGate}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Time Off Gate" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.ActualTimeDeparture}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Scheduled Departure" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.ScheduledTimeDeparture}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Actual Departure" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.ActualTimeDeparture}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Airbourne" FontSize="12" TextColor="#64748B"/>
+                            <TimePicker Time="{Binding Report.Airbourne}" 
+                                        BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Positions Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="📍 Positions" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Front Door Access" FontSize="12" TextColor="#64748B"/>
+                            <Picker SelectedItem="{Binding Report.FrontDoorAccessPosition}" 
+                                   BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Ramp Access" FontSize="12" TextColor="#64748B"/>
+                            <Picker SelectedItem="{Binding Report.RampAccessPosition}" 
+                                   BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Baggage Makeup" FontSize="12" TextColor="#64748B"/>
+                            <Picker SelectedItem="{Binding Report.BaggageMakeupPosition}" 
+                                   BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Catering" FontSize="12" TextColor="#64748B"/>
+                            <Picker SelectedItem="{Binding Report.CateringPosition}" 
+                                   BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                    
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Back Door Access" FontSize="12" TextColor="#64748B"/>
+                            <Picker SelectedItem="{Binding Report.BackDoorAccessPosition}" 
+                                   BackgroundColor="#F1F5F9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Services & Personnel Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="👥 Services &amp; Personnel" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <Label Text="Inbound Wheelchairs" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.InboundWheelchairs}" 
+                           Placeholder="Name"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Outbound Wheelchairs" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.OutboundWheelchairs}" 
+                           Placeholder="Name"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Lift Chairs" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.LiftChairs}" 
+                           Placeholder="Supplier"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Cleaners" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.Cleaners}" 
+                           Placeholder="Supplier"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Fuelers" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.Fuelers}" 
+                           Placeholder="Supplier"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Catering Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="👥 Catering" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <Label Text="Pod Number" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.PodNumber}" 
+                           Placeholder="ex. RAP100010BA"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Pod Offload Time" FontSize="12" TextColor="#64748B"/>
+                    <TimePicker Time="{Binding Report.PodOffload}" 
+                           BackgroundColor="#F1F5F9"/>
+
+                    <Label Text="Pod Onload Time" FontSize="12" TextColor="#64748B"/>
+                    <TimePicker Time="{Binding Report.PodOnload}" 
+                           BackgroundColor="#F1F5F9"/>
+
+                    <Label Text="Door Seal Left" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.LeftFrontSeal}" 
+                           Placeholder="Enter Seal Number"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Door Seal Right" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.RightFrontSeal}" 
+                           Placeholder="Enter Seal Number"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Battery" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.BatterySeal}" 
+                           Placeholder="Enter Seal Number"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Dry Ice" FontSize="12" TextColor="#64748B"/>
+                    <Entry Text="{Binding Report.DryIce}" 
+                           Placeholder="Enter Seal Number"
+                           BackgroundColor="#F1F5F9"
+                           Keyboard="Numeric"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Cancellation Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="❌ Cancellation" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <HorizontalStackLayout Spacing="8">
+                        <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                        <Label Text="Mark is flight was cancelled" VerticalOptions="Center" TextColor="#64748B"/>
+                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout Spacing="8" IsVisible="{Binding Report.FlightCanceled}">
+                        <!--<Label Text="Cancellation Reason" FontSize="12" TextColor="#64748B"/>
+                        <Entry Text="{Binding Report.CancellationReason}" 
+                               Placeholder="Reason"
+                               BackgroundColor="#F1F5F9"/>-->
+
+                        <Label Text="Cancellation Parking Gate" FontSize="12" TextColor="#64748B"/>
+                        <Picker SelectedIndex="{Binding Report.CancelledParkingGate}" 
+                                    BackgroundColor="#F1F5F9"/>
+
+                        <Label Text="Cancellation Time" FontSize="12" TextColor="#64748B"/>
+                        <TimePicker Time="{Binding Report.CancellationTime}" 
+                                    BackgroundColor="#F1F5F9"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Aircraft Seals Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True" IsVisible="{Binding Report.FlightCanceled}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="🚪 Aircraft Seals" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <Label Text="Passenger Doors" FontSize="14" FontAttributes="Bold" TextColor="#64748B"/>
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- LFwd -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Left Forward" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.LFwd}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- LFwdOverwingDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Left Fwd Overwing Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.LFwdOverwingDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- LAftOverwingDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Left Aft Overwing Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.LAftOverwingDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- LAftDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Left Aft Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.LAftDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- RFwdDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Right Fwd Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.RFwdDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- RFwdOverwingDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Right Fwd Overwing Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.RFwdOverwingDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- RAftOverwingDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Right Aft Overwing Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.RAftOverwingDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- RAftDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Right Aft Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.RAftDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <Label Text="External Doors" FontSize="14" FontAttributes="Bold" TextColor="#64748B"/>
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- FrontBaggageHoldDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Front Baggage Hold Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.FrontBaggageHoldDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- BackBaggageHoldDoor -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Back Baggage Hold Door" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.BackBaggageHoldDoor}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- BulkBaggageHoldDoorC5 -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Bulk Baggage Hold Door C5" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.BulkBaggageHoldDoorC5}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+
+                    <Label Text="Packs" FontSize="14" FontAttributes="Bold" TextColor="#64748B"/>
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- ElectricEquipmentAccess -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Electric Equipment Access" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.ElectricEquipmentAccess}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- GroundServiceCommunication -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Ground Service Communication" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.GroundServiceCommunication}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- GroundCommunicationAir -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Ground Communication Air" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.GroundCommunicationAir}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- AirExhaustL -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Air Exhaust Left" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.AirExhaustL}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- AirExhaustR -->
+                        <HorizontalStackLayout>
+                            <VerticalStackLayout Spacing="8" >
+                                <Label Text="Air Exhaust Right" FontSize="12" TextColor="#64748B"/>
+                                <Entry Text="{Binding Report.AirExhaustR}" Placeholder="Enter Seal Number" BackgroundColor="#F1F5F9" Keyboard="Numeric"/>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <CheckBox IsChecked="{Binding Report.FlightCanceled}" Color="#64748B"/>
+                                <Label Text="Seal Broken" VerticalOptions="Center" TextColor="#64748B"/>
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Comments Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="💬 Comments" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <Editor Text="{Binding Report.Comments}" 
+                            Placeholder="Additional notes..."
+                            HeightRequest="100"
+                            BackgroundColor="#F1F5F9"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sign -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="💬 Report By" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                    <Picker SelectedIndex="{Binding Report.ReportBy}" 
+                                    BackgroundColor="#F1F5F9"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,16">
+                <Button Grid.Column="0"
+                        Text="Clear"
+                        Command="{Binding ClearCommand}"
+                        BackgroundColor="#64748B"
+                        TextColor="White"
+                        CornerRadius="8"
+                        HeightRequest="50"/>
+
+                <Button Grid.Column="1"
+                        Text="Submit Report"
+                        Command="{Binding SubmitCommand}"
+                        BackgroundColor="#DC2626"
+                        TextColor="White"
+                        CornerRadius="8"
+                        HeightRequest="50"/>
+            </Grid>
+
         </VerticalStackLayout>
     </ScrollView>
-
-
 </ContentPage>

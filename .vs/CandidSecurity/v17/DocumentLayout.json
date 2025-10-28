@@ -11,16 +11,16 @@
       "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\models\\reportmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\mainpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\mainpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\viewmodel\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\viewmodel\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\controls\\accordionsection.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\controls\\accordionsection.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\controls\\accordionsection.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\controls\\accordionsection.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,9 +29,23 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 278,
-          "SelectedChildIndex": 6,
+          "DockedWidth": 134,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccordionSection.xaml",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml",
+              "RelativeDocumentMoniker": "CandidBritishAirways\\Controls\\AccordionSection.xaml",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml",
+              "RelativeToolTip": "CandidBritishAirways\\Controls\\AccordionSection.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-28T13:41:27.678Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -46,43 +60,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\MainPage.xaml.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\MainPage.xaml.cs",
-              "RelativeToolTip": "CandidBritishAirways\\MainPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ReportModel.cs",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Models\\ReportModel.cs",
+              "RelativeDocumentMoniker": "CandidBritishAirways\\Models\\ReportModel.cs",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Models\\ReportModel.cs",
+              "RelativeToolTip": "CandidBritishAirways\\Models\\ReportModel.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAwE0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-26T16:28:17.714Z",
+              "WhenOpened": "2025-10-25T15:40:08.715Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\MauiProgram.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\MauiProgram.cs",
-              "RelativeToolTip": "CandidBritishAirways\\MauiProgram.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
+              "Title": "AccordionSection.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
+              "RelativeDocumentMoniker": "CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
+              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
+              "RelativeToolTip": "CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-26T16:26:35.718Z",
+              "WhenOpened": "2025-10-28T13:42:10.463Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "MainPageViewModel.cs",
               "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
               "RelativeDocumentMoniker": "CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
               "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
               "RelativeToolTip": "CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAgwDIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-26T16:21:08.539Z",
+              "WhenOpened": "2025-10-28T14:36:31.151Z",
               "EditorCaption": ""
-            },
+            }
+          ]
+        },
+        {
+          "DockedWidth": 422,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -91,22 +111,9 @@
               "RelativeDocumentMoniker": "CandidBritishAirways\\MainPage.xaml",
               "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\MainPage.xaml",
               "RelativeToolTip": "CandidBritishAirways\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAIwC4BAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-10-26T16:15:03.633Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReportModel.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Models\\ReportModel.cs",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\Models\\ReportModel.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Models\\ReportModel.cs",
-              "RelativeToolTip": "CandidBritishAirways\\Models\\ReportModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T15:40:08.715Z",
               "EditorCaption": ""
             }
           ]

@@ -5,105 +5,83 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CandidBritishAirways.Models;
-public class ReportModel
+using CommunityToolkit.Mvvm.ComponentModel;
+
+public partial class ReportModel : ObservableObject
 {
     #region Flight Info
-    public int Id { get; set; }
-    public int FlightNumber { get; set; }
-    public int Destination { get; set; }
-    public int AircraftRegistration { get; set; }
-    public DateTime Date { get; set; }
+    [ObservableProperty] private int id;
+    [ObservableProperty] private int flightNumber;
+    [ObservableProperty] private int destination;
+    [ObservableProperty] private int aircraftRegistration;
+    [ObservableProperty] private DateTime date;
     #endregion
 
     #region Timing
-    public DateTime StartPeriod { get; set; }
-    public DateTime EndPeriod { get; set; }
-    public DateTime ScheduledTimeArrival { get; set; }
-    public DateTime ActualTimeArrival { get; set; }
-    public DateTime ScheduledTimeDeparture { get; set; }
-    public DateTime ActualTimeDeparture { get; set; }
-    public DateTime ArrivalAtGate { get; set; }
-    public DateTime Airborne { get; set; }
+    [ObservableProperty] private TimeSpan? startPeriod;
+    [ObservableProperty] private TimeSpan? endPeriod;
+    [ObservableProperty] private TimeSpan? scheduledTimeArrival;
+    [ObservableProperty] private TimeSpan? actualTimeArrival;
+    [ObservableProperty] private TimeSpan? scheduledTimeDeparture;
+    [ObservableProperty] private TimeSpan? actualTimeDeparture;
+    [ObservableProperty] private TimeSpan? arrivalAtGate;
+    [ObservableProperty] private TimeSpan? airborne;
     #endregion
 
     #region Positions
-    public int ParkingGate { get; set; }
-    public int FrontDoorAccessPosition { get; set; }
-    public int RampAccessPosition { get; set; }
-    public int BaggageMakeupPosition { get; set; }
-    public int CateringPosition { get; set; }
-    public int BackDoorAccessPosition { get; set; }
+    [ObservableProperty] private int parkingGate;
+    [ObservableProperty] private int frontDoorAccessPosition;
+    [ObservableProperty] private int rampAccessPosition;
+    [ObservableProperty] private int baggageMakeupPosition;
+    [ObservableProperty] private int cateringPosition;
+    [ObservableProperty] private int backDoorAccessPosition;
     #endregion
 
     #region Services & Personnel
-    public int InboundWheelchairs { get; set; }
-    public int OutboundWheelchairs { get; set; }
-    public int LiftChairs { get; set; }
-    public int Cleaners { get; set; }
-    public int Fuelers { get; set; }
+    [ObservableProperty] private int inboundWheelchairs;
+    [ObservableProperty] private int outboundWheelchairs;
+    [ObservableProperty] private int liftChairs;
+    [ObservableProperty] private int cleaners;
+    [ObservableProperty] private int fuelers;
     #endregion
 
     #region Pod & Seals
-    public string PodNumber { get; set; }
-    public DateTime PodOffload { get; set; }
-    public DateTime PodOnload { get; set; }
-    public string LeftFrontSeal { get; set; }
-    public string RightFrontSeal { get; set; }
-    public string BatterySeal { get; set; }
-    public string DryIce { get; set; }
+    [ObservableProperty] private string podNumber;
+    [ObservableProperty] private TimeSpan? podOffload;
+    [ObservableProperty] private TimeSpan? podOnload;
+    [ObservableProperty] private string leftFrontSeal;
+    [ObservableProperty] private string rightFrontSeal;
+    [ObservableProperty] private string batterySeal;
+    [ObservableProperty] private string dryIce;
     #endregion
 
     #region Aircraft Access Points
-    public string LFwd { get; set; }
-    public string LFwdOverwingDoor { get; set; }
-    public string LAftOverwingDoor { get; set; }
-    public string LAftDoor { get; set; }
-    public string RFwdDoor { get; set; }
-    public string RFwdOverwingDoor { get; set; }
-    public string RAftOverwingDoor { get; set; }
-    public string RAftDoor { get; set; }
-    public string FrontBaggageHoldDoor { get; set; }
-    public string BackBaggageHoldDoor { get; set; }
-    public string BulkBaggageHoldDoorC5 { get; set; }
-    public string ElectricEquipmentAccess { get; set; }
-    public string GroundServiceCommunication { get; set; }
-    public string GroundCommunicationAir { get; set; }
-    public string AirExhaustL { get; set; }
-    public string AirExhaustR { get; set; }
+    [ObservableProperty] private string lFwd;
+    [ObservableProperty] private string lFwdOverwingDoor;
+    [ObservableProperty] private string lAftOverwingDoor;
+    [ObservableProperty] private string lAftDoor;
+    [ObservableProperty] private string rFwdDoor;
+    [ObservableProperty] private string rFwdOverwingDoor;
+    [ObservableProperty] private string rAftOverwingDoor;
+    [ObservableProperty] private string rAftDoor;
+    [ObservableProperty] private string frontBaggageHoldDoor;
+    [ObservableProperty] private string backBaggageHoldDoor;
+    [ObservableProperty] private string bulkBaggageHoldDoorC5;
+    [ObservableProperty] private string electricEquipmentAccess;
+    [ObservableProperty] private string groundServiceCommunication;
+    [ObservableProperty] private string groundCommunicationAir;
+    [ObservableProperty] private string airExhaustL;
+    [ObservableProperty] private string airExhaustR;
     #endregion
 
     #region Cancellation
-    public bool FlightCanceled { get; set; }
-    public DateTime CancelledTime { get; set; }
-    public int CancelledParkingGate { get; set; }
+    [ObservableProperty] private bool flightCanceled;
+    [ObservableProperty] private TimeSpan? cancelledTime;
+    [ObservableProperty] private int cancelledParkingGate;
     #endregion
 
     #region Misc
-    public string Comments { get; set; }
-    public int ReportBy { get; set; }
+    [ObservableProperty] private string comments;
+    [ObservableProperty] private int reportBy;
     #endregion
-
-
-    //public enum DoorStatus
-    //{
-    //    Unknown = 0,
-    //    Open = 1,
-    //    Closed = 2,
-    //    Locked = 3
-    //}
-
-    //public enum SealStatus
-    //{
-    //    NotPresent = 0,
-    //    Present = 1,
-    //    Broken = 2
-    //}
-
-    //public int LFwdValue { get; set; }
-
-    //public DoorStatus LFwd
-    //{
-    //    get => (DoorStatus)LFwdValue;
-    //    set => LFwdValue = (int)value;
-    //}
 }
