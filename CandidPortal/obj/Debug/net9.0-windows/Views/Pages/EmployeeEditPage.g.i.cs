@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CandidPortal.Models;
 using CandidPortal.Views.Pages;
 using System;
 using System.Diagnostics;

@@ -88,7 +88,7 @@
                     <Label Text="{Binding VouchersCount, StringFormat='Vouchers ({0})'}" FontAttributes="Bold" FontSize="18" />
                     <Label Text="List of wheelchair assistance vouchers" FontSize="14" TextColor="#6B7280" />
 
-                    <CollectionView ItemsSource="{Binding Vouchers}" x:Name="VouchersDataGrid">
+                    <!--<CollectionView ItemsSource="{Binding Vouchers}" x:Name="VouchersDataGrid">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame Padding="12" Margin="8" CornerRadius="12" BorderColor="#E5E7EB">
@@ -127,7 +127,22 @@
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    </CollectionView>-->
+
+                    <syncfusion:SfDataGrid x:Name="dataGrid"
+                               ItemsSource="{Binding Vouchers}"
+                               AutoGenerateColumnsMode="None">
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:DataGridNumericColumn HeaderText="Date" Format="0"
+                                            MappingName="Date" Width="150"/>
+                            <syncfusion:DataGridTextColumn  HeaderText="Passenger Name"
+                                            MappingName="PassengerName"
+                                            Width="150" />
+                            <syncfusion:DataGridTextColumn  HeaderText="Flight Number"
+                                            MappingName="FullFlightNumber"
+                                            Width="150" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
 
                     <!-- Busy Overlay -->
                     <Grid IsVisible="{Binding IsBusy}" BackgroundColor="#80FFFFFF" ZIndex="99">
