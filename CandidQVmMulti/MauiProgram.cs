@@ -23,8 +23,22 @@ public static class MauiProgram
         builder.Configuration.AddConfiguration(config);
 
 
+
         builder
             .UseMauiApp<App>()
+            // Add this section anywhere on the builder:
+            .UseSentry(options => {
+                // The DSN is the only required setting.
+                options.Dsn = "https://fcb198d8c07d54dddd45f7f8cecc8aac@o4510272878870528.ingest.us.sentry.io/4510272880967680";
+
+                // Use debug mode if you want to see what the SDK is doing.
+                // Debug messages are written to stdout with Console.Writeline,
+                // and are viewable in your IDE's debug console or with 'adb logcat', etc.
+                // This option is not recommended when deploying your application.
+                options.Debug = true;
+
+                // Other Sentry options can be set here.
+            })
             .ConfigureSyncfusionCore()
             .UseMauiCommunityToolkit(options =>
             {

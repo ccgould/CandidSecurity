@@ -2750,16 +2750,6 @@
             "related": ".xml"
           }
         }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        }
       }
     },
     "net9.0-android35.0/android-arm64": {
@@ -5510,16 +5500,6 @@
           "lib/net9.0-android35.0/ZXing.Net.MAUI.Controls.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
         }
       }
     },
@@ -8272,16 +8252,6 @@
             "related": ".xml"
           }
         }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        }
       }
     },
     "net9.0-android35.0/maccatalyst-x64": {
@@ -11033,16 +11003,6 @@
             "related": ".xml"
           }
         }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        }
       }
     },
     "net9.0-maccatalyst26.0": {
@@ -11763,16 +11723,6 @@
         "runtime": {
           "lib/net9.0-maccatalyst18.0/ZXing.Net.MAUI.Controls.dll": {}
         }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        }
       }
     },
     "net9.0-maccatalyst26.0/android-arm64": {
@@ -12401,16 +12351,6 @@
         },
         "runtime": {
           "lib/net9.0-maccatalyst18.0/ZXing.Net.MAUI.Controls.dll": {}
-        }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
         }
       }
     },
@@ -13041,16 +12981,6 @@
         "runtime": {
           "lib/net9.0-maccatalyst18.0/ZXing.Net.MAUI.Controls.dll": {}
         }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        }
       }
     },
     "net9.0-maccatalyst26.0/maccatalyst-x64": {
@@ -13679,16 +13609,6 @@
         },
         "runtime": {
           "lib/net9.0-maccatalyst18.0/ZXing.Net.MAUI.Controls.dll": {}
-        }
-      },
-      "IATA.BarCodedBoardingPass/2016.6.7": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/IATA.BarCodedBoardingPass.dll": {}
         }
       }
     }
@@ -17439,11 +17359,6 @@
         "zxing.net.maui.controls.0.5.0.nupkg.sha512",
         "zxing.net.maui.controls.nuspec"
       ]
-    },
-    "IATA.BarCodedBoardingPass/2016.6.7": {
-      "type": "project",
-      "path": "../../../../OneDrive/Documents/Field Creators Studios/Visual Studio/Visual Studio Repos/IATA.BarCodedBoardingPass/IATA.BarcodedBoardingPass/IATA.BarCodedBoardingPass.csproj",
-      "msbuildProject": "../../../../OneDrive/Documents/Field Creators Studios/Visual Studio/Visual Studio Repos/IATA.BarCodedBoardingPass/IATA.BarcodedBoardingPass/IATA.BarCodedBoardingPass.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -17451,7 +17366,7 @@
       "CommunityToolkit.Maui >= 12.2.0",
       "CommunityToolkit.Maui.Camera >= 3.0.2",
       "CommunityToolkit.Mvvm >= 8.4.0",
-      "IATA.BarCodedBoardingPass >= 2016.6.7",
+      "D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj",
       "Microsoft.Extensions.Logging.Debug >= 9.0.8",
       "Microsoft.Maui.Controls >= 9.0.100",
       "Microsoft.NET.ILLink.Tasks >= 9.0.10",
@@ -17464,7 +17379,7 @@
       "CommunityToolkit.Maui >= 12.2.0",
       "CommunityToolkit.Maui.Camera >= 3.0.2",
       "CommunityToolkit.Mvvm >= 8.4.0",
-      "IATA.BarCodedBoardingPass >= 2016.6.7",
+      "D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj",
       "Microsoft.Extensions.Logging.Debug >= 9.0.8",
       "Microsoft.Maui.Controls >= 9.0.100",
       "Microsoft.NET.ILLink.Tasks >= 9.0.10",
@@ -17475,29 +17390,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SPV_s\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\26.1.35\\ToolboxNuGetPackages": {}
+    "C:\\Users\\cgould\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\CandidQV.csproj",
+      "projectUniqueName": "D:\\Repository\\CandidSecurity\\CandidQV\\CandidQV.csproj",
       "projectName": "CandidQV",
-      "projectPath": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\CandidQV.csproj",
-      "packagesPath": "C:\\Users\\SPV_s\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidQV\\obj\\",
+      "projectPath": "D:\\Repository\\CandidSecurity\\CandidQV\\CandidQV.csproj",
+      "packagesPath": "C:\\Users\\cgould\\.nuget\\packages\\",
+      "outputPath": "D:\\Repository\\CandidSecurity\\CandidQV\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\26.1.35\\ToolboxNuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\SPV_s\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cgould\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Syncfusion Toolbox for WPF.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0-android",
@@ -17512,16 +17424,16 @@
         "net9.0-android35.0": {
           "targetAlias": "net9.0-android",
           "projectReferences": {
-            "C:\\Users\\SPV_s\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj": {
-              "projectPath": "C:\\Users\\SPV_s\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj"
+            "D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj": {
+              "projectPath": "D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj"
             }
           }
         },
         "net9.0-maccatalyst26.0": {
           "targetAlias": "net9.0-maccatalyst",
           "projectReferences": {
-            "C:\\Users\\SPV_s\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj": {
-              "projectPath": "C:\\Users\\SPV_s\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj"
+            "D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj": {
+              "projectPath": "D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj"
             }
           }
         }
@@ -17686,5 +17598,23 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\OneDrive\\Documents\\Field Creators Studios\\Visual Studio\\Visual Studio Repos\\IATA.BarCodedBoardingPass\\IATA.BarcodedBoardingPass\\IATA.BarCodedBoardingPass.csproj",
+      "targetGraphs": [
+        "net9.0-android35.0",
+        "net9.0-android35.0/android-arm64",
+        "net9.0-android35.0/android-x64",
+        "net9.0-android35.0/maccatalyst-x64",
+        "net9.0-maccatalyst26.0",
+        "net9.0-maccatalyst26.0/android-arm64",
+        "net9.0-maccatalyst26.0/android-x64",
+        "net9.0-maccatalyst26.0/maccatalyst-x64"
+      ]
+    }
+  ]
 }

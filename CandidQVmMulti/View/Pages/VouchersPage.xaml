@@ -46,8 +46,8 @@
                             <Label Text="Filter Vouchers" FontAttributes="Bold" FontSize="18" />
 
                             <VerticalStackLayout Spacing="8">
-                                <syncfusionButtons:SfButton Text="Export CSV" Background="#F3F4F6" TextColor="Black" Padding="16,0" CornerRadius="6" Command="{Binding ExportCommand}"/>
-                                <syncfusionButtons:SfButton Text="Add Voucher" Background="#111111" TextColor="White" Padding="16,0" CornerRadius="6" Command="{Binding AddCommand}"/>
+                                <syncfusionButtons:SfButton IsVisible="{OnPlatform Android=False}" Text="Export CSV" Background="#F3F4F6" TextColor="Black" Padding="16,0" CornerRadius="6" Command="{Binding ExportCommand}"/>
+                                <syncfusionButtons:SfButton IsVisible="{OnPlatform Android=False}" Text="Add Voucher" Background="#111111" TextColor="White" Padding="16,0" CornerRadius="6" Command="{Binding AddCommand}"/>
                                 <syncfusionButtons:SfButton Text="Clear Filters" Background="#111111" TextColor="White" Padding="16,0" CornerRadius="6" Command="{Binding AddCommand}"/>
                             </VerticalStackLayout>
 

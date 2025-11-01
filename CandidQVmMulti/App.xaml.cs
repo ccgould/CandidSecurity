@@ -8,6 +8,7 @@ public partial class App : Application
     public static IAlertService AlertSvc;
     public App(IServiceProvider provider)
     {
+        SentrySdk.CaptureMessage("Hello Sentry");
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF5cXGRCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXZceHVSRGdeUkN/XEpWYEg=");
         InitializeComponent();
         Services = provider;

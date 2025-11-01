@@ -40,6 +40,7 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
         this.mySqlFlightNumberService = mySqlFlightNumberService;
         startTime = DateTime.Now.TimeOfDay;
         endTime = DateTime.Now.TimeOfDay;
+        voucher = new Voucher();
     }
 
     internal async Task LoadData()
@@ -77,7 +78,7 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
             return;
         }
 
-        if(_saveVoucher)
+        if(Voucher.Id == 0)
         {
             await mySqlVoucherService.AddVoucherAsync(new Voucher()
             {
@@ -93,6 +94,7 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
         }
         else
         {
+
             Voucher.PassengerName = PassengerName;
             Voucher.AirlineID = SelectedAirline.Id;
             Voucher.FlightID = SelectedFlightNumber.Id;
@@ -100,6 +102,7 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
             Voucher.StartTime = StartTime.Ticks;
             Voucher.EndTime = EndTime.Ticks;
             Voucher.Status = StillInProgress ? 0 : 1;
+
             await mySqlVoucherService.UpdateVoucherAsync(Voucher);
         }
     }
@@ -145,10 +148,12 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
     private bool _saveVoucher;
 
     internal bool Initailized { get; set; }
+    public bool IsEditing { get; internal set; }
 
     public async void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         Initailized = false;
+        IsEditing = true;
 
         if (query.TryGetValue("Vouchers", out object data))
         {
@@ -156,7 +161,6 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
 
             if(data is not null)
             {
-
                 Voucher = data as Voucher;
                 PassengerName = Voucher.PassengerName;
                 SelectedAirline = Airlines?.FirstOrDefault(a => a.Id == Voucher.AirlineID);
@@ -165,11 +169,6 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
                 SelectedFlightNumber = FlightNumbers?.FirstOrDefault(f => f.Id == Voucher.FlightID);
                 StartTime = new TimeSpan(Voucher.StartTime);
                 EndTime = new TimeSpan(Voucher.EndTime);
-
-                if(Voucher.Id == 0)
-                {
-                    _saveVoucher = true;
-                }
             }
         }
 

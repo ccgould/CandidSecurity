@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidPortal", "CandidPorta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidQV", "CandidQV\CandidQV.csproj", "{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IATA.BarCodedBoardingPass", "..\..\..\OneDrive\Documents\Field Creators Studios\Visual Studio\Visual Studio Repos\IATA.BarCodedBoardingPass\IATA.BarcodedBoardingPass\IATA.BarCodedBoardingPass.csproj", "{762CC197-6532-F7B8-0D57-9D08E1752C19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IATA.BarCodedBoardingPass", "..\..\OneDrive\Documents\Field Creators Studios\Visual Studio\Visual Studio Repos\IATA.BarCodedBoardingPass\IATA.BarcodedBoardingPass\IATA.BarCodedBoardingPass.csproj", "{762CC197-6532-F7B8-0D57-9D08E1752C19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidRadioTracker", "CandidRadioTracker\CandidRadioTracker.csproj", "{5408DA82-0227-477A-863C-661FB447EA7C}"
 EndProject
@@ -41,6 +41,7 @@ Global
 		{5408DA82-0227-477A-863C-661FB447EA7C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{66F8CD7B-337A-473D-9A79-DEACC81EC98E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66F8CD7B-337A-473D-9A79-DEACC81EC98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F8CD7B-337A-473D-9A79-DEACC81EC98E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{66F8CD7B-337A-473D-9A79-DEACC81EC98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66F8CD7B-337A-473D-9A79-DEACC81EC98E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34E87A5A-B507-47E7-8780-9D5FD35D838E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

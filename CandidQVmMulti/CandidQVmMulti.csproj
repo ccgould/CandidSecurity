@@ -80,6 +80,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.110" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
 		<PackageReference Include="MySql.Data" Version="9.4.0" />
+		<PackageReference Include="Sentry.Maui.CommunityToolkit.Mvvm" Version="5.16.1" />
 		<PackageReference Include="Syncfusion.Maui.Cards" Version="31.1.20" />
 		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.1.20" />
 		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.1.20" />

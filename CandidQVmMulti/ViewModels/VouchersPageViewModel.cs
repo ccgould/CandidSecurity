@@ -181,7 +181,6 @@ public partial class VouchersPageViewModel : ObservableObject
             .Where(v => v.Date <= EndDate.Ticks);
     }
 
-
     partial void OnStartDateChanged(DateTime value)
     {
         RefreshData();

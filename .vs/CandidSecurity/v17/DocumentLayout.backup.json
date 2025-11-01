@@ -1,26 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\",
+  "WorkspaceRootPath": "D:\\Repository\\CandidSecurity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\view\\pages\\addvoucherpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\view\\pages\\addvoucherpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\models\\reportmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\models\\reportmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\view\\pages\\addvoucherpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\view\\pages\\addvoucherpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\viewmodel\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\viewmodel\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\controls\\accordionsection.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\controls\\accordionsection.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\viewmodels\\addvoucherpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\viewmodels\\addvoucherpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|c:\\users\\spv_s\\source\\repos\\candidsecurity\\candidbritishairways\\controls\\accordionsection.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{34E87A5A-B507-47E7-8780-9D5FD35D838E}|CandidBritishAirways\\CandidBritishAirways.csproj|solutionrelative:candidbritishairways\\controls\\accordionsection.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\services\\mysqlvoucherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\services\\mysqlvoucherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\viewmodels\\voucherspageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\viewmodels\\voucherspageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\view\\pages\\voucherspage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\view\\pages\\voucherspage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\app.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\app.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\view\\pages\\voucherspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\view\\pages\\voucherspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|d:\\repository\\candidsecurity\\candidqv\\candidqv.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{45F3DFFE-158F-4CC4-BC51-921F0C14E5BD}|CandidQV\\CandidQV.csproj|solutionrelative:candidqv\\candidqv.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|d:\\repository\\candidsecurity\\candidqvmmulti\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66F8CD7B-337A-473D-9A79-DEACC81EC98E}|CandidQVmMulti\\CandidQVmMulti.csproj|solutionrelative:candidqvmmulti\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,22 +54,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 134,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccordionSection.xaml",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\Controls\\AccordionSection.xaml",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml",
-              "RelativeToolTip": "CandidBritishAirways\\Controls\\AccordionSection.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-28T13:41:27.678Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -60,60 +70,145 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReportModel.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Models\\ReportModel.cs",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\Models\\ReportModel.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Models\\ReportModel.cs",
-              "RelativeToolTip": "CandidBritishAirways\\Models\\ReportModel.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAwE0AAAA0AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "AddVoucherPageViewModel.cs",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\ViewModels\\AddVoucherPageViewModel.cs",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\ViewModels\\AddVoucherPageViewModel.cs",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\ViewModels\\AddVoucherPageViewModel.cs",
+              "RelativeToolTip": "CandidQVmMulti\\ViewModels\\AddVoucherPageViewModel.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAwJsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T15:40:08.715Z",
+              "WhenOpened": "2025-10-29T13:14:12.806Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AccordionSection.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
-              "RelativeToolTip": "CandidBritishAirways\\Controls\\AccordionSection.xaml.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwA8AAAAXAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "VouchersPage.xaml.cs",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\VouchersPage.xaml.cs",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\View\\Pages\\VouchersPage.xaml.cs",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\VouchersPage.xaml.cs",
+              "RelativeToolTip": "CandidQVmMulti\\View\\Pages\\VouchersPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T13:42:10.463Z",
+              "WhenOpened": "2025-10-29T14:48:49.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CandidQV",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQV\\CandidQV.csproj",
+              "RelativeDocumentMoniker": "CandidQV\\CandidQV.csproj",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQV\\CandidQV.csproj",
+              "RelativeToolTip": "CandidQV\\CandidQV.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-29T15:06:07.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\App.xaml.cs",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\App.xaml.cs",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\App.xaml.cs",
+              "RelativeToolTip": "CandidQVmMulti\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T13:00:44.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MainPageViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
-              "RelativeToolTip": "CandidBritishAirways\\ViewModel\\MainPageViewModel.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAgwDIAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T14:36:31.151Z",
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\App.xaml",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\App.xaml",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\App.xaml",
+              "RelativeToolTip": "CandidQVmMulti\\App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T13:00:41.909Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 422,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddVoucherPage.xaml.cs",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml.cs",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml.cs",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml.cs",
+              "RelativeToolTip": "CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBMAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T13:00:27.93Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\MainPage.xaml",
-              "RelativeDocumentMoniker": "CandidBritishAirways\\MainPage.xaml",
-              "ToolTip": "C:\\Users\\SPV_s\\source\\repos\\CandidSecurity\\CandidBritishAirways\\MainPage.xaml \u2B24",
-              "RelativeToolTip": "CandidBritishAirways\\MainPage.xaml \u2B24",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAIwC4BAAA4AAAAAAAAAA==",
+              "Title": "AddVoucherPage.xaml",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml",
+              "RelativeToolTip": "CandidQVmMulti\\View\\Pages\\AddVoucherPage.xaml",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAWwHIAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-26T16:15:03.633Z",
+              "WhenOpened": "2025-10-29T13:00:21.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "VouchersPage.xaml",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\VouchersPage.xaml",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\View\\Pages\\VouchersPage.xaml",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\View\\Pages\\VouchersPage.xaml",
+              "RelativeToolTip": "CandidQVmMulti\\View\\Pages\\VouchersPage.xaml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAASwG4AAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T14:37:33.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VouchersPageViewModel.cs",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\ViewModels\\VouchersPageViewModel.cs",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\ViewModels\\VouchersPageViewModel.cs",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\ViewModels\\VouchersPageViewModel.cs",
+              "RelativeToolTip": "CandidQVmMulti\\ViewModels\\VouchersPageViewModel.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAIA8wGoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T14:48:01.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MySqlVoucherService.cs",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\Services\\MySqlVoucherService.cs",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\Services\\MySqlVoucherService.cs",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\Services\\MySqlVoucherService.cs",
+              "RelativeToolTip": "CandidQVmMulti\\Services\\MySqlVoucherService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAawCsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T15:06:36.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "CandidQVmMulti\\MauiProgram.cs",
+              "ToolTip": "D:\\Repository\\CandidSecurity\\CandidQVmMulti\\MauiProgram.cs",
+              "RelativeToolTip": "CandidQVmMulti\\MauiProgram.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAswCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T12:58:37.005Z",
               "EditorCaption": ""
             }
           ]

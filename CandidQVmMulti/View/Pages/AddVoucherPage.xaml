@@ -8,108 +8,45 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CandidQVmMulti.View.Pages.AddVoucherPage"
              BackgroundColor="#F8FAFC">
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="Android">
+            <Grid Padding="32" ColumnSpacing="24" RowSpacing="24">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+                    </ResourceDictionary>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    
-    <Grid Padding="32" ColumnSpacing="24" RowSpacing="24">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+                <!-- Main Form Section in ScrollView -->
+                <ScrollView Grid.Column="0" Grid.Row="0" Margin="0,0,0,0">
+                    <VerticalStackLayout Spacing="16">
+                        <!-- Passenger Information Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Passenger Information" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Enter the passenger's details" FontSize="14" TextColor="#6B7280"/>
+                                <Label Text="Passenger Name *" FontSize="14" TextColor="Black"/>
+                                <Entry Text="{Binding PassengerName, Mode=TwoWay}" Placeholder="Enter passenger's full name" TextColor="Black"/>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
 
-        <!-- Back Button and Title -->
-        <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Spacing="16">
-            <syncfusionButtons:SfButton
-                    Text="Back to Vouchers"
-                    ShowIcon="True"
-                    ImageSource="arrow_left.png"
-                    Background="#F3F4F6"
-                    TextColor="Black"
-                    Padding="12,0"
-                    CornerRadius="6"
-                    Command="{Binding BackCommand}" />
-            <StackLayout>
-                <Label Text="Wheelchair Assistance Voucher"
-                           FontAttributes="Bold"
-                           FontSize="20"
-                           TextColor="Black"/>
-                <Label Text="Fill in the details for the wheelchair assistance request"
-                           FontSize="14"
-                           TextColor="#6B7280"/>
-            </StackLayout>
-        </StackLayout>
-
-        <!-- Form Guidelines Card -->
-        <cards:SfCardView Grid.Column="1" Grid.Row="1" Margin="0,0,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
-            <VerticalStackLayout Spacing="8">
-                <Label Text="Form Guidelines" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
-                <Label Text="Required Fields:" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
-                <Label Text="• Passenger name&#x0a;• Airline and flight number&#x0a;• Assigned employee&#x0a;• Start time" FontSize="14" TextColor="#6B7280"/>
-                <Label Text="Tips:" FontAttributes="Bold" FontSize="14" TextColor="Black" Margin="0,8,0,0"/>
-                <Label Text="• Use the clock button for current time&#x0a;• End time is optional for ongoing assistance&#x0a;• You can edit vouchers later if needed" FontSize="14" TextColor="#6B7280"/>
-            </VerticalStackLayout>
-        </cards:SfCardView>
-
-        <!-- Quick Stats Card -->
-        <cards:SfCardView Grid.Column="1" Grid.Row="2" Margin="0,16,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
-            <VerticalStackLayout Spacing="8">
-                <Label Text="Quick Stats" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="Available Airlines:" FontSize="14" TextColor="#6B7280"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding AirlinesCount}" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Available Staff:" FontSize="14" TextColor="#6B7280"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding EmployeesCount}" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Grid.Row="2" Grid.Column="0" Text="Total Flight Numbers:" FontSize="14" TextColor="#6B7280"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding FlightNumbersCount}" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
-                </Grid>
-            </VerticalStackLayout>
-        </cards:SfCardView>
-
-        <!-- Main Form Section in ScrollView -->
-        <ScrollView Grid.Column="0" Grid.Row="1" Margin="0,0,0,0">
-            <VerticalStackLayout Spacing="16">
-
-                <!-- Passenger Information Card -->
-                <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="Passenger Information" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
-                        <Label Text="Enter the passenger's details" FontSize="14" TextColor="#6B7280"/>
-                        <Label Text="Passenger Name *" FontSize="14" TextColor="Black"/>
-                        <Entry Text="{Binding PassengerName, Mode=TwoWay}" Placeholder="Enter passenger's full name" TextColor="Black"/>
-                    </VerticalStackLayout>
-                </cards:SfCardView>
-
-                <!-- Flight Information Card -->
-                <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="Flight Information" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
-                        <Label Text="Select the airline and flight details" FontSize="14" TextColor="#6B7280"/>
-                        <Grid ColumnSpacing="16">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0">
-                                <Label Text="Airline *" FontSize="14" TextColor="Black"/>
-                                <syncfusionInputs:SfComboBox
+                        <!-- Flight Information Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Flight Information" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Select the airline and flight details" FontSize="14" TextColor="#6B7280"/>
+                                <Grid ColumnSpacing="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0">
+                                        <Label Text="Airline *" FontSize="14" TextColor="Black"/>
+                                        <syncfusionInputs:SfComboBox
                                         ItemsSource="{Binding Airlines}"
                                         DisplayMemberPath ="Name"
                                         TextMemberPath="Name"
@@ -118,10 +55,10 @@
                                         Placeholder="Select airline"
                                         TextColor="Black"
                                         BackgroundColor="White"/>
-                            </StackLayout>
-                            <StackLayout Grid.Column="1">
-                                <Label Text="Flight Number *" FontSize="14" TextColor="Black"/>
-                                <syncfusionInputs:SfComboBox
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="Flight Number *" FontSize="14" TextColor="Black"/>
+                                        <syncfusionInputs:SfComboBox
                                         ItemsSource="{Binding FlightNumbers}"
                                         SelectedItem="{Binding SelectedFlightNumber,Mode=TwoWay}"
                                         DisplayMemberPath ="Number"
@@ -129,18 +66,18 @@
                                         Placeholder="Select airline first"
                                         TextColor="Black"
                                         BackgroundColor="White"/>
-                            </StackLayout>
-                        </Grid>
-                    </VerticalStackLayout>
-                </cards:SfCardView>
+                                    </StackLayout>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
 
-                <!-- Staff Assignment Card -->
-                <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="Staff Assignment" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
-                        <Label Text="Assign an employee to handle this request" FontSize="14" TextColor="#6B7280"/>
-                        <Label Text="Assigned Employee *" FontSize="14" TextColor="Black"/>
-                        <syncfusionInputs:SfComboBox
+                        <!-- Staff Assignment Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Staff Assignment" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Assign an employee to handle this request" FontSize="14" TextColor="#6B7280"/>
+                                <Label Text="Assigned Employee *" FontSize="14" TextColor="Black"/>
+                                <syncfusionInputs:SfComboBox
                                 ItemsSource="{Binding Employees}"
                                 SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
                                 DisplayMemberPath ="Name"
@@ -148,55 +85,257 @@
                                 Placeholder="Select employee"
                                 TextColor="Black"
                                 BackgroundColor="White"/>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
+
+                        <!-- Assistance Timeline Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Assistance Timeline" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Record when the assistance started and ended" FontSize="14" TextColor="#6B7280"/>
+                                <Grid ColumnSpacing="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0">
+                                        <Label Text="Start Time *" FontSize="14" TextColor="Black"/>
+                                        <TimePicker Time="{Binding StartTime}" Format="hh_mm_tt" TextColor="Black" VerticalOptions="Center" BackgroundColor="#f3f4f6"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="End Time (Optional)" FontSize="14" TextColor="Black" IsVisible="{Binding IsChecked, Source={x:Reference progressCheck},Converter={StaticResource InvertedBoolConverter}}"/>
+
+                                        <TimePicker 
+                                            Time="{Binding EndTime}" 
+                                            Format="hh_mm_tt" 
+                                            TextColor="Black" 
+                                            VerticalOptions="Center" 
+                                            BackgroundColor="#f3f4f6" 
+                                            IsVisible="{Binding IsChecked, Source={x:Reference progressCheck1},Converter={StaticResource InvertedBoolConverter}}"/>
+                                        <Grid ColumnDefinitions="Auto,*" Margin="10">
+                                            <CheckBox x:Name="progressCheck1" IsChecked="{Binding StillInProgress}"/>
+                                            <Label Text="Check if assistance is still in progress" FontSize="12" TextColor="#6B7280" Grid.Column="1" VerticalOptions="Center"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Action Buttons -->
+                <cards:SfCardView Grid.Column="0" Grid.Row="1" HeightRequest="80"  Margin="0,16,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
+                    <Grid ColumnDefinitions="*,*">
+                        <syncfusionButtons:SfButton
+                        Text="Cancel"
+                        Background="#F3F4F6"
+                        TextColor="Black"
+                        Padding="16,0"
+                        CornerRadius="6"
+                        Command="{Binding CancelCommand}" Margin="2" />
+                        <syncfusionButtons:SfButton
+                            Margin="2"
+                            Grid.Column="1"
+                        Text="Save"
+                        ShowIcon="True"
+                        ImageSource="voucher_white.png"
+                        Background="#111111"
+                        TextColor="White"
+                        Padding="16,0"
+                        CornerRadius="6"
+                        Command="{Binding CreateVoucherCommand}" />
+                    </Grid>
+                </cards:SfCardView>
+            </Grid>
+        </On>
+        <On Platform="WinUI">
+            <Grid Padding="32" ColumnSpacing="24" RowSpacing="24">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+                    </ResourceDictionary>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Back Button and Title -->
+                <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Spacing="16">
+                    <syncfusionButtons:SfButton
+                    Text="Back to Vouchers"
+                    ShowIcon="True"
+                    ImageSource="arrow_left.png"
+                    Background="#F3F4F6"
+                    TextColor="Black"
+                    Padding="12,0"
+                    CornerRadius="6"
+                    Command="{Binding BackCommand}" />
+                    <StackLayout>
+                        <Label Text="Wheelchair Assistance Voucher"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                        <Label Text="Fill in the details for the wheelchair assistance request"
+                           FontSize="14"
+                           TextColor="#6B7280"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Form Guidelines Card -->
+                <cards:SfCardView Grid.Column="1" Grid.Row="1" Margin="0,0,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Form Guidelines" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                        <Label Text="Required Fields:" FontAttributes="Bold" FontSize="14" TextColor="Black"/>
+                        <Label Text="• Passenger name&#x0a;• Airline and flight number&#x0a;• Assigned employee&#x0a;• Start time" FontSize="14" TextColor="#6B7280"/>
+                        <Label Text="Tips:" FontAttributes="Bold" FontSize="14" TextColor="Black" Margin="0,8,0,0"/>
+                        <Label Text="• Use the clock button for current time&#x0a;• End time is optional for ongoing assistance&#x0a;• You can edit vouchers later if needed" FontSize="14" TextColor="#6B7280"/>
                     </VerticalStackLayout>
                 </cards:SfCardView>
 
-                <!-- Assistance Timeline Card -->
-                <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                <!-- Quick Stats Card -->
+                <cards:SfCardView Grid.Column="1" Grid.Row="2" Margin="0,16,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
                     <VerticalStackLayout Spacing="8">
-                        <Label Text="Assistance Timeline" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
-                        <Label Text="Record when the assistance started and ended" FontSize="14" TextColor="#6B7280"/>
-                        <Grid ColumnSpacing="16">
+                        <Label Text="Quick Stats" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0">
-                                <Label Text="Start Time *" FontSize="14" TextColor="Black"/>
-                                <TimePicker x:Name="timePicker" Time="{Binding StartTime}" Format="hh_mm_tt" TextColor="Black" VerticalOptions="Center" BackgroundColor="#f3f4f6"/>
-                            </StackLayout>
-                            <StackLayout Grid.Column="1">
-                                <Label Text="End Time (Optional)" FontSize="14" TextColor="Black" IsVisible="{Binding IsChecked, Source={x:Reference progressCheck},Converter={StaticResource InvertedBoolConverter}}"/>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Available Airlines:" FontSize="14" TextColor="#6B7280"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding AirlinesCount}" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="Available Staff:" FontSize="14" TextColor="#6B7280"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding EmployeesCount}" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Grid.Row="2" Grid.Column="0" Text="Total Flight Numbers:" FontSize="14" TextColor="#6B7280"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding FlightNumbersCount}" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </cards:SfCardView>
 
-                                <TimePicker x:Name="timePicker2" 
+                <!-- Main Form Section in ScrollView -->
+                <ScrollView Grid.Column="0" Grid.Row="1" Margin="0,0,0,0">
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- Passenger Information Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Passenger Information" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Enter the passenger's details" FontSize="14" TextColor="#6B7280"/>
+                                <Label Text="Passenger Name *" FontSize="14" TextColor="Black"/>
+                                <Entry Text="{Binding PassengerName, Mode=TwoWay}" Placeholder="Enter passenger's full name" TextColor="Black"/>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
+
+                        <!-- Flight Information Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Flight Information" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Select the airline and flight details" FontSize="14" TextColor="#6B7280"/>
+                                <Grid ColumnSpacing="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0">
+                                        <Label Text="Airline *" FontSize="14" TextColor="Black"/>
+                                        <syncfusionInputs:SfComboBox
+                                        ItemsSource="{Binding Airlines}"
+                                        DisplayMemberPath ="Name"
+                                        TextMemberPath="Name"
+                                        SelectedItem="{Binding SelectedAirline}"
+                                        SelectionChanged="SfComboBox_SelectionChanged"
+                                        Placeholder="Select airline"
+                                        TextColor="Black"
+                                        BackgroundColor="White"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="Flight Number *" FontSize="14" TextColor="Black"/>
+                                        <syncfusionInputs:SfComboBox
+                                        ItemsSource="{Binding FlightNumbers}"
+                                        SelectedItem="{Binding SelectedFlightNumber,Mode=TwoWay}"
+                                        DisplayMemberPath ="Number"
+                                        TextMemberPath="Number"
+                                        Placeholder="Select airline first"
+                                        TextColor="Black"
+                                        BackgroundColor="White"/>
+                                    </StackLayout>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
+
+                        <!-- Staff Assignment Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Staff Assignment" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Assign an employee to handle this request" FontSize="14" TextColor="#6B7280"/>
+                                <Label Text="Assigned Employee *" FontSize="14" TextColor="Black"/>
+                                <syncfusionInputs:SfComboBox
+                                ItemsSource="{Binding Employees}"
+                                SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
+                                DisplayMemberPath ="Name"
+                                TextMemberPath="Name"
+                                Placeholder="Select employee"
+                                TextColor="Black"
+                                BackgroundColor="White"/>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
+
+                        <!-- Assistance Timeline Card -->
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Assistance Timeline" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                <Label Text="Record when the assistance started and ended" FontSize="14" TextColor="#6B7280"/>
+                                <Grid ColumnSpacing="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0">
+                                        <Label Text="Start Time *" FontSize="14" TextColor="Black"/>
+                                        <TimePicker Time="{Binding StartTime}" Format="hh_mm_tt" TextColor="Black" VerticalOptions="Center" BackgroundColor="#f3f4f6"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="End Time (Optional)" FontSize="14" TextColor="Black" IsVisible="{Binding IsChecked, Source={x:Reference progressCheck},Converter={StaticResource InvertedBoolConverter}}"/>
+
+                                        <TimePicker
                                             Time="{Binding EndTime}" 
                                             Format="hh_mm_tt" 
                                             TextColor="Black" 
                                             VerticalOptions="Center" 
                                             BackgroundColor="#f3f4f6" 
                                             IsVisible="{Binding IsChecked, Source={x:Reference progressCheck},Converter={StaticResource InvertedBoolConverter}}"/>
-                                <Grid ColumnDefinitions="Auto,*">
-                                    <CheckBox x:Name="progressCheck" IsChecked="{Binding StillInProgress}"/>
-                                    <Label Text="Check if assistance is still in progress" FontSize="12" TextColor="#6B7280" Grid.Column="1" VerticalOptions="Center"/>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <CheckBox x:Name="progressCheck" IsChecked="{Binding StillInProgress}"/>
+                                            <Label Text="Check if assistance is still in progress" FontSize="12" TextColor="#6B7280" Grid.Column="1" VerticalOptions="Center"/>
+                                        </Grid>
+                                    </StackLayout>
                                 </Grid>
-                            </StackLayout>
-                        </Grid>
+                            </VerticalStackLayout>
+                        </cards:SfCardView>
                     </VerticalStackLayout>
-                </cards:SfCardView>
-            </VerticalStackLayout>
-        </ScrollView>
+                </ScrollView>
 
-        <!-- Action Buttons -->
-        <cards:SfCardView Grid.Column="0" Grid.Row="2" HeightRequest="80"  Margin="0,16,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
-            <HorizontalStackLayout Spacing="16">
-                <syncfusionButtons:SfButton
+                <!-- Action Buttons -->
+                <cards:SfCardView Grid.Column="0" Grid.Row="2" HeightRequest="80"  Margin="0,16,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
+                    <HorizontalStackLayout Spacing="16">
+                        <syncfusionButtons:SfButton
                         Text="Cancel"
                         Background="#F3F4F6"
                         TextColor="Black"
                         Padding="16,0"
                         CornerRadius="6"
                         Command="{Binding CancelCommand}" />
-                <syncfusionButtons:SfButton
+                        <syncfusionButtons:SfButton
                         Text="Save Voucher"
                         ShowIcon="True"
                         ImageSource="voucher_white.png"
@@ -205,7 +344,9 @@
                         Padding="16,0"
                         CornerRadius="6"
                         Command="{Binding CreateVoucherCommand}" />
-            </HorizontalStackLayout>
-        </cards:SfCardView>
-    </Grid>
+                    </HorizontalStackLayout>
+                </cards:SfCardView>
+            </Grid>
+        </On>
+    </OnPlatform>
 </ContentPage>
