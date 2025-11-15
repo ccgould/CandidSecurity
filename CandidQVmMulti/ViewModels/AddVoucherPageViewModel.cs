@@ -1,4 +1,5 @@
-﻿using CandidQVmMulti.Models;
+﻿using CandidQVmMulti.Enumerators;
+using CandidQVmMulti.Models;
 using CandidQVmMulti.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -89,7 +90,7 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
                 EmployeeID = SelectedEmployee.Id,
                 StartTime = StartTime.Ticks,
                 EndTime = EndTime.Ticks,
-                Status = StillInProgress ? 0 : 1
+                Status = StillInProgress ? VoucherStatus.InProgress : VoucherStatus.Pending,
             });
         }
         else
@@ -101,10 +102,12 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
             Voucher.EmployeeID = SelectedEmployee.Id;
             Voucher.StartTime = StartTime.Ticks;
             Voucher.EndTime = EndTime.Ticks;
-            Voucher.Status = StillInProgress ? 0 : 1;
+            Voucher.Status = StillInProgress ? VoucherStatus.InProgress : VoucherStatus.Pending;
 
             await mySqlVoucherService.UpdateVoucherAsync(Voucher);
         }
+
+        await Clear();
     }
 
     [RelayCommand]
@@ -123,11 +126,14 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
                 await Back();
             }
         }
+
+        await Clear();
     }
 
     [RelayCommand]
     private async Task Back()
     {
+        await Clear();
         await Shell.Current.GoToAsync("..");
     }
 
@@ -173,5 +179,18 @@ public partial class AddVoucherPageViewModel : ObservableObject,IQueryAttributab
         }
 
         Initailized = true;
+    }
+
+    private async Task Clear()
+    {
+        Initailized = false;
+        IsEditing = false;
+        SelectedAirline = null;
+        SelectedFlightNumber = null;
+        SelectedEmployee = null;
+        StartTime = DateTime.Now.TimeOfDay;
+        EndTime = DateTime.Now.TimeOfDay;
+        PassengerName = string.Empty;
+        await LoadData();
     }
 }

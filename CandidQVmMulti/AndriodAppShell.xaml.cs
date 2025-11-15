@@ -10,5 +10,6 @@ public partial class AndriodAppShell : Shell
         Routing.RegisterRoute(nameof(AddVoucherPage), typeof(AddVoucherPage));
         Routing.RegisterRoute(nameof(AirlinesPage), typeof(AirlinesPage));
         Routing.RegisterRoute(nameof(EmployeesPage), typeof(EmployeesPage));
+        Routing.RegisterRoute(nameof(SignaturePage), typeof(SignaturePage));
     }
 }

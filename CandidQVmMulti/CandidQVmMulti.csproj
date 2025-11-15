@@ -41,11 +41,13 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<AssemblyVersion>1.0.413.0</AssemblyVersion>
 		<FileVersion>1.0.413.0</FileVersion>
+		<!--<RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>-->
 	</PropertyGroup>
+	
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="Transparent" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -75,17 +77,25 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="12.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="FreeSpire.XLS" Version="14.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.9" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.110" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
-		<PackageReference Include="MySql.Data" Version="9.4.0" />
-		<PackageReference Include="Sentry.Maui.CommunityToolkit.Mvvm" Version="5.16.1" />
-		<PackageReference Include="Syncfusion.Maui.Cards" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.Inputs" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.Picker" Version="31.1.20" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10" />
+		<PackageReference Include="MySql.Data" Version="9.5.0" />
+		<PackageReference Include="MySqlConnector" Version="2.4.0" />
+		<PackageReference Include="MySqlConnector.Logging.Serilog" Version="2.0.0" />
+		<PackageReference Include="Sentry.Maui.CommunityToolkit.Mvvm" Version="5.16.2" />
+		<PackageReference Include="Serilog" Version="4.3.0" />
+		<PackageReference Include="Syncfusion.DocIO.Net.Core" Version="31.2.5" />
+		<PackageReference Include="Syncfusion.DocIORenderer.Net.Core" Version="31.2.5" />
+		<PackageReference Include="Syncfusion.Maui.Cards" Version="31.2.4" />
+		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" Version="31.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Picker" Version="31.2.4" />
+		<PackageReference Include="Syncfusion.Maui.SignaturePad" Version="31.2.4" />
+		<PackageReference Include="Syncfusion.Pdf.Net.Core" Version="31.2.5" />
+		<PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="31.2.5" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -120,6 +130,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Pages\EmployeesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Pages\SignaturePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Pages\VouchersPage.xaml">

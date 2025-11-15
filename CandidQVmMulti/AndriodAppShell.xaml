@@ -19,6 +19,9 @@
         <Tab Title="Vouchers" Icon="voucher.png">
             <ShellContent ContentTemplate="{DataTemplate pages:VouchersPage}" />
         </Tab>
+        <!--<Tab Title="Signture" Icon="voucher.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:SignaturePage}" />
+        </Tab>-->
         <!--<Tab Title="Employees" Icon="employees.png">
         <ShellContent ContentTemplate="{DataTemplate pages:EmployeesPage}" />
     </Tab>-->

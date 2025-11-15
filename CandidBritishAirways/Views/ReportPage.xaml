@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CandidBritishAirways.ViewModel"
+             x:Class="CandidBritishAirways.Views.ReportPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:faw="clr-namespace:FontAwesome"
+             Title="Flight Reports"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F8FAFC"
+             x:Name="ReportsPage">
+
+    <ContentPage.Resources>
+        <toolkit:BoolToObjectConverter x:Key="InverseBoolConverter"
+                                       TrueObject="False"
+                                       FalseObject="True" />
+    </ContentPage.Resources>
+
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="16" Spacing="16">
+
+                <!-- Header -->
+                <Frame BackgroundColor="#1E3A8A" CornerRadius="12" Padding="20" HasShadow="True">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="British Airways"
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+                        <Label Text="Flight Reports"
+                           TextColor="White"
+                           FontSize="14"
+                           HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Search Section -->
+                <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="🔍 Search Reports"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A8A"/>
+
+                        <Entry Placeholder="Search Flight Number"
+                           Text="{Binding SearchQuery}"
+                           BackgroundColor="#F1F5F9"
+                           ClearButtonVisibility="WhileEditing" IsVisible="False"/>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="5">
+                            <DatePicker Date="{Binding StartDate}" BackgroundColor="#F1F5F9"/>
+                            <DatePicker Grid.Column="1" Date="{Binding EndDate}" BackgroundColor="#F1F5F9"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*" ColumnSpacing="12">
+                            <!--<Button Grid.Column="0" Text="Search" Command="{Binding SearchReportsCommand}"
+                                BackgroundColor="#64748B" TextColor="White" CornerRadius="8"/>
+                        <Button Grid.Column="1" Text="Filter" Command="{Binding FilterByDateCommand}"
+                                BackgroundColor="#64748B" TextColor="White" CornerRadius="8"/>-->
+                            <Button Grid.Column="2" Text="Combined" Command="{Binding CombinedSearchCommand}"
+                                BackgroundColor="#64748B" TextColor="White" CornerRadius="8"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Reports List -->
+                <CollectionView ItemsSource="{Binding Reports}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" CornerRadius="12" Padding="12" Margin="0,8" HasShadow="True">
+                                <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto" ColumnSpacing="5">
+                                    <Image Source="ba.png" WidthRequest="50" Margin="0,0,10,0"/>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                        <Label Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}" FontAttributes="Bold" FontSize="16" TextColor="#1E3A8A"/>
+                                        <Label Text="{Binding FlightNumber, StringFormat='BA {0}'}" FontSize="14" TextColor="#64748B"/>
+                                        <Label Text="{Binding ReportByName, StringFormat='Report By: {0}'}" FontSize="12" TextColor="Gray"/>
+                                        <Label Text="{Binding SentDate, StringFormat='Sent On: {0}'}" FontSize="12" TextColor="Gray" IsVisible="{Binding IsSent}"/>
+                                    </VerticalStackLayout>
+                                    <Button Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" Command="{Binding BindingContext.EditReportCommand, Source={x:Reference ReportsPage}}" CommandParameter="{Binding .}">
+                                        <Button.ImageSource>
+                                            <FontImageSource 
+                                                        FontFamily="FontAwesomeSolid"
+                                                        Glyph="{x:Static faw:FontAwesomeIcons.Pencil}"
+                                                        Color="#64748B"/>
+                                        </Button.ImageSource>
+                                    </Button>
+                                    <Border Grid.Column="3" Stroke="#64748B" StrokeThickness="1" VerticalOptions="Fill" HeightRequest="30">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="4" />
+                                        </Border.StrokeShape>
+                                    </Border>
+                                    <Button Grid.Column="4" BackgroundColor="Transparent" IsEnabled="{Binding IsSent,Converter={StaticResource InverseBoolConverter}}" HeightRequest="30" Command="{Binding BindingContext.SendReportCommand, Source={x:Reference ReportsPage}}" CommandParameter="{Binding .}">
+                                        <Button.ImageSource>
+                                            <FontImageSource
+                                                FontFamily="FontAwesomeSolid"
+                                                Glyph="{x:Static faw:FontAwesomeIcons.Copy}"
+                                                Color="#64748B"/>
+                                        </Button.ImageSource>
+                                    </Button>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <Label Text="No reports found." HorizontalOptions="Center" TextColor="Gray"/>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+        <!-- Busy Overlay -->
+        <Grid IsVisible="{Binding IsBusy}"
+      BackgroundColor="#80FFFFFF"
+      ZIndex="99">
+
+            <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Spacing="20">
+
+                <!-- Logo -->
+                <Image Source="ba.png"
+               WidthRequest="100"
+               HeightRequest="100"
+               Aspect="AspectFit" />
+
+                <!-- Spinner -->
+                <ActivityIndicator IsRunning="True"
+                           IsVisible="True"
+                           Color="Gray"
+                           WidthRequest="50"
+                           HeightRequest="50" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

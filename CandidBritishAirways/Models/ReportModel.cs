@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CandidBritishAirways.Models;
+﻿using SQLite;
 using CommunityToolkit.Mvvm.ComponentModel;
 
+namespace CandidBritishAirways.Models;
+
+[Table("Reports")]
 public partial class ReportModel : ObservableObject
 {
-    #region Flight Info
-    [ObservableProperty] private int id;
+    [PrimaryKey, AutoIncrement]
+    public int Id { get; set; }
+
     [ObservableProperty] private int flightNumber;
     [ObservableProperty] private int destination;
-    [ObservableProperty] private int aircraftRegistration;
+    [ObservableProperty] private string aircraftRegistration;
     [ObservableProperty] private DateTime date;
-    #endregion
 
-    #region Timing
+    // Timing
     [ObservableProperty] private TimeSpan? startPeriod;
     [ObservableProperty] private TimeSpan? endPeriod;
     [ObservableProperty] private TimeSpan? scheduledTimeArrival;
@@ -26,26 +23,24 @@ public partial class ReportModel : ObservableObject
     [ObservableProperty] private TimeSpan? actualTimeDeparture;
     [ObservableProperty] private TimeSpan? arrivalAtGate;
     [ObservableProperty] private TimeSpan? airborne;
-    #endregion
 
-    #region Positions
+    // Positions
     [ObservableProperty] private int parkingGate;
     [ObservableProperty] private int frontDoorAccessPosition;
     [ObservableProperty] private int rampAccessPosition;
     [ObservableProperty] private int baggageMakeupPosition;
     [ObservableProperty] private int cateringPosition;
     [ObservableProperty] private int backDoorAccessPosition;
-    #endregion
 
-    #region Services & Personnel
+    // Services & Personnel
     [ObservableProperty] private int inboundWheelchairs;
     [ObservableProperty] private int outboundWheelchairs;
     [ObservableProperty] private int liftChairs;
     [ObservableProperty] private int cleaners;
     [ObservableProperty] private int fuelers;
-    #endregion
 
-    #region Pod & Seals
+    // Pod & Seals
+    [ObservableProperty] private bool isCatering;
     [ObservableProperty] private string podNumber;
     [ObservableProperty] private TimeSpan? podOffload;
     [ObservableProperty] private TimeSpan? podOnload;
@@ -53,9 +48,8 @@ public partial class ReportModel : ObservableObject
     [ObservableProperty] private string rightFrontSeal;
     [ObservableProperty] private string batterySeal;
     [ObservableProperty] private string dryIce;
-    #endregion
 
-    #region Aircraft Access Points
+    // Aircraft Access Points
     [ObservableProperty] private string lFwd;
     [ObservableProperty] private string lFwdOverwingDoor;
     [ObservableProperty] private string lAftOverwingDoor;
@@ -72,16 +66,16 @@ public partial class ReportModel : ObservableObject
     [ObservableProperty] private string groundCommunicationAir;
     [ObservableProperty] private string airExhaustL;
     [ObservableProperty] private string airExhaustR;
-    #endregion
 
-    #region Cancellation
+    // Cancellation
     [ObservableProperty] private bool flightCanceled;
     [ObservableProperty] private TimeSpan? cancelledTime;
     [ObservableProperty] private int cancelledParkingGate;
-    #endregion
 
-    #region Misc
+    // Misc
     [ObservableProperty] private string comments;
     [ObservableProperty] private int reportBy;
-    #endregion
+    [ObservableProperty] private string reportByName;
+    [ObservableProperty] private DateTime? sentDate = null;
+    [ObservableProperty] private bool isSent;
 }

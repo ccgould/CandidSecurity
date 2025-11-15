@@ -10,7 +10,7 @@ internal class TickToDateConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return DateOnly.FromDateTime(new DateTime((long)value)).ToLongDateString();
+        return DateOnly.FromDateTime(new DateTime((long)value)).ToString("MMM,dd,yyyy");
     }
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

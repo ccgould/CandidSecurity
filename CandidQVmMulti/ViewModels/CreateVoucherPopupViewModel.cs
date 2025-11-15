@@ -1,3 +1,4 @@
+using CandidQVmMulti.Enumerators;
 using CandidQVmMulti.Models;
 using CandidQVmMulti.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -113,7 +114,7 @@ public partial class CreateVoucherPopupViewModel : ObservableObject
                 EmployeeID = SelectedGuard.Id,
                 StartTime = StartTime.Ticks,
                 EndTime = EndTime.Ticks,
-                Status = StillInProgress ? 0 : 1
+                Status = StillInProgress ? VoucherStatus.InProgress : VoucherStatus.Pending,
             });
         }
         else
@@ -125,7 +126,7 @@ public partial class CreateVoucherPopupViewModel : ObservableObject
             voucher.EmployeeID = SelectedGuard.Id;
             voucher.StartTime = StartTime.Ticks;
             voucher.EndTime = EndTime.Ticks;
-            voucher.Status = StillInProgress ? 0 : 1;
+            voucher.Status = StillInProgress ? VoucherStatus.InProgress : VoucherStatus.Pending;
             await mySqlVoucherService.UpdateVoucherAsync(voucher);
             ///
             /// 

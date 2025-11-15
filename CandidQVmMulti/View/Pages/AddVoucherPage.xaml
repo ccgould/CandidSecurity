@@ -16,10 +16,6 @@
                         <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
                     </ResourceDictionary>
                 </Grid.Resources>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
 
                 <!-- Main Form Section in ScrollView -->
                 <ScrollView Grid.Column="0" Grid.Row="0" Margin="0,0,0,0">
@@ -31,6 +27,9 @@
                                 <Label Text="Enter the passenger's details" FontSize="14" TextColor="#6B7280"/>
                                 <Label Text="Passenger Name *" FontSize="14" TextColor="Black"/>
                                 <Entry Text="{Binding PassengerName, Mode=TwoWay}" Placeholder="Enter passenger's full name" TextColor="Black"/>
+                                <BoxView HeightRequest="1"
+                                               BackgroundColor="Gray"
+                                               HorizontalOptions="Fill"/>
                             </VerticalStackLayout>
                         </cards:SfCardView>
 
@@ -46,26 +45,32 @@
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Column="0">
                                         <Label Text="Airline *" FontSize="14" TextColor="Black"/>
-                                        <syncfusionInputs:SfComboBox
-                                        ItemsSource="{Binding Airlines}"
-                                        DisplayMemberPath ="Name"
-                                        TextMemberPath="Name"
-                                        SelectedItem="{Binding SelectedAirline}"
-                                        SelectionChanged="SfComboBox_SelectionChanged"
-                                        Placeholder="Select airline"
-                                        TextColor="Black"
-                                        BackgroundColor="White"/>
+                                        <Picker
+                                            ItemsSource="{Binding Airlines}"
+                                            SelectedItem="{Binding SelectedAirline, Mode=TwoWay}"
+                                            ItemDisplayBinding="{Binding Name}"
+                                            Title="Select airline"
+                                            TextColor="Black"
+                                            BackgroundColor="White"
+                                            SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+
+                                        <BoxView HeightRequest="1"
+                                                 BackgroundColor="Gray"
+                                                 HorizontalOptions="Fill"/>
+
                                     </StackLayout>
                                     <StackLayout Grid.Column="1">
                                         <Label Text="Flight Number *" FontSize="14" TextColor="Black"/>
-                                        <syncfusionInputs:SfComboBox
-                                        ItemsSource="{Binding FlightNumbers}"
-                                        SelectedItem="{Binding SelectedFlightNumber,Mode=TwoWay}"
-                                        DisplayMemberPath ="Number"
-                                        TextMemberPath="Number"
-                                        Placeholder="Select airline first"
-                                        TextColor="Black"
-                                        BackgroundColor="White"/>
+                                        <Picker
+                                            ItemsSource="{Binding FlightNumbers}"
+                                            SelectedItem="{Binding SelectedFlightNumber, Mode=TwoWay}"
+                                            ItemDisplayBinding="{Binding Number}"
+                                            Title="Select airline first"
+                                            TextColor="Black"
+                                            BackgroundColor="White"/>
+                                        <BoxView HeightRequest="1"
+                                               BackgroundColor="Gray"
+                                               HorizontalOptions="Fill"/>
                                     </StackLayout>
                                 </Grid>
                             </VerticalStackLayout>
@@ -77,63 +82,61 @@
                                 <Label Text="Staff Assignment" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
                                 <Label Text="Assign an employee to handle this request" FontSize="14" TextColor="#6B7280"/>
                                 <Label Text="Assigned Employee *" FontSize="14" TextColor="Black"/>
-                                <syncfusionInputs:SfComboBox
-                                ItemsSource="{Binding Employees}"
-                                SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
-                                DisplayMemberPath ="Name"
-                                TextMemberPath="Name"
-                                Placeholder="Select employee"
-                                TextColor="Black"
-                                BackgroundColor="White"/>
+
+                                <Picker
+                                    ItemsSource="{Binding Employees}"
+                                    SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    Title="Select employee"
+                                    TextColor="Black"
+                                    BackgroundColor="White"/>
+                                <BoxView HeightRequest="1"
+                                               BackgroundColor="Gray"
+                                               HorizontalOptions="Fill"/>
+
                             </VerticalStackLayout>
                         </cards:SfCardView>
 
                         <!-- Assistance Timeline Card -->
-                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White">
+                        <cards:SfCardView Padding="20" CornerRadius="12" BackgroundColor="White" MaximumHeightRequest="250">
                             <VerticalStackLayout Spacing="8">
                                 <Label Text="Assistance Timeline" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
                                 <Label Text="Record when the assistance started and ended" FontSize="14" TextColor="#6B7280"/>
-                                <Grid ColumnSpacing="16">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
+                                <Grid ColumnSpacing="16" ColumnDefinitions="2*,2*" RowDefinitions="Auto,Auto">
                                     <StackLayout Grid.Column="0">
                                         <Label Text="Start Time *" FontSize="14" TextColor="Black"/>
-                                        <TimePicker Time="{Binding StartTime}" Format="hh_mm_tt" TextColor="Black" VerticalOptions="Center" BackgroundColor="#f3f4f6"/>
+                                        <TimePicker Time="{Binding StartTime}" Format="hh:mm tt" TextColor="Black" VerticalOptions="Center" BackgroundColor="#f3f4f6"/>
                                     </StackLayout>
                                     <StackLayout Grid.Column="1">
                                         <Label Text="End Time (Optional)" FontSize="14" TextColor="Black" IsVisible="{Binding IsChecked, Source={x:Reference progressCheck},Converter={StaticResource InvertedBoolConverter}}"/>
 
                                         <TimePicker 
                                             Time="{Binding EndTime}" 
-                                            Format="hh_mm_tt" 
+                                            Format="hh:mm tt" 
                                             TextColor="Black" 
                                             VerticalOptions="Center" 
                                             BackgroundColor="#f3f4f6" 
                                             IsVisible="{Binding IsChecked, Source={x:Reference progressCheck1},Converter={StaticResource InvertedBoolConverter}}"/>
-                                        <Grid ColumnDefinitions="Auto,*" Margin="10">
-                                            <CheckBox x:Name="progressCheck1" IsChecked="{Binding StillInProgress}"/>
-                                            <Label Text="Check if assistance is still in progress" FontSize="12" TextColor="#6B7280" Grid.Column="1" VerticalOptions="Center"/>
-                                        </Grid>
                                     </StackLayout>
+                                    <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                        <CheckBox x:Name="progressCheck1" IsChecked="{Binding StillInProgress}" Color="Grey"/>
+                                        <Label Text="Check if assistance is still in progress" FontSize="12" TextColor="#6B7280" Grid.Column="1" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
                                 </Grid>
                             </VerticalStackLayout>
                         </cards:SfCardView>
-                    </VerticalStackLayout>
-                </ScrollView>
 
-                <!-- Action Buttons -->
-                <cards:SfCardView Grid.Column="0" Grid.Row="1" HeightRequest="80"  Margin="0,16,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
-                    <Grid ColumnDefinitions="*,*">
-                        <syncfusionButtons:SfButton
-                        Text="Cancel"
+                        <!-- Action Buttons -->
+                        <cards:SfCardView Grid.Column="0" HeightRequest="80"  Margin="0,16,0,0" Padding="20" CornerRadius="12" BackgroundColor="White">
+                            <Grid ColumnDefinitions="*,*">
+                                <syncfusionButtons:SfButton
+                        Text="Clear"
                         Background="#F3F4F6"
                         TextColor="Black"
                         Padding="16,0"
                         CornerRadius="6"
                         Command="{Binding CancelCommand}" Margin="2" />
-                        <syncfusionButtons:SfButton
+                                <syncfusionButtons:SfButton
                             Margin="2"
                             Grid.Column="1"
                         Text="Save"
@@ -144,8 +147,10 @@
                         Padding="16,0"
                         CornerRadius="6"
                         Command="{Binding CreateVoucherCommand}" />
-                    </Grid>
-                </cards:SfCardView>
+                            </Grid>
+                        </cards:SfCardView>
+                    </VerticalStackLayout>
+                </ScrollView>
             </Grid>
         </On>
         <On Platform="WinUI">
@@ -302,14 +307,14 @@
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Column="0">
                                         <Label Text="Start Time *" FontSize="14" TextColor="Black"/>
-                                        <TimePicker Time="{Binding StartTime}" Format="hh_mm_tt" TextColor="Black" VerticalOptions="Center" BackgroundColor="#f3f4f6"/>
+                                        <TimePicker Time="{Binding StartTime}" Format="hh:mm tt" TextColor="Black" VerticalOptions="Center" BackgroundColor="#f3f4f6"/>
                                     </StackLayout>
                                     <StackLayout Grid.Column="1">
                                         <Label Text="End Time (Optional)" FontSize="14" TextColor="Black" IsVisible="{Binding IsChecked, Source={x:Reference progressCheck},Converter={StaticResource InvertedBoolConverter}}"/>
 
                                         <TimePicker
                                             Time="{Binding EndTime}" 
-                                            Format="hh_mm_tt" 
+                                            Format="hh:mm tt" 
                                             TextColor="Black" 
                                             VerticalOptions="Center" 
                                             BackgroundColor="#f3f4f6" 

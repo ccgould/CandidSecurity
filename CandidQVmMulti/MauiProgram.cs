@@ -1,4 +1,7 @@
 ﻿using CandidQVmMulti.Interfaces;
+#if ANDROID
+using CandidQVmMulti.Platforms.Android;
+#endif
 using CandidQVmMulti.Services;
 using CandidQVmMulti.View.Pages;
 using CandidQVmMulti.ViewModels;
@@ -66,7 +69,12 @@ public static class MauiProgram
         builder.Services.AddSingleton<MySqlFlightNumberService>();
         builder.Services.AddSingleton<IAlertService, AlertService>();
         builder.Services.AddTransient<CreateVoucherPopupViewModel>();
+        builder.Services.AddTransient<SignaturePage>();
         builder.Services.AddSingleton<ExportServices>();
+        builder.Services.AddSingleton<SignatureService>();
+#if ANDROID
+        builder.Services.AddSingleton<IDeviceOrientationService,DeviceOrientationService>();
+#endif
 
 #if DEBUG
         builder.Logging.AddDebug();

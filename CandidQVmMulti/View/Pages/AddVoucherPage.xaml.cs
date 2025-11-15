@@ -18,17 +18,20 @@ public partial class AddVoucherPage : ContentPage
         if(DeviceInfo.Current.Platform == DevicePlatform.Android)
         {
             if (ViewModel.IsEditing) return;
+            ViewModel.Initailized = true;
             await ViewModel.LoadData();
         }
     }
 
+    private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        await ViewModel.LoadFlightNumbers();
+    }
+
+
     private async void SfComboBox_SelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
     {
-        if(DeviceInfo.Current.Platform == DevicePlatform.WinUI)
-        {
-
-        }
-        if (!ViewModel.Initailized) return;
+        //Add a way to stop this if editing
         await ViewModel.LoadFlightNumbers();
     }
 }

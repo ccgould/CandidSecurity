@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using CandidQVmMulti.Enumerators;
 using Microsoft.Maui.Controls;
 
 namespace CandidQVmMulti.View.Converters;
@@ -27,9 +28,9 @@ public class IntToStatusConverter : IValueConverter
     {
         return value switch
         {
-            0 => "In Progress",
-            1 => "Pending",
-            2 => "Completed",
+            VoucherStatus.InProgress => "In Progress",
+            VoucherStatus.Pending => "Pending",
+            VoucherStatus.Signed => "Signed",
             _ => "N/A"
         };
     }
