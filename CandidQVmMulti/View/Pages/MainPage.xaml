@@ -134,6 +134,10 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <Border Grid.Column="0" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" 
                         Padding="20" StrokeShape="RoundRectangle 12">
                             <Grid>
@@ -194,6 +198,21 @@
                                 <Image Grid.Column="1" Source="clock.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Start" HorizontalOptions="End"/>
                             </Grid>
                         </Border>
+                        <Border Grid.Column="0" Grid.Row="1" Background="#FFFFFF" Stroke="#E5E7EB" StrokeThickness="1" 
+                                Padding="20" StrokeShape="RoundRectangle 12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Unsigned Vouchers" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                    <Label Text="{Binding UnsignedVouchersCount}" FontAttributes="Bold" FontSize="28" Margin="0,8,0,0" TextColor="Black"/>
+                                    <Label Text="Vouchers waiting for a signature" FontSize="14" TextColor="#6B7280"/>
+                                </StackLayout>
+                                <Image Grid.Column="1" Source="clock.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Start" HorizontalOptions="End"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!-- Quick Actions -->
@@ -210,7 +229,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Border Grid.Column="0" Background="#F8FAFC" Stroke="#E5E7EB" StrokeThickness="1" Padding="20" StrokeShape="RoundRectangle 12">
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="VoucherPage" />
+                                        <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="VouchersPage" />
                                     </Border.GestureRecognizers>
                                     <StackLayout>
                                         <Label Text="Create New Voucher" FontAttributes="Bold" FontSize="16" TextColor="Black"/>

@@ -42,6 +42,7 @@
         <HorizontalStackLayout Grid.Row="3" Spacing="5" HorizontalOptions="End" VerticalOptions="End">
             <Button Text="Cancel" 
                     BackgroundColor="White" 
+                    TextColor="Black"
                     HeightRequest="50" 
                     WidthRequest="100" 
                     BorderColor="Black" 

@@ -19,6 +19,7 @@
             <Grid>
                 <Grid.Resources>
                     <converters:TickToDateConverter x:Key="tickToDateConveter"/>
+                    <converters:PrefixMultiConverter x:Key="PrefixMultiConverter"/>
                 </Grid.Resources>
                 <ScrollView>
                     <VerticalStackLayout Padding="{OnIdiom Phone='20,16,20,16', Tablet='40,32,40,32'}" Spacing="24">
@@ -110,7 +111,7 @@
                                                        HeightRequest="20"
                                                        WidthRequest="20"
                                                        Margin="20"/>
-                                                        <Label Text="{Binding Name}"
+                                                        <Label
                                                        CharacterSpacing="0.25"
                                                        FontAttributes="Bold"
                                                        FontSize="{OnPlatform iOS=18, Android=14, WinUI=20}"
@@ -118,7 +119,14 @@
                                                        Grid.Row="0"
                                                                HorizontalTextAlignment="Start"
                                                                VerticalTextAlignment="Center"
-                                                       TextColor="Black"/>
+                                                       TextColor="Black">
+                                                            <Label.Text>
+                                                                <MultiBinding Converter="{StaticResource PrefixMultiConverter}">
+                                                                    <Binding Path="Terminal" />
+                                                                    <Binding Path="Name" />
+                                                                </MultiBinding>
+                                                            </Label.Text>
+                                                        </Label>
                                                         <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Grid.Column="2">
                                                             <Button ImageSource="plus.png"
                                                                                 Background="#F3F4F6"
@@ -229,6 +237,7 @@
             <Grid>
                 <Grid.Resources>
                     <converters:TickToDateConverter x:Key="tickToDateConveter"/>
+                    <converters:PrefixMultiConverter x:Key="PrefixMultiConverter"/>
                 </Grid.Resources>
                 <ScrollView>
                     <VerticalStackLayout Padding="40,32,40,32" Spacing="24">
@@ -307,14 +316,22 @@
                                                            HeightRequest="20" 
                                                            WidthRequest="20"
                                                            Margin="20"/>
-
-                                                        <Label Text="{Binding Name}" 
-                                                           CharacterSpacing="0.25" 
-                                                           FontAttributes="Bold"
-                                                           FontSize="20" 
-                                                           Grid.Column="1" 
-                                                           Grid.Row="0"
-                                                           TextColor="Black"/>
+                                                        <Label
+                                                                CharacterSpacing="0.25"
+                                                                FontAttributes="Bold"
+                                                                FontSize="{OnPlatform iOS=18, Android=14, WinUI=20}"
+                                                                Grid.Column="1"
+                                                                Grid.Row="0"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        VerticalTextAlignment="Center"
+                                                                TextColor="Black">
+                                                            <Label.Text>
+                                                                <MultiBinding Converter="{StaticResource PrefixMultiConverter}">
+                                                                    <Binding Path="Terminal" />
+                                                                    <Binding Path="Name" />
+                                                                </MultiBinding>
+                                                            </Label.Text>
+                                                        </Label>
 
                                                         <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
                                                             <Border StrokeShape="RoundRectangle 15" WidthRequest="50">

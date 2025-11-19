@@ -9,7 +9,7 @@ public class MySqlVoucherService
 {
     private readonly string _connectionString;
     private readonly ApiSettings configuration;
-    private readonly NetworkAccess connectivity = Connectivity.Current.NetworkAccess;
+    private NetworkAccess connectivity => Connectivity.Current.NetworkAccess;
 
     public MySqlVoucherService(IConfiguration config)
     {
@@ -290,7 +290,7 @@ public class MySqlVoucherService
         return vouchers;
     }
 
-    public async Task<int> GetTodayVoucherCountAsync()
+    public async Task<int> GetTodaysAssistanceCountAsync()
     {
         try
         {
@@ -299,11 +299,19 @@ public class MySqlVoucherService
                 using var connection = new MySqlConnection(_connectionString);
                 await connection.OpenAsync();
 
-                var query = "SELECT COUNT(*) FROM vouchers_tb WHERE DATE(FROM_UNIXTIME(date)) = CURDATE()";
-                using var command = new MySqlCommand(query, connection);
-                var result = await command.ExecuteScalarAsync();
 
-                return Convert.ToInt32(result);
+                long todayStartTicks = DateTime.Today.Ticks;
+                long tomorrowStartTicks = DateTime.Today.AddDays(1).Ticks;
+
+
+                var query = "SELECT COUNT(*) FROM vouchers_tb WHERE date >= @startTicks AND date < @endTicks;";
+                using var command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@startTicks", todayStartTicks);
+                command.Parameters.AddWithValue("@endTicks", tomorrowStartTicks);
+
+                int count = Convert.ToInt32(await command.ExecuteScalarAsync());
+
+                return count;
             }
         }
         catch (Exception ex)
@@ -340,6 +348,34 @@ public class MySqlVoucherService
             await App.AlertSvc.ShowAlertAsync("Error", ex.Message);
         }
 
+        return 0;
+    }
+
+    internal async Task<int> GetUnsignedVouchersCountAsync()
+    {
+        try
+        {
+            if (connectivity == NetworkAccess.Internet)
+            {
+                using var connection = new MySqlConnection(_connectionString);
+                await connection.OpenAsync();
+
+
+                long todayStartTicks = DateTime.Today.Ticks;
+                long tomorrowStartTicks = DateTime.Today.AddDays(1).Ticks;
+
+
+                var query = "SELECT COUNT(*) FROM vouchers_tb WHERE signature_id = 0";
+                using var command = new MySqlCommand(query, connection);
+                int count = Convert.ToInt32(await command.ExecuteScalarAsync());
+
+                return count;
+            }
+        }
+        catch (Exception ex)
+        {
+            await App.AlertSvc.ShowAlertAsync("Error", ex.Message);
+        }
         return 0;
     }
 }
