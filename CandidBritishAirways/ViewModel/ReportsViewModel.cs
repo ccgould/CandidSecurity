@@ -50,8 +50,10 @@ public partial class ReportViewModel : ObservableObject
     [RelayCommand]
     private async Task FilterByDateAsync()
     {
+        IsBusy = true;
         var results = await _dbService.FilterByDateRangeAsync(StartDate, EndDate);
         Reports = new ObservableCollection<ReportModel>(results);
+        IsBusy = false;
     }
 
     [RelayCommand]

@@ -9,7 +9,7 @@
              x:Class="CandidBritishAirways.MainPage"
              Title="BA Flight Report"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#F8FAFC">
+             BackgroundColor="{StaticResource Primary}">
 
 
     <ContentPage.Resources>
@@ -18,8 +18,8 @@
                                        FalseObject="True" />
         <converters:BoolToSubmitText x:Key="BoolToSubmitText"/>
     </ContentPage.Resources>
-    
-    <ScrollView>
+
+    <ScrollView BackgroundColor="#F8FAFC">
         <Grid RowDefinitions="Auto,*">
             <!-- Header -->
             <Frame BackgroundColor="#1E3A8A" Padding="20" HasShadow="True">

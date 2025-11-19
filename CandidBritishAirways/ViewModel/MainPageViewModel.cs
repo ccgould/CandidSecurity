@@ -57,9 +57,34 @@ public partial class MainPageViewModel : ObservableObject, IQueryAttributable
         await databaseService.SaveReportAsync(Report);
                 
         // 🎉 Feedback
-        await Shell.Current.DisplayAlert("Success", "Report submitted!", "OK");
+        await Shell.Current.DisplayAlertAsync("Success", "Report submitted!", "OK");
 
-        IsEditing = false;
+        if(IsEditing)
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+        else
+        {
+            Clear();
+        }
+
+            IsEditing = false;
+    }
+
+    [RelayCommand]
+    private void Clear()
+    {
+        Report = new();
+        Report.Date = DateTime.Now;
+        FrontDoorAccessPosition = null;
+        RampAccessPosition = null;
+        BaggageMakeupPosition = null;
+        CateringPosition = null;
+        BackDoorAccessPosition = null;
+        ReportBy = null;
+        ParkingGate = null;
+        CancellationParkingGate = null;
+        Destination = -1;
     }
 
     [RelayCommand]

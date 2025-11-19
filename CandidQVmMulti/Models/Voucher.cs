@@ -23,4 +23,12 @@ public partial class Voucher : ObservableObject
     public bool IsSigned { get; set; }
     public int SignatureID { get; set; }
     public string Signature { get; set; }
+    public string Terminal => GetTerminal();
+    public int TerminalID { get; set; }
+
+    private string GetTerminal()
+    {
+        var terminals = new string[] {"Domestic", "US", "Both"};
+        return terminals[TerminalID];
+    }
 }

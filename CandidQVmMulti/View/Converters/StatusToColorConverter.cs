@@ -11,9 +11,9 @@ public class StatusToColorConverter : IValueConverter
     {
         return value switch
         {
-            0 => Color.FromArgb("#D1FAE5"),      // Green
-            1 => Color.FromArgb("#FEF3C7"),     // Yellow
-            2 => Color.FromArgb("#DBEAFE"),   // Blue
+            VoucherStatus.InProgress => Color.FromArgb("#B22222"),      // Firebrick
+            VoucherStatus.Pending => Color.FromArgb("#FEF3C7"),     // Yellow
+            VoucherStatus.Signed => Color.FromArgb("#D1FAE5"),   // Green
             _ => Color.FromArgb("#F3F4F6")              // Default Gray
         };
     }

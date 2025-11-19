@@ -18,96 +18,130 @@
 
     <Grid>
         <ScrollView>
-            <VerticalStackLayout Padding="16" Spacing="16">
-
+            <Grid RowDefinitions="Auto,*">
                 <!-- Header -->
-                <Frame BackgroundColor="#1E3A8A" CornerRadius="12" Padding="20" HasShadow="True">
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="British Airways"
-                           TextColor="White"
-                           FontSize="24"
+                <Frame BackgroundColor="#1E3A8A" Padding="20" HasShadow="True">
+                    <Grid ColumnDefinitions="Auto, *, Auto">
+                        <Image Source="ba.png" HeightRequest="40"/>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="8">
+                            <Label Text="British Airways" 
+                           TextColor="White" 
+                           FontSize="24" 
                            FontAttributes="Bold"
                            HorizontalOptions="Center"/>
-                        <Label Text="Flight Reports"
-                           TextColor="White"
+                            <Label Text="Reports" 
+                           TextColor="White" 
                            FontSize="14"
                            HorizontalOptions="Center"/>
-                    </VerticalStackLayout>
+                        </VerticalStackLayout>
+
+                        <!--<HorizontalStackLayout Grid.Column="2">
+                            <Button
+                            Command="{Binding DeleteReportCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            CornerRadius="8"
+                            HorizontalOptions="Fill"
+                            HeightRequest="10"
+                            WidthRequest="10">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static faw:FontAwesomeIcons.Trash}"/>
+                                </Button.ImageSource>
+                            </Button>
+
+                            <Button
+                            Command="{Binding ClearCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            CornerRadius="8"
+                            HorizontalOptions="Fill"
+                            HeightRequest="10"
+                            WidthRequest="10"
+                            IsVisible="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static faw:FontAwesomeIcons.Broom}"/>
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>-->
+                    </Grid>
                 </Frame>
 
-                <!-- Search Section -->
-                <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
-                    <VerticalStackLayout Spacing="12">
-                        <Label Text="🔍 Search Reports"
+                <VerticalStackLayout Grid.Row="1" Padding="16" Spacing="16">
+                    <!-- Search Section -->
+                    <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="🔍 Search Reports"
                            FontSize="18"
                            FontAttributes="Bold"
                            TextColor="#1E3A8A"/>
 
-                        <Entry Placeholder="Search Flight Number"
+                            <Entry Placeholder="Search Flight Number"
                            Text="{Binding SearchQuery}"
                            BackgroundColor="#F1F5F9"
                            ClearButtonVisibility="WhileEditing" IsVisible="False"/>
 
-                        <Grid ColumnDefinitions="*,*" ColumnSpacing="5">
-                            <DatePicker Date="{Binding StartDate}" BackgroundColor="#F1F5F9"/>
-                            <DatePicker Grid.Column="1" Date="{Binding EndDate}" BackgroundColor="#F1F5F9"/>
-                        </Grid>
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="5">
+                                <DatePicker Date="{Binding StartDate}" BackgroundColor="#F1F5F9"/>
+                                <DatePicker Grid.Column="1" Date="{Binding EndDate}" BackgroundColor="#F1F5F9"/>
+                            </Grid>
 
-                        <Grid ColumnDefinitions="*" ColumnSpacing="12">
-                            <!--<Button Grid.Column="0" Text="Search" Command="{Binding SearchReportsCommand}"
+                            <Grid ColumnDefinitions="*" ColumnSpacing="12">
+                                <!--<Button Grid.Column="0" Text="Search" Command="{Binding SearchReportsCommand}"
                                 BackgroundColor="#64748B" TextColor="White" CornerRadius="8"/>
                         <Button Grid.Column="1" Text="Filter" Command="{Binding FilterByDateCommand}"
                                 BackgroundColor="#64748B" TextColor="White" CornerRadius="8"/>-->
-                            <Button Grid.Column="2" Text="Combined" Command="{Binding CombinedSearchCommand}"
+                                <Button Grid.Column="2" Text="Search" Command="{Binding FilterByDateCommand}"
                                 BackgroundColor="#64748B" TextColor="White" CornerRadius="8"/>
-                        </Grid>
-                    </VerticalStackLayout>
-                </Frame>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
 
-                <!-- Reports List -->
-                <CollectionView ItemsSource="{Binding Reports}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BackgroundColor="White" CornerRadius="12" Padding="12" Margin="0,8" HasShadow="True">
-                                <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto" ColumnSpacing="5">
-                                    <Image Source="ba.png" WidthRequest="50" Margin="0,0,10,0"/>
-                                    <VerticalStackLayout Grid.Column="1" Spacing="4">
-                                        <Label Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}" FontAttributes="Bold" FontSize="16" TextColor="#1E3A8A"/>
-                                        <Label Text="{Binding FlightNumber, StringFormat='BA {0}'}" FontSize="14" TextColor="#64748B"/>
-                                        <Label Text="{Binding ReportByName, StringFormat='Report By: {0}'}" FontSize="12" TextColor="Gray"/>
-                                        <Label Text="{Binding SentDate, StringFormat='Sent On: {0}'}" FontSize="12" TextColor="Gray" IsVisible="{Binding IsSent}"/>
-                                    </VerticalStackLayout>
-                                    <Button Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" Command="{Binding BindingContext.EditReportCommand, Source={x:Reference ReportsPage}}" CommandParameter="{Binding .}">
-                                        <Button.ImageSource>
-                                            <FontImageSource 
+                    <!-- Reports List -->
+                    <CollectionView ItemsSource="{Binding Reports}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White" CornerRadius="12" Padding="12" Margin="0,8" HasShadow="True">
+                                    <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto" ColumnSpacing="5">
+                                        <Image Source="ba.png" WidthRequest="50" Margin="0,0,10,0"/>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                            <Label Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}" FontAttributes="Bold" FontSize="16" TextColor="#1E3A8A"/>
+                                            <Label Text="{Binding FlightNumber, StringFormat='BA {0}'}" FontSize="14" TextColor="#64748B"/>
+                                            <Label Text="{Binding ReportByName, StringFormat='Report By: {0}'}" FontSize="12" TextColor="Gray"/>
+                                            <Label Text="{Binding SentDate, StringFormat='Sent On: {0}'}" FontSize="12" TextColor="Gray" IsVisible="{Binding IsSent}"/>
+                                        </VerticalStackLayout>
+                                        <Button Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" Command="{Binding BindingContext.EditReportCommand, Source={x:Reference ReportsPage}}" CommandParameter="{Binding .}">
+                                            <Button.ImageSource>
+                                                <FontImageSource 
                                                         FontFamily="FontAwesomeSolid"
                                                         Glyph="{x:Static faw:FontAwesomeIcons.Pencil}"
                                                         Color="#64748B"/>
-                                        </Button.ImageSource>
-                                    </Button>
-                                    <Border Grid.Column="3" Stroke="#64748B" StrokeThickness="1" VerticalOptions="Fill" HeightRequest="30">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="4" />
-                                        </Border.StrokeShape>
-                                    </Border>
-                                    <Button Grid.Column="4" BackgroundColor="Transparent" IsEnabled="{Binding IsSent,Converter={StaticResource InverseBoolConverter}}" HeightRequest="30" Command="{Binding BindingContext.SendReportCommand, Source={x:Reference ReportsPage}}" CommandParameter="{Binding .}">
-                                        <Button.ImageSource>
-                                            <FontImageSource
+                                            </Button.ImageSource>
+                                        </Button>
+                                        <Border Grid.Column="3" Stroke="#64748B" StrokeThickness="1" VerticalOptions="Fill" HeightRequest="30">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="4" />
+                                            </Border.StrokeShape>
+                                        </Border>
+                                        <Button Grid.Column="4" BackgroundColor="Transparent" IsEnabled="{Binding IsSent,Converter={StaticResource InverseBoolConverter}}" HeightRequest="30" Command="{Binding BindingContext.SendReportCommand, Source={x:Reference ReportsPage}}" CommandParameter="{Binding .}">
+                                            <Button.ImageSource>
+                                                <FontImageSource
                                                 FontFamily="FontAwesomeSolid"
                                                 Glyph="{x:Static faw:FontAwesomeIcons.Copy}"
                                                 Color="#64748B"/>
-                                        </Button.ImageSource>
-                                    </Button>
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.EmptyView>
-                        <Label Text="No reports found." HorizontalOptions="Center" TextColor="Gray"/>
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                                            </Button.ImageSource>
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <Label Text="No reports found." HorizontalOptions="Center" TextColor="Gray"/>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
 
-            </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
         </ScrollView>
         <!-- Busy Overlay -->
         <Grid IsVisible="{Binding IsBusy}"

@@ -29,18 +29,19 @@ public class MySqlVoucherService
                 await connection.OpenAsync(token).ConfigureAwait(false);
 
                 var query = @"
-                SELECT 
+                SELECT
                     v.id, v.passenger_name, v.employee_id, v.airline_id, v.flight_id, 
                     v.start_time, v.end_time, v.date, v.status, v.is_selected, v.signature_id,
                     a.name AS airline_name, a.iata AS airline_iata,
                     e.name AS employee_name,
                     f.number AS flight_number,
+                    f.terminal_id,  -- Added this
                     s.Image AS signature_blob
                 FROM vouchers_tb v
                 LEFT JOIN airlines_tb a ON v.airline_id = a.id
                 LEFT JOIN guards_tb e ON v.employee_id = e.id
                 LEFT JOIN flight_numbers_tb f ON v.flight_id = f.id
-                LEFT JOIN signature_tb s ON v.signature_id = s.id";
+                LEFT JOIN signature_tb s ON v.signature_id = s.id;";
 
                 await using var command = new MySqlCommand(query, connection);
                 await using var reader = await command.ExecuteReaderAsync(token).ConfigureAwait(false) as MySqlDataReader;
@@ -64,7 +65,8 @@ public class MySqlVoucherService
                         Iata = GetSafeString(reader, 12, "--"),
                         Employee = GetSafeString(reader, 13, "Unassigned"),
                         Flight = GetSafeString(reader, 14, "N/A"),
-                        Signature = GetSafeString(reader, 15) 
+                        TerminalID = GetSafeInt(reader, 15), // Added this
+                        Signature = GetSafeString(reader, 16)
                     });
                 }
             }

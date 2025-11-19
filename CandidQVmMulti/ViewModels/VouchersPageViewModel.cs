@@ -238,7 +238,7 @@ public partial class VouchersPageViewModel : ObservableObject
         //    await Toast.Make($"Failed to save file: {result.Exception.Message}", ToastDuration.Long).Show();
         //}
 
-       await exportServices.ExportVouchersToPdfAsync(filtered.ToList());
+       await exportServices.ExportVouchersToPdfAsync(filtered.ToList(),2,"logo.jpg");
     }
 
 
