@@ -327,7 +327,7 @@ public partial class VouchersPageViewModel : ObservableObject
             // Apply signature to vouchers
             foreach (var voucher in Vouchers)
             {
-                if (voucher.Status == VoucherStatus.Signed) continue;
+                if (voucher.Status == VoucherStatus.Signed || !voucher.IsSelected) continue;
                 voucher.IsSigned = true;
                 voucher.SignatureID = signature;
                 voucher.Status = VoucherStatus.Signed;
