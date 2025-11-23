@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:CandidQVmMulti.Controls"
              BackgroundColor="#F8FAFC">
 
+    
     <OnPlatform x:TypeArguments="View">
         <On Platform="Android,iOS">
             <ScrollView Padding="20">
@@ -118,7 +119,7 @@
                     </Grid>
 
                     <!-- Separator Line -->
-                    <BoxView HeightRequest="1" BackgroundColor="#6B7280" HorizontalOptions="FillAndExpand" Margin="0,8,0,8"/>
+                    <BoxView HeightRequest="1" BackgroundColor="#6B7280" HorizontalOptions="Fill" Margin="0,8,0,8"/>
 
                     <!-- Dashboard Title -->
                     <StackLayout>

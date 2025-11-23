@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CandidQVmMulti.View.Windows.CustomTitleWindow"
+             Title="CustomTitleWindow">
+    <Window.TitleBar>
+        <TitleBar Title="Voucher Manager"
+                  Subtitle="V1.0.0"
+          BackgroundColor="White"
+          HeightRequest="48">
+            <TitleBar.LeadingContent>
+                <Grid WidthRequest="250" MaximumWidthRequest="250" Padding="10,10,10,10" BackgroundColor="#37c5de">
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Image Source="logo.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                        <Label Text="CANDID SECURITY" FontSize="15"  FontAttributes="Bold" TextColor="White" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </TitleBar.LeadingContent>
+            <!--<TitleBar.Content>
+                <SearchBar Placeholder="Search"
+                   MaximumWidthRequest="300"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center" />
+            </TitleBar.Content>-->
+            <TitleBar.TrailingContent>
+                <HorizontalStackLayout Spacing="10">
+
+                    <ImageButton HeightRequest="36"
+                     WidthRequest="36"
+                     BorderWidth="0"                     
+                     Background="Transparent">
+                        <ImageButton.Source>
+                            <FontImageSource Size="16"
+                                 Glyph="&#xEBD4;"
+                                 FontFamily="SegMDL2"
+                                 Color="Black"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                    <Image Source="profile_image.jpg"
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           Aspect="AspectFill">
+                        <Image.Clip>
+                            <EllipseGeometry Center="15,15" RadiusX="15" RadiusY="15"/>
+                        </Image.Clip>
+                    </Image>
+
+                    <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                        <Label Text="Hello,"/>
+                        <Label Text="Admin"/>
+                    </HorizontalStackLayout>
+
+                    <ImageButton HeightRequest="36"
+                     WidthRequest="36"
+                     BorderWidth="0"                     
+                     Background="Transparent">
+                        <ImageButton.Source>
+                            <FontImageSource Size="16"
+                                 Glyph="&#xE115;"
+                                 FontFamily="SegMDL2"
+                                 Color="Black"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                </HorizontalStackLayout>
+            </TitleBar.TrailingContent>
+        </TitleBar>
+    </Window.TitleBar>
+</Window>

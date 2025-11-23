@@ -10,4 +10,5 @@ public partial class Employee : ObservableObject
     [ObservableProperty] private string position;
     [ObservableProperty] private long addedDate;
     [ObservableProperty] private bool isActive;
+    [ObservableProperty] private int voucherCount = 0;
 }

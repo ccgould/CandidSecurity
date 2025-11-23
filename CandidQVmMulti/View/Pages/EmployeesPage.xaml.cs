@@ -7,6 +7,9 @@ public partial class EmployeesPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
+#if WINDOWS
+        EmployeesDataGrid2.SearchController.AllowFiltering = true;
+#endif
     }
 
     protected override async void OnAppearing()
@@ -14,5 +17,12 @@ public partial class EmployeesPage : ContentPage
         base.OnAppearing();
         if (ViewModel.PreventRefresh) return;
         await ViewModel.LoadData();
+    }
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+#if WINDOWS
+        EmployeesDataGrid2.SearchController.Search(e.NewTextValue);
+#endif
     }
 }

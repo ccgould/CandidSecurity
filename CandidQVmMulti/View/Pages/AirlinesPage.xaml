@@ -10,6 +10,8 @@
              xmlns:viewmodels="clr-namespace:CandidQVmMulti.ViewModels"
              xmlns:models="clr-namespace:CandidQVmMulti.Models"
              xmlns:converters="clr-namespace:CandidQVmMulti.View.Converters"
+             xmlns:pager="clr-namespace:Syncfusion.Maui.DataGrid.DataPager;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CandidQVmMulti.View.Pages.AirlinesPage"
              BackgroundColor="#F8FAFC"
              x:Name="AirlinesPagee">
@@ -238,207 +240,130 @@
                 <Grid.Resources>
                     <converters:TickToDateConverter x:Key="tickToDateConveter"/>
                     <converters:PrefixMultiConverter x:Key="PrefixMultiConverter"/>
+                    <toolkit:IsNotNullConverter x:Key="IsNullConverter" />
+                    <converters:TickToDateConverter x:Key="TickToDateConverter"/>
                 </Grid.Resources>
                 <ScrollView>
-                    <VerticalStackLayout Padding="40,32,40,32" Spacing="24">
-                        <!-- Header -->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Voucher Management System"
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       FontSize="22"
-                       Grid.Column="0"/>
-                            <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="16">
-                                <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
-                                <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
+                    <Grid RowDefinitions="Auto,Auto,*">
+                        <!-- Page Title -->
+                        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="40,32,40,32">
+                            <StackLayout>
+                                <Label Text="Airline Management" FontAttributes="Bold" FontSize="36" TextColor="Black"/>
+                                <Label Text="Manage airlines and their flight numbers" FontSize="18" TextColor="#6B7280"/>
                             </StackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Spacing="5" HorizontalOptions="End">
+                                <Button Text="Add Airline" BackgroundColor="#37c5de" CornerRadius="0" HeightRequest="30" WidthRequest="155" FontAttributes="Bold" Command="{Binding AddAirlineCommand}">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="&#xf234;"
+                                            FontFamily="FASolid"
+                                            Size="14"
+                                            />
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button Text="Add Flight Number" BackgroundColor="#7b8fa7" CornerRadius="0" HeightRequest="30" WidthRequest="200" FontAttributes="Bold" Command="{Binding AddEmployeeCommand}" IsVisible="{Binding SelectedAirline, Converter={StaticResource IsNullConverter}}">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="&#xf234;"
+                                            FontFamily="FASolid"
+                                            Size="14"
+                                            />
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button Text="Edit" BackgroundColor="White" CornerRadius="0" HeightRequest="30" WidthRequest="150" BorderColor="Grey" BorderWidth="1" FontAttributes="Bold" TextColor="#6B7280" Command="{Binding EditAirlineCommand}" IsVisible="{Binding SelectedAirline, Converter={StaticResource IsNullConverter}}">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="&#xf044;"
+                                            FontFamily="FASolid"
+                                            Size="14"
+                                            Color="#6B7280"/>
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button Text="Remove" BackgroundColor="White" CornerRadius="0" HeightRequest="30" WidthRequest="150" BorderColor="Grey" BorderWidth="1" FontAttributes="Bold" TextColor="#6B7280" Command="{Binding DeleteAirlineCommand}" IsVisible="{Binding SelectedAirline, Converter={StaticResource IsNullConverter}}">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="&#xf55a;"
+                                            FontFamily="FASolid"
+                                            Size="14"
+                                            Color="#6B7280"/>
+                                    </Button.ImageSource>
+                                </Button>
+                            </HorizontalStackLayout>
                         </Grid>
 
-                        <!-- Page Title -->
-                        <StackLayout>
-                            <Label Text="Airline Management" FontAttributes="Bold" FontSize="36" TextColor="Black"/>
-                            <Label Text="Manage airlines and their flight numbers" FontSize="18" TextColor="#6B7280"/>
-                        </StackLayout>
+                        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" ColumnSpacing="5" Margin="20,0">
+                            <Label Text="Select an airline:" VerticalOptions="Center"/>
+                            <syncfusionInputs:SfComboBox ItemsSource="{Binding Airlines}"
+                                                         SelectedItem="{Binding SelectedAirline}"
+                                                         DisplayMemberPath="Name"
+                                                         Grid.Column="1"
+                                                         Placeholder="Select an airline from the list."/>
+                        </Grid>
 
-                        <!-- Search Airlines Card -->
-                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
-                            <Grid ColumnSpacing="16">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Label Text="Search Airlines" FontAttributes="Bold" FontSize="20" TextColor="Black" Grid.Row="0"/>
-                                <SearchBar
-                        Placeholder="Search airlines by name or code..."
-                        TextColor="Black"
-                        PlaceholderColor="#6B7280"
-                        BackgroundColor="White"
-                        Text="{Binding SearchText, Mode=TwoWay}"
-                        SearchCommand="{Binding PerformSearchCommand}"
-                        Grid.Row="1"/>
-                                <syncfusionButtons:SfButton
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        Text="Add Airline"
-                        ShowIcon="True"
-                        ImageSource="plus_white.png"
-                        Background="#232323"
-                        TextColor="White"
-                        Padding="16,0"
-                        CornerRadius="8"
-                        Command="{Binding AddAirlineCommand}" />
-                            </Grid>
-                        </Border>
-
-                        <!-- Airlines List Card -->
-                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
-                            <StackLayout Spacing="8">
-                                <Label Text="{Binding Airlines.Count, StringFormat='Airlines ({0})'}" FontAttributes="Bold" FontSize="20" TextColor="Black"/>
-                                <Label Text="List of airlines and their flight numbers" FontSize="16" TextColor="#6B7280"/>
-
-                                <syncfusionAccordion:SfAccordion BindableLayout.ItemsSource="{Binding FilteredAirlines}" x:Name="accordion">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <syncfusionAccordion:AccordionItem>
-                                                <syncfusionAccordion:AccordionItem.Header>
-                                                    <Grid  HeightRequest="80" ColumnDefinitions="Auto,*,Auto" RowDefinitions="*,*" Padding="5">
-                                                        <Image Source="plane.png" 
-                                                           Grid.Column="0" 
-                                                           Grid.RowSpan="2" 
-                                                           HeightRequest="20" 
-                                                           WidthRequest="20"
-                                                           Margin="20"/>
-                                                        <Label
-                                                                CharacterSpacing="0.25"
-                                                                FontAttributes="Bold"
-                                                                FontSize="{OnPlatform iOS=18, Android=14, WinUI=20}"
-                                                                Grid.Column="1"
-                                                                Grid.Row="0"
-                                                                        HorizontalTextAlignment="Start"
-                                                                        VerticalTextAlignment="Center"
-                                                                TextColor="Black">
-                                                            <Label.Text>
-                                                                <MultiBinding Converter="{StaticResource PrefixMultiConverter}">
-                                                                    <Binding Path="Terminal" />
-                                                                    <Binding Path="Name" />
-                                                                </MultiBinding>
-                                                            </Label.Text>
-                                                        </Label>
-
-                                                        <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                                                            <Border StrokeShape="RoundRectangle 15" WidthRequest="50">
-                                                                <Label Text="{Binding Iata}" Padding="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
-                                                            </Border>
-                                                            <Label Text="{Binding FlightNumbers.Count, StringFormat='({0}) Flight Numbers'}" FontSize="13" TextColor="Black"  VerticalTextAlignment="Center"/>
-                                                        </HorizontalStackLayout>
-
-                                                        <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Grid.Column="2">
-                                                            <syncfusionButtons:SfButton
-                                                                Text="Add Flight"
-                                                                Background="White"
-                                                                TextColor="Black"
-                                                                Padding="16,0"
-                                                                ShowIcon="True"
-                                                                ImageSource="plus.png"
-                                                                CornerRadius="8"
-                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=AddFlightCommand}"
-                                                                CommandParameter="{Binding .}"/>
-                                                            <syncfusionButtons:SfButton
-                                                                ImageSource="edit.png"
-                                                                ShowIcon="True"
-                                                                ImageAlignment="Default"
-                                                                Background="#F3F4F6"
-                                                                TextColor="Black"
-                                                                HeightRequest="28"
-                                                                WidthRequest="28"
-                                                                Padding="2"
-                                                                CornerRadius="6"
-                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=EditAirlineCommand}"
-                                                                CommandParameter="{Binding .}" />
-                                                            <syncfusionButtons:SfButton
-                                                                ImageSource="trash.png"
-                                                                ImageAlignment="Default"
-                                                                ShowIcon="True"
-                                                                Background="#F3F4F6"
-                                                                TextColor="Black"
-                                                                HeightRequest="28"
-                                                                WidthRequest="28"
-                                                                Padding="2"
-                                                                CornerRadius="6"
-                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=DeleteAirlineCommand}"
-                                                                CommandParameter="{Binding .}" />
-                                                        </HorizontalStackLayout>
-                                                    </Grid>
-                                                </syncfusionAccordion:AccordionItem.Header>
-                                                <syncfusionAccordion:AccordionItem.Content>
-                                                    <ListView ItemsSource="{Binding FlightNumbers}">
-                                                        <ListView.ItemTemplate>
-                                                            <DataTemplate x:DataType="models:FlightNumber">
-                                                                <ViewCell>
-                                                                    <Grid Padding="10" RowSpacing="6">
-                                                                        <Grid.RowDefinitions>
-                                                                            <RowDefinition Height="Auto"/>
-                                                                            <RowDefinition Height="Auto"/>
-                                                                        </Grid.RowDefinitions>
-
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="*"/>
-                                                                            <ColumnDefinition Width="Auto"/>
-                                                                        </Grid.ColumnDefinitions>
-
-                                                                        <!-- Flight Number -->
-                                                                        <Label 
-                                                                    Text="{Binding Number}" 
-                                                                    FontAttributes="Bold" 
-                                                                    FontSize="16" 
-                                                                    Grid.Row="0" Grid.Column="0"
-                                                                    TextColor="Black"/>
-
-                                                                        <!-- Date Added -->
-                                                                        <Label 
-                                                                    Text="{Binding AddedDate, Converter={StaticResource tickToDateConveter}}" 
-                                                                    FontSize="14" 
-                                                                    TextColor="Gray" 
-                                                                    Grid.Row="1" Grid.Column="0" />
-
-                                                                        <!-- Delete Button -->
-                                                                        <Button
-                                                                    ImageSource="trash.png"
-                                                                    BackgroundColor="#F3F4F6"
-                                                                    TextColor="Black"
-                                                                    HeightRequest="28"
-                                                                    WidthRequest="28"
-                                                                    Padding="2"
-                                                                    CornerRadius="6"
-                                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=DeleteFlightCommand}"
-                                                                    CommandParameter="{Binding .}"
-                                                                    Grid.RowSpan="2"
-                                                                    Grid.Column="1"
-                                                                    VerticalOptions="Center" />
-                                                                    </Grid>
-
-                                                                </ViewCell>
+                        <Grid RowDefinitions="*,Auto" Grid.Row="2" >
+                            <syncfusion:SfDataGrid 
+                                               ItemsSource="{Binding Source={x:Reference dataPager}, Path=PagedSource}" 
+                                               EmptyView="No records"
+                                               AutoGenerateColumnsMode="None"
+                                               ColumnWidthMode="Fill"
+                                               SelectedRow="{Binding SelectedFlightNumber}"
+                                               SelectionMode="Single"
+                                               NavigationMode="Row"
+                                               SelectionUnit="Row"
+                                               >
+                                <syncfusion:SfDataGrid.RecordContextMenu>
+                                    <syncfusion:MenuItemCollection>
+                                        <syncfusion:MenuItem Text="Copy"/>
+                                        <syncfusion:MenuItem Text="Paste"/>
+                                        <syncfusion:MenuItem Text="Cut"/>
+                                        <syncfusion:MenuItem Text="Delete"/>
+                                    </syncfusion:MenuItemCollection>
+                                </syncfusion:SfDataGrid.RecordContextMenu>
+                                <syncfusion:SfDataGrid.DefaultStyle>
+                                    <syncfusion:DataGridStyle SelectionBackground="#e7fbff" HeaderRowFontAttributes="Bold"/>
+                                </syncfusion:SfDataGrid.DefaultStyle>
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:DataGridTextColumn HeaderText="Flight Number" MappingName="Number"/>
+                                    <syncfusion:DataGridTextColumn HeaderText="Date Added" MappingName="AddedDate" DisplayBinding="{Binding Path=AddedDate,Converter={StaticResource TickToDateConverter}}"/>
+                                    <syncfusion:DataGridTemplateColumn HeaderText="Actions" ColumnWidthMode="LastColumnFill" ShowToolTip="True" ToolTipProperties.Text="Delete">
+                                                        <syncfusion:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                                    <syncfusionButtons:SfButton
+                                                                                            ShowIcon="True"
+                                                                                            ImageAlignment="Default"
+                                                                                            Background="#F3F4F6"
+                                                                                            TextColor="Red"
+                                                                                            HeightRequest="32"
+                                                                                            WidthRequest="32"
+                                                                                            Padding="2"
+                                                                                            CornerRadius="6"
+                                                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirlinesPageViewModel}}, Path=DeleteFlightCommand}"
+                                                                                            CommandParameter="{Binding .}">
+                                                        <syncfusionButtons:SfButton.ImageSource>
+                                                            <FontImageSource Glyph="&#xf2ed;"
+                                                                            FontFamily="FASolid"
+                                                                            Size="14"
+                                                                            Color="#6B7280"/>
+                                                        </syncfusionButtons:SfButton.ImageSource>
+                                                    </syncfusionButtons:SfButton>
+                                                                </HorizontalStackLayout>
                                                             </DataTemplate>
-                                                        </ListView.ItemTemplate>
-                                                    </ListView>
-                                                </syncfusionAccordion:AccordionItem.Content>
-                                            </syncfusionAccordion:AccordionItem>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </syncfusionAccordion:SfAccordion>
-
-
-                            </StackLayout>
-                        </Border>
-                    </VerticalStackLayout>
+                                                        </syncfusion:DataGridTemplateColumn.CellTemplate>
+                                                    </syncfusion:DataGridTemplateColumn>
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+                            <pager:SfDataPager x:Name ="dataPager"
+                                               Grid.Row="1"
+                                               PageSize="15" 
+                                               NumericButtonCount="10"
+                                               AutoEllipsisMode="After"
+                                               ButtonShape="Rectangle"
+                                               HorizontalOptions="Center"
+                                               Source="{Binding SelectedAirline.FlightNumbers}">
+                            </pager:SfDataPager>
+                        </Grid>
+                    </Grid>
                 </ScrollView>
                 <!-- Busy Overlay -->
                 <Grid IsVisible="{Binding IsBusy}"

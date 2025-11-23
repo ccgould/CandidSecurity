@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CandidPortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.59.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd8cb666c97d86fac29eca2bd3c7cfd9e0f116df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c011f33b6394ec6c736aa19e2c9002ecf9af8bbf")]
 [assembly: System.Reflection.AssemblyProductAttribute("CandidPortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CandidPortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.59.0")]

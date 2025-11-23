@@ -32,7 +32,10 @@ public class MySqlEmployeeService
                 using var connection = new MySqlConnection(_connectionString);
                 await connection.OpenAsync();
 
-                var query = "SELECT id, name, position, addDate, isActive FROM guards_tb";
+                var query = @"SELECT g.id, g.name, g.position, g.addDate, g.isActive,
+                                 (SELECT COUNT(*) FROM vouchers_tb v WHERE v.employee_id = g.id) AS VoucherCount
+                          FROM guards_tb g";
+
                 using var command = new MySqlCommand(query, connection);
                 using var reader = await command.ExecuteReaderAsync();
 
@@ -45,6 +48,7 @@ public class MySqlEmployeeService
                         Position = reader.GetString(2),
                         AddedDate = reader.GetInt64(3),
                         IsActive = reader.GetBoolean(4),
+                        VoucherCount = reader.GetInt32(5) // Read voucher count
                     });
                 }
 

@@ -21,6 +21,7 @@ public partial class AirlinesPageViewModel : ObservableObject
     private bool _isLoading;
     [ObservableProperty] private bool isBusy;
     private Airline deletedFlightAirline;
+    [ObservableProperty] private Airline selectedAirline;
     private FlightNumber deletedFlight;
     private readonly MySqlAirlinesService service;
     [ObservableProperty] private ObservableCollection<Airline> filteredAirlines;
@@ -108,38 +109,59 @@ public partial class AirlinesPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task EditAirline(Airline airline)
+    private async Task EditAirline()
     {
-        PreventRefresh = true;
-        var popup = new EditAirlineEditor(airline);
-        IPopupResult<Airline> result = await Shell.Current.CurrentPage.ShowPopupAsync<Airline>(popup);
-
-        if (!result.WasDismissedByTappingOutsideOfPopup)
+        if (SelectedAirline is not null)
         {
-            if (result.Result == null)
-                return;
+            PreventRefresh = true;
+            var popup = new EditAirlineEditor(SelectedAirline);
+            IPopupResult<Airline> result = await Shell.Current.CurrentPage.ShowPopupAsync<Airline>(popup);
 
-            airline.Name = result.Result.Name;
-            airline.Iata = result.Result.Iata;
+            if (!result.WasDismissedByTappingOutsideOfPopup)
+            {
+                if (result.Result == null)
+                    return;
+
+                SelectedAirline.Name = result.Result.Name;
+                SelectedAirline.Iata = result.Result.Iata;
 
 
-            await service.UpdateAsync(airline);
+                await service.UpdateAsync(SelectedAirline);
 
-            // Show toast after undo
-            var toast = Toast.Make($"Airline {airline.Name} was updated in the database!", ToastDuration.Short, 14);
+                // Show toast after undo
+                var toast = Toast.Make($"Airline {SelectedAirline.Name} was updated in the database!", ToastDuration.Short, 14);
+                await toast.Show();
+                PreventRefresh = false;
+            }
+        }
+        else
+        {
+            var toast = Toast.Make("Please select and airline to edit.");
             await toast.Show();
-            PreventRefresh = false;
         }
     }
 
     [RelayCommand]
-    private async Task DeleteAirline(Airline airline)
+    private async Task DeleteAirline()
     {
-        if (airline != null)
-            Airlines.Remove(airline);
-        OnPropertyChanged(nameof(AirlinesCount));
+        bool confirm = await Shell.Current.DisplayAlert("Confirm Delete",
+    $"Are you sure you want to delete {SelectedAirline.Name}?",
+    "Yes", "No");
 
-        await service.DeleteAsync(airline.Id);
+        if (confirm)
+        {
+            if (SelectedAirline != null)
+            {
+                Airlines.Remove(SelectedAirline);
+                OnPropertyChanged(nameof(AirlinesCount));
+                await service.DeleteAsync(SelectedAirline.Id);
+            }
+            else
+            {
+                var toast = Toast.Make("Please select and airline to delete.");
+                await toast.Show();
+            }
+        }
     }
 
     [RelayCommand]
@@ -171,27 +193,33 @@ public partial class AirlinesPageViewModel : ObservableObject
     [RelayCommand]
     private async Task DeleteFlight(FlightNumber flight)
     {
-        if (flight != null)
+        bool confirm = await Shell.Current.DisplayAlert("Confirm Delete",
+    $"Are you sure you want to delete {SelectedAirline.Iata} {flight.Number}?",
+    "Yes", "No");
+
+        if (confirm)
         {
-            foreach (var airline in Airlines)
+            if (flight != null)
             {
-                if (airline.FlightNumbers.Contains(flight))
+                foreach (var airline in Airlines)
                 {
-                    airline.FlightNumbers.Remove(flight);
-                    deletedFlightAirline = airline;
-                    deletedFlight = flight;
-                    await MySqlFlightNumberService.DeleteFlightNumberAsync(flight.Id);
-                    break;
+                    if (airline.FlightNumbers.Contains(flight))
+                    {
+                        airline.FlightNumbers.Remove(flight);
+                        deletedFlightAirline = airline;
+                        deletedFlight = flight;
+                        await MySqlFlightNumberService.DeleteFlightNumberAsync(flight.Id);
+                        break;
+                    }
                 }
             }
+
+            await ShowUndoSnackbarAsync(() =>
+            {
+                deletedFlightAirline.FlightNumbers.Add(deletedFlight); // Restore it
+                _ = MySqlFlightNumberService.AddFlightNumberAsync(deletedFlight); // Re-add to DB
+            });
         }
-
-        await ShowUndoSnackbarAsync(() =>
-        {
-            deletedFlightAirline.FlightNumbers.Add(deletedFlight); // Restore it
-            _ = MySqlFlightNumberService.AddFlightNumberAsync(deletedFlight); // Re-add to DB
-        });
-
     }
 
     public async Task ShowUndoSnackbarAsync(Action undoAction)

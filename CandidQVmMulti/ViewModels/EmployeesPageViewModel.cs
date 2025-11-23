@@ -1,3 +1,4 @@
+using CandidQVmMulti.Helpers;
 using CandidQVmMulti.Models;
 using CandidQVmMulti.Services;
 using CandidQVmMulti.View.Popups;
@@ -21,6 +22,7 @@ public partial class EmployeesPageViewModel : ObservableObject
 
     private bool _isLoading;
     private readonly MySqlEmployeeService service;
+    [ObservableProperty] private Employee selectedEmployee;
 
     public int EmployeesCount => Employees?.Count ?? 0;
 
@@ -129,21 +131,32 @@ public partial class EmployeesPageViewModel : ObservableObject
             // Show toast after undo
             var toast = Toast.Make($"Employee {employee.Name} was added to the database!", ToastDuration.Short, 14);
             await toast.Show();
-
-            Employees.Add(employee);
             OnPropertyChanged(nameof(EmployeesCount));
             await service.AddEmployeeAsync(employee);
+            Employees.Add(employee);
+
+            Reorder();
+
         }
+
         PreventRefresh = false;
     }
 
+    private void Reorder()
+    {
+        var sorted = Employees.OrderBy(x => x.Name).ToList();
+        Employees.Clear();
+        Employees = new ObservableCollection<Employee>(sorted);
+        OnPropertyChanged(nameof(Employees));
+    }
+
     [RelayCommand]
-    private async Task EditEmployee(Employee employee)
+    private async Task EditEmployee()
     {
         PreventRefresh = true;
-        if (employee != null)
+        if (SelectedEmployee is not null)
         {
-            var popup = new EmployeeEditor(employee);
+            var popup = new EmployeeEditor(SelectedEmployee);
             IPopupResult<EmployeeResult> result = await Shell.Current.CurrentPage.ShowPopupAsync<EmployeeResult>(popup);
 
             if (!result.WasDismissedByTappingOutsideOfPopup)
@@ -151,14 +164,14 @@ public partial class EmployeesPageViewModel : ObservableObject
                 if (result.Result == null)
                     return;
 
-                employee.Name = result.Result.Name;
-                employee.Position = result.Result.Position;             
-                                
-                
-                await service.UpdateEmployeeAsync(employee);
+                SelectedEmployee.Name = result.Result.Name;
+                SelectedEmployee.Position = result.Result.Position;
+
+
+                await service.UpdateEmployeeAsync(SelectedEmployee);
 
                 // Show toast after undo
-                var toast = Toast.Make($"Employee {employee.Name} was updated in the database!", ToastDuration.Short, 14);
+                var toast = Toast.Make($"Employee {SelectedEmployee.Name} was updated in the database!", ToastDuration.Short, 14);
                 await toast.Show();
             }
         }
@@ -166,13 +179,58 @@ public partial class EmployeesPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task DeleteEmployee(Employee employee)
+    private async Task DeleteEmployee()
     {
-        // Dummy delete logic
-        if (employee != null)
-            Employees.Remove(employee);
-        OnPropertyChanged(nameof(EmployeesCount));
-        await service.DeleteEmployeeAsync(employee.Id);
 
+        bool confirm = await Shell.Current.DisplayAlert("Confirm Delete",
+            "Are you sure you want to delete this item?",
+            "Yes", "No");
+
+        if (confirm)
+        {
+            await DeleteItem();
+            ShowUndoSnackbar();
+        }
     }
+
+
+    private Employee _lastDeletedItem;
+
+    private async Task DeleteItem()
+    {
+        _lastDeletedItem = SelectedEmployee;
+        if (SelectedEmployee is not null)
+        {
+            OnPropertyChanged(nameof(EmployeesCount));
+            await service.DeleteEmployeeAsync(SelectedEmployee.Id);
+            Employees.Remove(SelectedEmployee);
+
+        }
+    }
+
+
+    async void ShowUndoSnackbar()
+    {
+        var snackbar = Snackbar.Make(
+            $"Employee {_lastDeletedItem.Name} was deleted. would you like to undo?",
+            async () => await UndoDelete(),
+            "Undo",
+            TimeSpan.FromSeconds(5)
+        );
+
+        await snackbar.Show();
+    }
+
+    async Task UndoDelete()
+    {
+        if (_lastDeletedItem != null)
+        {
+            await service.AddEmployeeAsync(_lastDeletedItem);
+
+            Employees.Add(_lastDeletedItem);
+            _lastDeletedItem = null;
+            Reorder();
+        }
+    }
+
 }

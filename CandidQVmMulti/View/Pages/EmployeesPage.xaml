@@ -4,6 +4,8 @@
              xmlns:syncfusionInputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:syncfusionButtons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:tabView="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:pager="clr-namespace:Syncfusion.Maui.DataGrid.DataPager;assembly=Syncfusion.Maui.DataGrid"
              xmlns:converters="clr-namespace:CandidQVmMulti.View.Converters"
              x:Class="CandidQVmMulti.View.Pages.EmployeesPage"
              BackgroundColor="#F8FAFC">
@@ -149,31 +151,46 @@
         <On Platform="WinUI">
             <Grid>
                 <ScrollView>
-                    <VerticalStackLayout Padding="40,32,40,32" Spacing="24">
-                        <!-- Header -->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Voucher Management System"
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       FontSize="22"
-                       Grid.Column="0"/>
-                            <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="16">
-                                <Image Source="bell_icon.png" HeightRequest="24" WidthRequest="24"/>
-                                <Image Source="settings_icon.png" HeightRequest="24" WidthRequest="24"/>
-                            </StackLayout>
-                        </Grid>
+                    <Grid RowDefinitions="Auto,*">
 
                         <!-- Page Title -->
-                        <StackLayout>
-                            <Label Text="Employee Management" FontAttributes="Bold" FontSize="36" TextColor="Black"/>
-                            <Label Text="Manage wheelchair assistance staff" FontSize="18" TextColor="#6B7280"/>
-                        </StackLayout>
+                        <Grid Grid.Row="0" ColumnDefinitions="*,*" Padding="40,32,40,32">
+                            <StackLayout>
+                                <Label Text="Employee Management" FontAttributes="Bold" FontSize="36" TextColor="Black"/>
+                                <Label Text="Manage wheelchair assistance staff" FontSize="14" TextColor="#6B7280"/>
+                            </StackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Spacing="5" HorizontalOptions="End">
+                                <Button Text="Add Employee" BackgroundColor="#37c5de" CornerRadius="0" HeightRequest="30" WidthRequest="155" FontAttributes="Bold" Command="{Binding AddEmployeeCommand}">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="&#xf234;"
+                                            FontFamily="FASolid"
+                                            Size="14"
+                                            />
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button Text="Edit" BackgroundColor="White" CornerRadius="0" HeightRequest="30" WidthRequest="150" BorderColor="Grey" BorderWidth="1" FontAttributes="Bold" TextColor="#6B7280" Command="{Binding EditEmployeeCommand}">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="&#xf044;"
+                                            FontFamily="FASolid"
+                                            Size="14"
+                                            Color="#6B7280"/>
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button Text="Remove" BackgroundColor="White" CornerRadius="0" HeightRequest="30" WidthRequest="150" BorderColor="Grey" BorderWidth="1" FontAttributes="Bold" TextColor="#6B7280" Command="{Binding DeleteEmployeeCommand}">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            Glyph="&#xf55a;"
+                                            FontFamily="FASolid"
+                                            Size="14"
+                                            Color="#6B7280"/>
+                                    </Button.ImageSource>
+                                </Button>
+                            </HorizontalStackLayout>
+                        </Grid>
 
-                        <!-- Search Employees Card -->
+                        <!-- Search Employees Card --><!--
                         <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
                             <Grid ColumnSpacing="16">
                                 <Grid.ColumnDefinitions>
@@ -204,64 +221,121 @@
                         CornerRadius="8"
                         Command="{Binding AddEmployeeCommand}" />
                             </Grid>
-                        </Border>
+                        </Border>-->
 
-                        <!-- Employees List Card -->
-                        <Border Background="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1" Padding="24" StrokeShape="RoundRectangle 12">
-                            <StackLayout Spacing="8">
-                                <Label Text="{Binding EmployeesCount, StringFormat='Employees ({0})'}" FontAttributes="Bold" FontSize="20" TextColor="Black"/>
-                                <Label Text="List of wheelchair assistance staff" FontSize="16" TextColor="#6B7280"/>
-                                <syncfusion:SfDataGrid
-                        AutoGenerateColumnsMode="None"
-                        x:Name="EmployeesDataGrid2"
-                        ItemsSource="{Binding Employees}"
-                        GridLinesVisibility="Horizontal"
-                        HeaderGridLinesVisibility="Horizontal"
-                        ColumnWidthMode="Fill"
-                        RowHeight="48"
-                        SelectionMode="None"
-                        Margin="0,8,0,0">
-                                    <syncfusion:SfDataGrid.Columns>
-                                        <syncfusion:DataGridTextColumn HeaderText="Name" MappingName="Name"/>
-                                        <syncfusion:DataGridTextColumn HeaderText="Position" MappingName="Position"/>
-                                        <syncfusion:DataGridTextColumn HeaderText="Added" MappingName="AddedDate" DisplayBinding="{Binding Path=AddedDate,Converter={StaticResource tickToDateConveter}}"/>
-                                        <syncfusion:DataGridTemplateColumn HeaderText="Actions" ColumnWidthMode="LastColumnFill">
-                                            <syncfusion:DataGridTemplateColumn.CellTemplate>
+                        <tabView:SfTabView Grid.Row="1" x:Name="tabView" TabWidthMode="SizeToContent">
+                            <!-- Define the items (tabs) of the SfTabView -->
+                            <tabView:SfTabView.Items>
+                                <!-- First tab item with header "Call" -->
+                                <tabView:SfTabItem Header="Employees">
+                                    <!-- Content of the "Call" tab: a Grid with a red background -->
+                                    <tabView:SfTabItem.Content>
+                                        <Grid RowDefinitions="Auto,*,Auto">
+                                            <pager:SfDataPager x:Name ="dataPager"
+                                               Grid.Row="2"
+                                               PageSize="15" 
+                                               NumericButtonCount="10"
+                                               AutoEllipsisMode="After"
+                                               ButtonShape="Rectangle"
+                                               HorizontalOptions="Center"
+                                               Source="{Binding Employees}">
+                                            </pager:SfDataPager>
+                                            <SearchBar x:Name="searchBar1" Grid.Row="0" MaximumWidthRequest="500" HorizontalOptions="End" WidthRequest="500" Margin="0,0,20,0" TextChanged="SearchBar_TextChanged"/>
+                                            <!-- Employees List Card -->
+                                            <syncfusion:SfDataGrid
+                                                            SelectedRow="{Binding SelectedEmployee}"
+                                                            Grid.Row="1"
+                                                            AutoGenerateColumnsMode="None"
+                                                            x:Name="EmployeesDataGrid2"
+                                                            ItemsSource="{Binding Source={x:Reference dataPager}, Path=PagedSource }"
+                                                            GridLinesVisibility="Horizontal"
+                                                            HeaderGridLinesVisibility="Horizontal"
+                                                            ColumnWidthMode="Fill"
+                                                            RowHeight="48"
+                                                            SelectionMode="Single"
+                                                            NavigationMode="Row"
+                                                            SortingMode="Single"
+                                                            Margin="0,8,0,0">
+                                                <syncfusion:SfDataGrid.Columns>
+                                                    <syncfusion:DataGridTextColumn HeaderText="Name" MappingName="Name"/>
+                                                    <syncfusion:DataGridTextColumn HeaderText="Position" MappingName="Position"/>
+                                                    <syncfusion:DataGridTextColumn HeaderText="Added" MappingName="AddedDate" DisplayBinding="{Binding Path=AddedDate,Converter={StaticResource tickToDateConveter}}"/>
+                                                    <syncfusion:DataGridTextColumn HeaderText="Total Wheelchairs" MappingName="VoucherCount"/>
+                                                    <!--<syncfusion:DataGridTemplateColumn HeaderText="Actions" ColumnWidthMode="LastColumnFill">
+                                                        <syncfusion:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                                                    <syncfusionButtons:SfButton
+                                                                                            ImageSource="edit.png"
+                                                                                            ShowIcon="True"
+                                                                                            ImageAlignment="Default"
+                                                                                            Background="#F3F4F6"
+                                                                                            TextColor="Black"
+                                                                                            HeightRequest="32"
+                                                                                            WidthRequest="32"
+                                                                                            Padding="2"
+                                                                                            CornerRadius="6"
+                                                                                            Command="{Binding Path=BindingContext.EditEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid2}}"
+                                                                                            CommandParameter="{Binding .}" />
+                                                                    <syncfusionButtons:SfButton
+                                                                                            ImageSource="trash.png"
+                                                                                            ShowIcon="True"
+                                                                                            ImageAlignment="Default"
+                                                                                            Background="#F3F4F6"
+                                                                                            TextColor="Red"
+                                                                                            HeightRequest="32"
+                                                                                            WidthRequest="32"
+                                                                                            Padding="2"
+                                                                                            CornerRadius="6"
+                                                                                            Command="{Binding Path=BindingContext.DeleteEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid2}}"
+                                                                                            CommandParameter="{Binding .}" />
+                                                                </HorizontalStackLayout>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTemplateColumn.CellTemplate>
+                                                    </syncfusion:DataGridTemplateColumn>-->
+                                                </syncfusion:SfDataGrid.Columns>
+                                                <syncfusion:SfDataGrid.DefaultStyle>
+                                                    <syncfusion:DataGridStyle SelectionBackground="#e7fbff" HeaderRowFontAttributes="Bold"/>
+                                                </syncfusion:SfDataGrid.DefaultStyle>
+                                            </syncfusion:SfDataGrid>
+                                        </Grid>
+                                    </tabView:SfTabItem.Content>
+                                </tabView:SfTabItem>
+                                <!-- Second tab item with header "Favorites" -->
+                                <tabView:SfTabItem Header="Roles">
+                                    <tabView:SfTabItem.Content>
+                                        <!-- Content of the "Favorites" tab: a ListView with predefined items -->
+                                        <ListView RowHeight="50">
+                                            <ListView.ItemsSource>
+                                                <!-- Define an array of strings as the data source for the ListView -->
+                                                <x:Array Type="{x:Type x:String}">
+                                                    <x:String>James</x:String>
+                                                    <x:String>Richard</x:String>
+                                                    <x:String>Michael</x:String>
+                                                    <x:String>Alex</x:String>
+                                                    <x:String>Clara</x:String>
+                                                </x:Array>
+                                            </ListView.ItemsSource>
+                                            <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
-                                                        <syncfusionButtons:SfButton
-                                                ImageSource="edit.png"
-                                                ShowIcon="True"
-                                                ImageAlignment="Default"
-                                                Background="#F3F4F6"
-                                                TextColor="Black"
-                                                HeightRequest="32"
-                                                WidthRequest="32"
-                                                Padding="2"
-                                                CornerRadius="6"
-                                                Command="{Binding Path=BindingContext.EditEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid2}}"
-                                                CommandParameter="{Binding .}" />
-                                                        <syncfusionButtons:SfButton
-                                                ImageSource="trash.png"
-                                                ShowIcon="True"
-                                                ImageAlignment="Default"
-                                                Background="#F3F4F6"
-                                                TextColor="Red"
-                                                HeightRequest="32"
-                                                WidthRequest="32"
-                                                Padding="2"
-                                                CornerRadius="6"
-                                                Command="{Binding Path=BindingContext.DeleteEmployeeCommand, Source={x:Reference Name=EmployeesDataGrid2}}"
-                                                CommandParameter="{Binding .}" />
-                                                    </HorizontalStackLayout>
+                                                    <ViewCell>
+                                                        <!-- Define the layout for each item in the ListView -->
+                                                        <Grid Margin="10,5">
+                                                            <Label VerticalOptions="Start"
+                                                   HorizontalOptions="Start"
+                                                   TextColor="#666666"
+                                                   FontSize="16"
+                                                   Text="{Binding}" />
+                                                        </Grid>
+                                                    </ViewCell>
                                                 </DataTemplate>
-                                            </syncfusion:DataGridTemplateColumn.CellTemplate>
-                                        </syncfusion:DataGridTemplateColumn>
-                                    </syncfusion:SfDataGrid.Columns>
-                                </syncfusion:SfDataGrid>
-                            </StackLayout>
-                        </Border>
-                    </VerticalStackLayout>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </tabView:SfTabItem.Content>
+                                </tabView:SfTabItem>
+                            </tabView:SfTabView.Items>
+                        </tabView:SfTabView>
+                    </Grid>
                 </ScrollView>
 
                 <!-- Busy Overlay -->

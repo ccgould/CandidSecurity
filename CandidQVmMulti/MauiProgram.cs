@@ -4,16 +4,19 @@ using CandidQVmMulti.Platforms.Android;
 #endif
 using CandidQVmMulti.Services;
 using CandidQVmMulti.View.Pages;
+using CandidQVmMulti.View.Windows;
 using CandidQVmMulti.ViewModels;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
+using Syncfusion.Maui.Toolkit.Hosting;
 using System.Reflection;
 
 namespace CandidQVmMulti;
 public static class MauiProgram
 {
+
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
@@ -43,6 +46,7 @@ public static class MauiProgram
                 // Other Sentry options can be set here.
             })
             .ConfigureSyncfusionCore()
+            .ConfigureSyncfusionToolkit()
             .UseMauiCommunityToolkit(options =>
             {
                 options.SetShouldEnableSnackbarOnWindows(true);
@@ -51,8 +55,11 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("SegMDL2.ttf", "SegMDL2");
+                fonts.AddFont("FontAwesome6Solid.otf", "FASolid");
             });
 
+        builder.Services.AddSingleton<CustomTitleWindow>();
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<MainPageViewModel>();
         builder.Services.AddTransient<AddVoucherPage>();
